@@ -1,7 +1,10 @@
-﻿namespace Infrastructure.Models.Courses;
+﻿using Infrastructure.Entities;
+
+namespace Infrastructure.Models.Courses;
 
 public class CourseResult
 {
-    //public bool Succeeded { get; set; }
-    //public IEnumerable<CourseResult> Courses { get;}
+    public IEnumerable<CoursesEntity>? Courses { get; set; }
+    public int TotalItems { get; set; }
+    public int TotalPages { get; set; }
 }

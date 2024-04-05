@@ -65,12 +65,15 @@ public class SubscribersController : ControllerBase
     {
         try
         {
-            var subscribers = await _subscribersService.GetAllSubscribersAsync();
-            if (subscribers != null)
+            if(ModelState.IsValid)
             {
-                return Ok(subscribers);
+                var subscribers = await _subscribersService.GetAllSubscribersAsync();
+                if (subscribers != null)
+                {
+                    return Ok(subscribers);
+                }
+                return NotFound();
             }
-            return NotFound();
         }
         catch (Exception ex) { Debug.WriteLine(ex); }
         return BadRequest();
@@ -84,10 +87,13 @@ public class SubscribersController : ControllerBase
     {
         try
         {
-            var subscribersEntity = await _subscribersService.GetOneSubscriberAsync(id);
-            if (subscribersEntity != null)
+            if (ModelState.IsValid)
             {
-                return Ok(subscribersEntity);
+                var subscribersEntity = await _subscribersService.GetOneSubscriberAsync(id);
+                if (subscribersEntity != null)
+                {
+                    return Ok(subscribersEntity);
+                }
             }
             return NotFound($"No user found with id {id}");
         }

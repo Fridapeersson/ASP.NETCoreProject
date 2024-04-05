@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Infrastructure.Models.Dtos;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Entities;
@@ -27,4 +28,37 @@ public class CoursesEntity
 
 
     public ICollection<SavedCoursesEntity>? SavedCourses { get; set; }
+
+
+
+    public static implicit operator CourseDto(CoursesEntity entity)
+    {
+        return new CourseDto
+        {
+            Title = entity.Title,
+            Price = entity.Price,
+            DiscountPrice = entity.DiscountPrice,
+            HoursToComplete = entity.HoursToComplete,
+            LikesInPercent = entity.LikesinPercent,
+            LikesInNumbers = entity.LikesInNumbers,
+            IsBestSeller = entity.IsBestSeller,
+            BackgroundImageName = entity.BackgroundImageName,
+            AuthorId = entity.AuthorId,
+            CategoryId = entity.CategoryId,
+            Author = new AuthorDto
+            {
+                AuthorName = entity.Author.AuthorName,
+                AuthorTitle = entity.Author.AuthorTitle,
+                AuthorDescritpion = entity.Author.AuthorDescription,
+                AuthorImageUrl = entity.Author.AuthorImageUrl,
+                FacebookSubs = entity.Author.FacebookSubs,
+                YoutubeSubs = entity.Author.YoutubeSubs,
+            },
+            Category = new CategoryDto
+            {
+                CategoryName = entity.Category!.CategoryName
+            }
+        };
+    }
+
 }

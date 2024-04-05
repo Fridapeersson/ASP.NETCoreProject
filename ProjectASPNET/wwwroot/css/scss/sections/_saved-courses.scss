@@ -1,12 +1,13 @@
 
 .account-details-section {
+    color: var(--color-gray-900);
+
     .container {
         .saved-courses-content {
             @include lg {
                 display: grid;
                 grid-template-columns: auto auto;
                 gap: 5rem;
-
             }
 
             @include xl {

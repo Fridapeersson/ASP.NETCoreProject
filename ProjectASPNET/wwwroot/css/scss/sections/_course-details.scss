@@ -1,4 +1,5 @@
 .course-details {
+    color: var(--color-gray-900);
     position: relative;
     display: grid;
     color: var(--color-gray-900);
@@ -62,7 +63,8 @@
                 @include md {
                     margin-right: .5rem;
                 }
-                i{
+
+                i {
                     margin-right: .2rem;
                 }
             }

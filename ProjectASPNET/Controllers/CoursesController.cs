@@ -102,17 +102,14 @@ public class CoursesController : Controller
 
 
     [Route("/courses")]
-    public async Task<IActionResult> Courses(string category = "", string searchQuery = "")
+    public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 9)
     {
-        // Hämta sparade kurser en gång
         var savedCourses = await _coursesService.GetAllSavedCourses(User);
         var savedCoursesIds = savedCourses.Select(x => x.CourseId).ToList();
 
-        // Hämta filtrerade eller alla kurser beroende på input
-        var courses = await _coursesService.GetCoursesAsync(category, searchQuery);
+        var courseResult = await _coursesService.GetCoursesAsync(category, searchQuery, pageNumber, pageSize);
 
-        // Bygg upp coursesViewModel baserat på hämtade kurser
-        var coursesViewModel = courses.Select(x => new CourseViewModel
+        var coursesViewModel = courseResult.Courses!.Select(x => new CourseViewModel
         {
             Id = x.Id,
             Title = x.Title,
@@ -136,7 +133,6 @@ public class CoursesController : Controller
             }
         }).ToList();
 
-        // Hämta kategorier för att visa dem i vyn
         var categoryEntities = await _categoryService.GetCategoriesAsync();
         var categoryViewModel = categoryEntities.Select(x => new CategoryViewModel
         {
@@ -144,12 +140,25 @@ public class CoursesController : Controller
             CategoryName = x.CategoryName,
         });
 
+
         var viewModel = new CoursesIndexViewModel
         {
             Categories = categoryViewModel,
             Courses = coursesViewModel,
             SearchQuery = searchQuery,
-        };
+            Pagination = new PaginationModel
+            {
+                CurrentPage = pageNumber,
+                TotalPages = courseResult.TotalPages,
+                PageSize = pageSize,
+                TotalItems = courseResult.TotalItems,
+            }
+            //CurrentPage = pageNumber,
+            //PageSize = pageSize,
+            //TotalItems = courses.TotalItems,
+            //TotalPages = courses.TotalPages,
+
+};
 
         return View(viewModel);
     }

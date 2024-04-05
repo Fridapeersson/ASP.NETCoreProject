@@ -1,0 +1,17 @@
+.change-page {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+
+
+    .active {
+        background-color: var(--color-theme);
+        padding: 1rem;
+        border-radius: .3rem;
+    }
+
+    .number {
+        padding: 1rem;
+    }
+}

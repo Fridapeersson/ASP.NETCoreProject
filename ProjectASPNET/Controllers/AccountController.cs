@@ -168,7 +168,7 @@ public class AccountController : Controller
 
             if (result)
             {
-                return RedirectToAction("SavedCourses", "Account");
+                return RedirectToAction("Courses", "Courses");
             }
         }
          return RedirectToAction("SavedCourses", "Account"); 

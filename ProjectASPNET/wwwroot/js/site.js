@@ -61,8 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // category dropdown
 document.addEventListener("DOMContentLoaded", () => {
-    Select()
-    SearchQuery()
+    Select();
+    SearchQuery();
+    //SetupPagination();
 });
 
 function Select() {
@@ -79,8 +80,8 @@ function Select() {
         select.querySelectorAll(".option").forEach(option => {
             option.addEventListener("click", () => {
                 selected.textContent = option.textContent;
+                selected.setAttribute('data-value', option.getAttribute('data-value'));
                 selectOptions.classList.remove("show");
-
 
                 let category = option.getAttribute("data-value");
                 let searchValue = document.querySelector("#searchQuery").value || "";
@@ -103,13 +104,12 @@ function SearchQuery() {
         document.querySelector(".searchQuery").addEventListener("keyup", function(event) {
             const searchQuery = event.target.value || "";
             const category = document.querySelector(".select .selected").getAttribute("data-value") || "all";
-
+            //console.log(`SEARCHQUERY: ${searchQuery}`);
+            //console.log(`CATEGORY: ${category}`);
             updateCoursesByFilter(category, searchQuery);
         })
     }
-    catch {
-        console.error('Error in SearchQuery function:', error);
-        }
+    catch { }
 }
 
 //function UpdateCourses() {
@@ -125,6 +125,32 @@ function updateCoursesByFilter(category, searchValue = "") {
             const parser = new DOMParser();
             const dom = parser.parseFromString(data, "text/html");
             document.querySelector("#boxes").innerHTML = dom.querySelector("#boxes").innerHTML;
+
+            const pagination = document.querySelector(".pagination") ? dom.querySelector(".pagination").innerHTML : "";
+            document.querySelector(".pagination").innerHTML = pagination;
         })
-        .catch(error => console.error('Error:', error));
 }
+
+//pagnering
+//function SetupPagination() {
+//    document.querySelector(".numbers a").forEach(pageLink => {
+//        pageLink.addEventListener("click", function (e) {
+//            e.preventDefault();
+//            const pageNbr = this.getAttribute("data-page");
+//            const category = document.querySelector(".select .selected").getAttribute("data-value") || "all";
+//            const searchQuery = document.querySelector(".searchQuery").value || "";
+//            updateCoursesByPage(category, searchQuery, pageNbr);
+//        })
+//    })
+//}
+
+//function updateCoursesByPage(category, searchQuery, pageNumber) {
+//    fetch(`/courses?category=${encodeURIComponent(category)}&searchQuery=${encodeURIComponent(searchQuery)}&pageNumber=${encodeURIComponent(pageNumber)}`)
+//        .then(res => res.text())
+//        .then(data => {
+//            const parser = new DOMParser();
+//            const dom = parser.parseFromString(data, "text/html");
+//            document.querySelector("#boxes").innerHTML = dom.querySelector("#boxes").innerHTML;
+//            setupPagination();
+//        });
+//}

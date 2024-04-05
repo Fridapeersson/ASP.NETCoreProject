@@ -1,0 +1,22 @@
+﻿@model CoursesIndexViewModel
+
+
+@* PAGNERING FÖRSVINNER INTE NÄR MAN DET ÄR MINDRE ÄN 2 SIDOR, fixa *@
+
+
+@if (Model.Pagination != null && Model.Pagination.TotalItems > 1)
+{
+    <div class="change-page">
+        @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+        {
+            if (i == Model.Pagination.CurrentPage)
+            {
+                <span class="numbers active">@i</span>
+            }
+            else
+            {
+                <a class="number" href="@Url.Action("", new { pageNumber = i, pageSize = Model.Pagination.PageSize})">@i</a>
+            }
+        }
+    </div>
+}

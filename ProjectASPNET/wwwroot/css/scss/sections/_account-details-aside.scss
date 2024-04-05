@@ -1,4 +1,5 @@
 aside {
+    color: var(--color-gray-900);
     @include lg {
         border-right: solid var(--color-gray-300) 1px;
         padding: 1rem;

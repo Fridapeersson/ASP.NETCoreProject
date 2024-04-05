@@ -631,6 +631,7 @@ header .container .btn-mobile i {
 }
 
 .showcase {
+  color: var(--color-gray-900);
   position: relative;
   margin-bottom: 5rem;
   color: var(--color-gray-900);
@@ -767,6 +768,7 @@ header .container .btn-mobile i {
 }
 
 .features {
+  color: var(--color-gray-900);
   background: var(--color-gray-100);
   padding: 5rem 0;
 }
@@ -1717,6 +1719,7 @@ header .container .btn-mobile i {
 }
 
 footer {
+  color: var(--color-gray-900);
   margin: 2rem;
   line-height: 160%;
   font-weight: 400;
@@ -1737,6 +1740,7 @@ footer .container .social-media {
 }
 
 .courses {
+  color: var(--color-gray-900);
   display: flex;
   color: var(--color-gray-900);
 }
@@ -2210,6 +2214,7 @@ footer .container .social-media {
 }
 
 .course-details {
+  color: var(--color-gray-900);
   position: relative;
   display: grid;
   color: var(--color-gray-900);
@@ -3041,6 +3046,7 @@ footer .container .social-media {
 }
 
 .contact-us {
+  color: var(--color-gray-900);
   background: var(--color-gray-200);
 }
 .contact-us .container {
@@ -3306,6 +3312,9 @@ footer .container .social-media {
   width: 100%;
 }
 
+.account-details-section {
+  color: var(--color-gray-900);
+}
 @media (min-width: 992px) {
   .account-details-section .container .saved-courses-content {
     display: grid;
@@ -3513,6 +3522,7 @@ footer .container .social-media {
             }*/
 /*}*/
 .box-content {
+  color: var(--color-gray-900);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -3541,6 +3551,7 @@ footer .container .social-media {
   }
 }
 .box-content .boxes .box {
+  color: var(--color-gray-900);
   position: relative;
   border: solid var(--color-gray-200) 1px;
   border-radius: 0.5rem;
@@ -3699,45 +3710,11 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
 }
-.box-content .change-page {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-top: 2rem;
-}
-.box-content .change-page .change-page-arrow {
-  padding: 1.2rem;
-}
-.box-content .change-page .change-page-arrow i {
-  font-size: 0.8rem;
-  padding: 0.5rem;
-}
-.box-content .change-page .change-page-arrow i:hover {
-  background-color: var(--color-theme);
-  border-radius: 0.2rem;
-  color: var(--color-white);
-}
-.box-content .change-page .numbers {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 0.4rem;
-  margin-bottom: 4rem;
-}
-.box-content .change-page .numbers a {
-  padding: 1.2rem;
-  border-radius: 0.3rem;
-  text-decoration: none;
-}
-.box-content .change-page .numbers a:hover {
-  background-color: var(--color-theme);
-  color: var(--color-white);
-}
-.box-content .change-page .numbers .gray {
-  background-color: var(--color-gray-200);
-}
+
 .account-security-section {
+  color: var(--color-gray-900);
+}
+.account-security-section .container .security-content aside {
   color: var(--color-gray-900);
 }
 @media (min-width: 992px) {
@@ -3936,6 +3913,9 @@ footer .container .social-media {
   }
 }
 
+aside {
+  color: var(--color-gray-900);
+}
 @media (min-width: 992px) {
   aside {
     border-right: solid var(--color-gray-300) 1px;
@@ -4023,6 +4003,7 @@ aside .profile-info nav .btn-transparent i {
 }
 
 .box {
+  color: var(--color-gray-900);
   position: relative;
   border: solid var(--color-gray-200) 1px;
   border-radius: 0.5rem;
@@ -4180,4 +4161,19 @@ aside .profile-info nav .btn-transparent i {
   color: var(--gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
+}
+
+.change-page {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+.change-page .active {
+  background-color: var(--color-theme);
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+.change-page .number {
+  padding: 1rem;
 }

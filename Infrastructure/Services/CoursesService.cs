@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Models.Courses;
 using Infrastructure.Models.Dtos;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Components;
@@ -41,53 +42,70 @@ public class CoursesService
     }
 
 
-    public async Task<bool> CreateCourseAsync(CoursesEntity courseEntity)
+    public async Task<bool> CreateCourseAsync(CourseDto coursedto)
     {
         try
         {
-            //if (courseEntity == null) return false;
-            var courseExists = await _coursesRepository.ExistsAsync(x => x.Title == courseEntity.Title);
+            var courseEntity = new CoursesEntity
+            {
+                Title = coursedto.Title,
+                Price = coursedto.Price,
+                DiscountPrice = coursedto.DiscountPrice,
+                HoursToComplete = coursedto.HoursToComplete,
+                LikesInNumbers = coursedto.LikesInNumbers,
+                LikesinPercent = coursedto.LikesInPercent,
+                IsBestSeller = coursedto.IsBestSeller,
+                BackgroundImageName = coursedto.BackgroundImageName,
+            };
+
+            var courseExists = await _coursesRepository.ExistsAsync(x => x.Title == coursedto.Title);
             if (courseExists)
             {
                 return false;
             }
-            //author
-            if (courseEntity.Author != null)
+
+            // Kontrollera och hantera författare
+            var authorExists = await _authorRepository.ExistsAsync(x => x.AuthorName == coursedto.Author.AuthorName);
+            if (authorExists)
             {
-                var authorExists = await _authorRepository.ExistsAsync(x => x.AuthorName == courseEntity.Author.AuthorName);
-                if (authorExists)
-                {
-                    var existingAuthor = await _authorRepository.GetOneAsync(x => x.AuthorName == courseEntity.Author.AuthorName);
-                    courseEntity.AuthorId = existingAuthor.Id;
-                }
-                else
-                {
-                    var createdAuthor = await _authorRepository.CreateOneAsync(courseEntity.Author);
-                    courseEntity.AuthorId = createdAuthor.Id;
-                }
+                var existingAuthor = await _authorRepository.GetOneAsync(x => x.AuthorName == coursedto.Author.AuthorName);
+                courseEntity.AuthorId = existingAuthor.Id; 
             }
-            //category
-            if (courseEntity.Category != null)
+            else
             {
-                var categoryExists = await _categoryRepository.ExistsAsync(x => x.CategoryName == courseEntity.Category.CategoryName);
-                if (categoryExists)
+                var newAuthor = new AuthorsEntity
                 {
-                    var existingCategory = await _categoryRepository.GetOneAsync(x => x.CategoryName == courseEntity.Category.CategoryName);
-                    courseEntity.CategoryId = existingCategory.Id;
-                }
-                else
-                {
-                    var createdCategory = await _categoryRepository.CreateOneAsync(courseEntity.Category);
-                    courseEntity.CategoryId = createdCategory.Id;
-                }
+                    AuthorName = coursedto.Author.AuthorName,
+                    AuthorTitle = coursedto.Author.AuthorTitle!,
+                    AuthorDescription = coursedto.Author.AuthorDescritpion,
+                    AuthorImageUrl = coursedto.Author.AuthorImageUrl,
+                    FacebookSubs = coursedto.Author.FacebookSubs,
+                    YoutubeSubs = coursedto.Author.YoutubeSubs,
+                };
+                var createdAuthor = await _authorRepository.CreateOneAsync(newAuthor);
+                courseEntity.AuthorId = createdAuthor.Id; 
             }
 
-            var createCourse = await _coursesRepository.CreateOneAsync(courseEntity);
-            if (createCourse != null)
+            // Kontrollera och hantera kategori
+            var categoryExists = await _categoryRepository.ExistsAsync(x => x.CategoryName == coursedto.Category.CategoryName);
+            if (categoryExists)
             {
-                return true;
+                var existingCategory = await _categoryRepository.GetOneAsync(x => x.CategoryName == coursedto.Category.CategoryName);
+                courseEntity.CategoryId = existingCategory.Id;
             }
-            return false;
+            else
+            {
+                var newCategory = new CategoryEntity
+                {
+                    CategoryName = coursedto.Category.CategoryName!
+                };
+                var createdCategory = await _categoryRepository.CreateOneAsync(newCategory);
+                courseEntity.CategoryId = createdCategory.Id;
+            }
+
+            // Skapa kursen
+            var createCourse = await _coursesRepository.CreateOneAsync(courseEntity);
+            return createCourse != null;
         }
         catch (Exception ex)
         {
@@ -138,11 +156,42 @@ public class CoursesService
 
 
 
-    public async Task<IEnumerable<CoursesEntity>> GetCoursesAsync(string category, string searchQuery)
+    public async Task<CourseResult> GetCoursesAsync(string category, string searchQuery, int pageNumber, int pageSize)
     {
         try
         {
-            return await _coursesRepository.GetCoursesAsync(category, searchQuery);
+            var query = _coursesRepository.GetCoursesAsync();
+            //var query = courses.AsQueryable();
+
+            if (!string.IsNullOrEmpty(category) && category.ToLower() != "all")
+            {
+                query = query.Where(x => x.Category!.CategoryName.ToLower() == category.ToLower());
+            }
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                //if(searchQuery.Equals("undefined"))
+                //{
+                //    searchQuery = "";
+                //}
+                query = query.Where(x => x.Title.Contains(searchQuery) || x.Author.AuthorName!.Contains(searchQuery));
+            }
+            int totalItems = await query.CountAsync();
+            List<CoursesEntity> courseList = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            int totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+            return new CourseResult
+            {
+                Courses = courseList,
+                TotalItems = totalItems,
+                TotalPages = totalPages
+            };
+
+            //return await query.ToListAsync();
+
+
+            //return await _coursesRepository.GetCoursesAsync(category, searchQuery, pageNumber, pageSize);
         }
         catch (Exception ex) { Debug.WriteLine(ex); }
         return null!;

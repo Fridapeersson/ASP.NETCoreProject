@@ -1,10 +1,12 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Models.Courses;
 using Infrastructure.Models.Dtos;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using WebApi.Filters;
 
@@ -30,13 +32,13 @@ public class CoursesController : ControllerBase
 
     #region CREATE COURSE
     [HttpPost]
-    public async Task<IActionResult> CreateCourse(CoursesEntity courseEntity)
+    public async Task<IActionResult> CreateCourse(CourseDto courseDto)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var result = await _coursesService.CreateCourseAsync(courseEntity);
+                var result = await _coursesService.CreateCourseAsync(courseDto);
 
                 if (result)
                 {
@@ -85,27 +87,13 @@ public class CoursesController : ControllerBase
 
     #region GET ALL COURSES
     [HttpGet]
-    public async Task<IActionResult> GetAllCourses(string category = "", string searchQuery = "")
+    public async Task<IActionResult> GetAllCourses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 9)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var courses = await _coursesRepository.GetCoursesAsync(category, searchQuery);
-                var query = courses.AsQueryable();
-
-                if (!string.IsNullOrEmpty(category) && category != "all")
-                {
-                    query = query.Where(x => x.Category!.CategoryName == category);
-                }
-
-                if (!string.IsNullOrEmpty(searchQuery))
-                {
-                    query = query.Where(x => x.Title.Contains(searchQuery) || x.Author.AuthorName.Contains(searchQuery));
-                }
-
-                query = query.OrderByDescending(x => x.Id);
-
+                var courses = await _coursesService.GetCoursesAsync(category, searchQuery, pageNumber, pageSize);
                 if (courses != null)
                 {
                     return Ok(courses);
@@ -124,7 +112,7 @@ public class CoursesController : ControllerBase
 
     #region UPDATE COURSE
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateCourse(int id, CoursesEntity courseEntity)
+    public async Task<IActionResult> UpdateCourse(int id, CourseDto courseDto)
     {
         try
         {
@@ -133,7 +121,7 @@ public class CoursesController : ControllerBase
                 return BadRequest(ModelState);
             }
 
-            var course = await _coursesService.UpdateCourseAsync(id, courseEntity);
+            var course = await _coursesService.UpdateCourseAsync(id, courseDto);
             if (course)
             {
                 return Ok("Course updated successfully.");

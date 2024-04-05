@@ -20,11 +20,14 @@ public class CategoryController : ControllerBase
     {
         try
         {
-            var result = await _categoryRepository.GetAllAsync();
-
-            if (result != null)
+            if(ModelState.IsValid)
             {
-                return Ok(result);
+                var result = await _categoryRepository.GetAllAsync();
+
+                if (result != null)
+                {
+                    return Ok(result);
+                }
             }
             return NotFound();
         }
@@ -38,11 +41,14 @@ public class CategoryController : ControllerBase
     {
         try
         {
-            var result = await _categoryRepository.GetOneAsync(x => x.Id == id);
-
-            if (result != null)
+            if(ModelState.IsValid)
             {
-                return Ok(result);
+                var result = await _categoryRepository.GetOneAsync(x => x.Id == id);
+
+                if (result != null)
+                {
+                    return Ok(result);
+                }
             }
             return NotFound();
         }

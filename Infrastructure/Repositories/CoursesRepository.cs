@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Models.Courses;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq.Expressions;
@@ -20,10 +21,10 @@ public class CoursesRepository : BaseRepo<CoursesEntity>
     {
         try
         {
-            var result =  _context.Courses
+            List<CoursesEntity> result = await _context.Courses
                         .Include(i => i.Author)
                         .Include(i => i.Category)
-                        .AsQueryable();
+                        .ToListAsync();
 
             return result;
         }
@@ -31,30 +32,48 @@ public class CoursesRepository : BaseRepo<CoursesEntity>
         return null!;
     }
 
-    public async Task<IEnumerable<CoursesEntity>> GetCoursesAsync(string category = "", string searchQuery = "")
+
+
+
+    public IQueryable<CoursesEntity> GetCoursesAsync(/*string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 9*/)
     {
         try
         {
-            IQueryable<CoursesEntity> query = _context.Courses
-                                .Include(i => i.Author)
-                                .Include(i => i.Category)
-                                .AsQueryable();
+            return _context.Courses
+                     .Include(i => i.Author)
+                     .Include(i => i.Category)
+                     .AsQueryable();
+            ////IQueryable<CoursesEntity> query = _context.Courses
+            ////                    .Include(i => i.Author)
+            ////                    .Include(i => i.Category)
+            ////                    .AsQueryable();
 
-            if (!string.IsNullOrEmpty(category) && category.ToLower() != "all")
-            {
-                query = query.Where(x => x.Category!.CategoryName.ToLower() == category.ToLower());
-            }
+            ////if (!string.IsNullOrEmpty(category) && category.ToLower() != "all")
+            ////{
+            ////    query = query.Where(x => x.Category!.CategoryName.ToLower() == category.ToLower());
+            ////}
 
-            if (!string.IsNullOrEmpty(searchQuery))
-            {
-                //if(searchQuery.Equals("undefined"))
-                //{
-                //    searchQuery = "";
-                //}
-                query = query.Where(x => x.Title.Contains(searchQuery) || x.Author.AuthorName.Contains(searchQuery));
-            }
+            ////if (!string.IsNullOrEmpty(searchQuery))
+            ////{
+            ////    //if(searchQuery.Equals("undefined"))
+            ////    //{
+            ////    //    searchQuery = "";
+            ////    //}
+            ////    query = query.Where(x => x.Title.Contains(searchQuery) || x.Author.AuthorName!.Contains(searchQuery));
+            ////}
+            ////int totalItems = await query.CountAsync();
+            ////List<CoursesEntity> courses = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
-            return await query.ToListAsync();
+            ////int totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+            ////return new CourseResult
+            ////{
+            ////    Courses = courses,
+            ////    TotalItems = totalItems,
+            ////    TotalPages = totalPages
+            ////};
+
+            //////return await query.ToListAsync();
         }
         catch (Exception ex)
         {
