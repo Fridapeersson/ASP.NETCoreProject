@@ -1,0 +1,181 @@
+﻿@model CourseViewModel
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<section class="course-details">
+    <img class="courses-showcase-img" src="~/images/courses/@Model.BackgroundImageName" />
+    <div class="container">
+        <div class="mini-menu">
+            <a asp-action="Index" asp-controller="Home" class="home"><i class="fa-light fa-house"></i>Home</a>
+            <i class="fa-light fa-chevrons-right arrow"></i>
+            <a asp-action="Courses" asp-controller="Courses">Courses </a>
+            <i class="fa-light fa-chevrons-right arrow"></i>
+            <a asp-action="CourseDetails" asp-controller="Courses">Fullstack Web Developer Course from Scratch</a>
+        </div>
+
+
+        <div class="course-showcase-text">
+            <div class="best-seller-digital">
+                @if(Model.IsBestSeller)
+                {
+                    <p class="best-seller">Best Seller</p>
+                }
+
+                <p class="digital">Digital</p>
+            </div>
+            <h3>@Model.Title</h3>
+            <p>Egestas feugiat lorem eu neque suspendisse ullacorper scelerisque aliquam mauris. </p>
+
+            <div class="rating">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star no-color-star"></i>
+                    <p>(1.2K reviews)</p>
+                    <p class="line">|</p>
+                </div>
+                <div class="likes">
+                    <i class="fa-light fa-thumbs-up"></i>
+                    <p>@($"{Model.LikesInNumbers / 1000:0}k likes")</p>
+                    <p class="line">|</p>
+
+                </div>
+                <div class="hours">
+                    <i class="fa-regular fa-clock"></i>
+                    <p>@Model.HoursToComplete hours</p>
+                </div>
+            </div>
+        </div>
+        <div class="course-author">
+            <img src="~/images/courses-details/albert-flores-avatar.svg" />
+            <div class="created-by">
+                <p>Created by</p>
+                <p>@Model.Author!.AuthorName</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="course-description">
+                <h3>Course Description</h3>
+                <p>Suspendisse natoque sagittis, consequat turpis. Sed tristique tellus morbi magna. At vel senectus accumsan, arcu mattis id tempor. Tellus sagittis, euismod porttitor sed tortor est id. Feugiat velit velit, tortor ut. Ut libero cursus nibh lorem urna amet tristique leo. Viverra lorem arcu nam nunc at ipsum quam. A proin id sagittis dignissim mauris condimentum ornare. Tempus mauris sed dictum ultrices.</p>
+
+                <h4>What you'll learn</h4>
+                <p><i class="fa-sharp fa-regular fa-circle-check"></i>Sed lectus donec amet eu turpis interdum.</p>
+
+                <p><i class="fa-sharp fa-regular fa-circle-check"></i>Nulla at consectetur vitae dignissim porttitor.</p>
+
+                <p><i class="fa-sharp fa-regular fa-circle-check"></i>Phasellus id vitae dui aliquet mi.</p>
+
+                <p><i class="fa-sharp fa-regular fa-circle-check"></i>Integer cursus vitae, odio feugiat iaculis aliquet diam, et purus.</p>
+
+                <p><i class="fa-sharp fa-regular fa-circle-check"></i>In aenean dolor diam tortor orci eu.</p>
+            </div>
+
+
+            <div class="side-content">
+                <h5>This course includes:</h5>
+                <p> <i class="fa-solid fa-display"></i>@Model.HoursToComplete hours on-demand video</p>
+                <p><i class="fa-light fa-file-lines"></i>18 articles</p>
+                <p><i class="fa-light fa-arrow-down-to-bracket"></i>25 downloadable resources</p>
+                <p><i class="fa-light fa-infinity"></i>Full lifetime access</p>
+                <p><i class="fa-sharp fa-light fa-trophy"></i>Certificate of completion</p>
+
+                <div class="price">
+                    @if (Model.DiscountPrice == 0)
+                    {
+                        <h5>$@Model.Price</h5>
+                    }
+                    else
+                    {
+                        <h5>$@Model.DiscountPrice</h5> <span>$@Model.Price</span>
+                    }
+                </div>
+                <a href="#"><button class="btn-theme">Join course</button></a>
+            </div>
+
+        </div>
+
+
+        <div class="program-details">
+            <h3>Program Details</h3>
+            <div class="numbers">
+                <span class="line"></span>
+                <div class="box">
+                    <img src="~/images/courses-details/1.svg" class="numbers-img" />
+                    
+                    <div class="box-content">
+                        <h5>Introduction. Getting started</h5>
+                        <p>Nulla faucibus mauris pellentesque blandit faucibus non. Sit ut et at suspendisse gravida hendrerit tempus placerat</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="~/images/courses-details/2.svg" class="numbers-img" />
+                    
+                    <div class="box-content">
+                        <h5>The ultimate HTML developer: advanced HTML</h5>
+                        <p>Lobortis diam elit id nibh ultrices sed penatibus donec. Nibh iaculis eu sit cras ultricies. Nam eu eget etiam egestas donec scelerisque ut ac enim. Vitae ac nisl, enim nec accumsan vitae est.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="~/images/courses-details/3.svg" class="numbers-img" />
+                    
+                    <div class="box-content">
+                        <h5>CSS & CSS3: basic</h5>
+                        <p>Duis euismod enim, facilisis risus tellus pharetra lectus diam neque. Nec ultrices mi faucibus est. Magna ullamcorper potenti elementum ultricies auctor nec volutpat augue.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="~/images/courses-details/4.svg" class="numbers-img" />
+                    
+                    <div class="box-content">
+                        <h4>JavaScript basics for beginners</h4>
+                        <p>Morbi porttitor risus imperdiet a, nisl mattis. Amet, faucibus eget in platea vitae, velit, erat eget velit. At lacus ut proin erat.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="~/images/courses-details/5.svg" class="numbers-img" />
+                    
+                    <div class="box-content">
+                        <h5>Understanding APIs</h5>
+                        <p>Risus morbi euismod in congue scelerisque fusce pellentesque diam consequat. Nisi mauris nibh sed est morbi amet arcu urna. Malesuada feugiat quisque consectetur elementum diam vitae. Dictumst facilisis odio eu quis maecenas risus odio fames bibendum.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="~/images/courses-details/6.svg" class="numbers-img" />
+                   
+                    <div class="box-content">
+                        <h5>C# and .NET from beginner to advanced</h5>
+                        <p>Quis risus quisque diam diam. Volutpat neque eget eu faucibus sed urna fermentum risus. Est, mauris morbi nibh massa.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="author">
+                <img src="~/images/courses-details/bg-author-pattern.svg" class="background-pattern" />
+                <div class="author-info">
+                    <img src="~/images/courses-details/@Model.Author.AuthorImageUrl" alt="Albert Flores" />
+
+                    <div class="author-content">
+                        <p>@Model.Author.AuthorTitle</p>
+                        <h2>@Model.Author.AuthorName</h2>
+                        <p>@Model.Author.AuthorDescritpion</p>
+
+                        <div class="buttons">
+
+
+                            <a href="#"><button class="youtube-btn"><i class="fa-brands fa-youtube"></i> @($"{Model.Author.YoutubeSubs / 1000:0}k subscribers")</button></a>
+
+                            <a href="#"><button class="facebook-btn"><i class="fa-brands fa-square-facebook"></i> @($"{Model.Author.FacebookSubs / 1000:0}k followers")</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

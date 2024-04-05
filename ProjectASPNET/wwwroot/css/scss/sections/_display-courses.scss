@@ -1,0 +1,81 @@
+.box-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @include md {
+        text-align: start;
+    }
+
+
+
+    .boxes {
+        display: grid;
+        gap: 1.5rem 1rem;
+        position: relative;
+
+        @include md {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include lg {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem .7rem;
+        }
+
+        @import "_course-card.scss";
+    }
+
+    .change-page {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2rem;
+
+
+        .change-page-arrow {
+            padding: 1.2rem;
+
+            i {
+                font-size: .8rem;
+                padding: .5rem;
+
+                &:hover {
+                    background-color: var(--color-theme);
+                    border-radius: .2rem;
+                    color: var(--color-white);
+                }
+            }
+        }
+
+        .numbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: .4rem;
+            margin-bottom: 4rem;
+
+
+            a {
+                padding: 1.2rem;
+                border-radius: .3rem;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: var(--color-theme);
+                    color: var(--color-white);
+                }
+            }
+
+            .gray {
+                background-color: var(--color-gray-200);
+            }
+
+            .purple {
+            }
+        }
+    }
+}

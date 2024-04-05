@@ -1,0 +1,128 @@
+.showcase {
+    position: relative;
+    margin-bottom: 5rem;
+    color: var(--color-gray-900);
+
+
+    @include lg {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 3rem;
+    }
+
+    @include xl {
+        margin-top: 2rem;
+    }
+
+
+    .background-image {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+
+        @include lg {
+            width: 50%;
+            margin-top: 1rem;
+        }
+
+        @include xl {
+            width: 55%;
+        }
+
+        @include xxl {
+            width: 60%;
+        }
+    }
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        @include lg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            justify-content: start;
+        }
+
+        .content {
+            margin-top: 0px;
+            width: 90%;
+            text-align: center;
+
+
+            @include lg {
+                width: 55%;
+                text-align: start;
+                margin-top: 3rem;
+            }
+
+            h1 {
+                @include lg {
+                    width: 70%;
+                    margin-top: 2rem;
+                }
+
+                @include xl {
+                    width: 60%;
+                    margin-top: 4rem;
+                }
+
+                @include xxl {
+                    // width: 100%;
+                    margin-top: 2rem;
+                    @include d5;
+                }
+            }
+
+            p {
+                @include lg {
+                    width: 90%;
+                }
+
+                @include xl {
+                    width: 75%;
+                }
+
+                @include xxl {
+                    width: 65%;
+                }
+            }
+
+            .btn-theme-s {
+                margin: 2rem 0;
+
+                @include lg {
+                    width: 35%;
+                    margin-top: 2rem;
+                }
+
+                @include xl {
+                    width: 30%;
+                    margin-bottom: 4rem;
+                }
+            }
+
+            h6 {
+                /*margin-top: 4rem;*/
+                margin-bottom: 2rem;
+            }
+
+            .brands {
+                img {
+                    width: 40%;
+                    margin: 5px;
+
+                    @include md {
+                        width: 20%;
+                    }
+
+                    @include xl {
+                        width: 16%;
+                    }
+                }
+            }
+        }
+    }
+}

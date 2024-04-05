@@ -1,0 +1,69 @@
+﻿@model ContactFormViewModel
+
+@{
+}
+
+
+<section class="contact-us">
+    <div class="container">
+
+        <div class="contact-us-content">
+            <div class="mini-menu">
+                <a class="home" asp-controller="Home" asp-action="Index"><i class="fa-light fa-house"></i>Home</a>
+                <p><i class="fa-solid fa-chevrons-right"></i></p>
+                <a asp-controller="Contact" asp-action="Contact">Contact</a>
+            </div>
+            <h1>Contact Us</h1>
+
+            <div class="contact-info">
+                <div class="email-us">
+                    <div class="email-icon">
+                        <i class="fa-sharp fa-regular fa-envelope"></i>
+                    </div>
+                    <div class="email-info">
+                        <h5>Email Us</h5>
+                        <p>Please feel free to drop us a line. We will respond as soon as possible.</p>
+                        <p class="leave-a-message">Leave a message <i class="fa-regular fa-arrow-right"></i></p>
+                    </div>
+                </div>
+                <div class="career">
+                    <div class="career-icon">
+                        <i class="fa-light fa-users-medical"></i>
+                    </div>
+
+                    <div class="career-info">
+                        <h5>Careers</h5>
+                        <p>Sit ac ipsum leo lorem magna nunc mattis maecenas non vestibulum.</p>
+                        <p class="send-application">Send an application <i class="fa-regular fa-arrow-right"></i></p>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+        @await Html.PartialAsync("~/Views/Contact/Sections/_ContactFormPartial.cshtml")
+
+
+
+
+    </div>
+
+    <div class="google-maps">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.377117188209!2d-122.4111476912076!3d37.734296113193174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7ef933e80d45%3A0x16993eecc12ce3d4!2sCT%20CalTrans%20Specialty%20Region%20Richard%20Street!5e0!3m2!1ssv!2sse!4v1711730616249!5m2!1ssv!2sse" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+

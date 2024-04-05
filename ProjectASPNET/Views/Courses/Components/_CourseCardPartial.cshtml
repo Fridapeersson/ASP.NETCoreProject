@@ -1,0 +1,55 @@
+﻿@model CourseViewModel
+
+<div class="box">
+    @if (Model.IsBestSeller)
+    {
+        <span class="best-seller text-s">Best Seller</span>
+    }
+    @* <a asp-controller="Account" asp-action="SaveCourseToProfile" asp-route-id="@courses.Id"><span class="bookmark"><i class="fa-regular fa-bookmark"></i></span></a> *@
+    <form asp-controller="Account" asp-action="@(Model.IsSaved ? "RemoveCourseFromProfile" : "SaveCourseToProfile")">
+        <input type="hidden" name="courseId" value="@Model.Id" />
+        <button type="submit" class="bookmark x-mark @(Model.IsSaved ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark")" data-courseid="@Model.Id" data-saved="@Model.IsSaved">
+            @* <i class="@(courses.IsSaved ? "fa-solid fa-x" : "fa-regular fa-bookmark")"></i> *@
+            @* <span>@(courses.IsSaved ? "Remove" : "Add")</span> *@
+        </button>
+    </form>
+
+    @* <i class="fa-regular fa-bookmark" onclick="toggleBookmark(@courses.)"></i> *@
+
+    <div class="content">
+        <a asp-action="CourseDetails" asp-controller="Courses" asp-route-id="@Model.Id">
+            <img src="~/images/courses/@Model.BackgroundImageName" />
+            <p class="h5">@Model.Title</p>
+
+            <p class="text-s">By @Model.Author!.AuthorName</p>
+            <div class="extra-price">
+                @if (Model.DiscountPrice == 0)
+                {
+                    <p class="price">$@Model.Price</p>
+                }
+                else
+                {
+                    <p class="new-price">$@Model.DiscountPrice</p>
+                    <span class="old-price">$@Model.Price</span>
+                }
+            </div>
+
+            <div class="line"></div>
+
+            <div class="bottom-info">
+                <div class="hours">
+                    <i class="fa-light fa-clock"></i>
+                    <p>@Model.HoursToComplete</p>
+                </div>
+                <div class="likes">
+                    <i class="fa-light fa-thumbs-up"></i>
+                    <p>
+                        @($"{Model.LikesInPercent * 100:0}%")
+                        (@($"{Model.LikesInNumbers / 1000}K"))
+
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

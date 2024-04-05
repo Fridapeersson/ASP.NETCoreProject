@@ -1,0 +1,30 @@
+.alerts {
+    display: flex;
+    color: black;
+    justify-content: center;
+    background: #f1a7a7;
+    margin-bottom: 1rem;
+    padding: .8rem;
+    border-radius: .5rem;
+}
+.alert-success {
+    background-color: var(--success);
+}
+
+.alert-warning {
+    background-color: var(--warning);
+}
+
+.alert-danger {
+    background-color: var(--color-danger-dark) /*#f1a7a7*/;
+}
+
+.alert-danger-dark {
+    /*background-color: var(--color-danger-dark): #e57e88;*/
+}
+
+.alert-success, .alert-warning, .alert-danger {
+    padding: .5rem;
+    border-radius: .5rem;
+    color: var(--gray-900);
+}

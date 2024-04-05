@@ -1,0 +1,32 @@
+﻿@model CoursesIndexViewModel
+
+
+<div class="heading">
+    <h1>Courses</h1>
+
+    <div class="tool-and-search-container">
+
+        <form>
+            <div class="select">
+                <div class="selected">All categories <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="select-options">
+                    <div class="option" data-value="all">All categories</div>
+                    @if (Model.Categories != null)
+                    {
+                        foreach (var category in Model.Categories)
+                        {
+                            <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="input-search">
+                <input id="searchQuery" placeholder="Search Courses" type="text">
+                <i class="fa-regular fa-magnifying-glass"></i>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>

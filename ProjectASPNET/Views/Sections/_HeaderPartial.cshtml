@@ -1,0 +1,88 @@
+﻿@inject SignInManager<UserEntity> _signInManager
+@inject UserManager<UserEntity> _userManager
+
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
+<header>
+    <div class="container" id="container">
+
+        <a asp-controller="Home" asp-action="Index" id="logo">
+            <img src="~/images/@(isDark ? "silicon-logo-dark-theme.svg" : "silicon-logo-light-theme.svg")" alt="silicon logotype" />
+        </a>
+
+        @* hide menu options *@
+        <div id="menu" class="nav hide">
+            <nav class="nav">
+                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
+
+                @if (_signInManager.IsSignedIn(User))
+                {
+                    <a class="menu-link" asp-controller="Courses" asp-action="Index" asp-fragment="courses">Courses</a>
+                }
+                else
+                {
+                    <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+                }
+
+                <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+@*                 @if(User.IsInRole("Admin"))
+                {
+                <a class="menu-link" asp-controller="Admin" asp-action="Index" asp-fragment="courses">Admin Portal</a>
+                } *@
+            </nav>
+        </div>
+
+        <div id="btn-switch" class="btn-switch hide">
+            <span class="color-theme">Light</span>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" checked="@isDark" />
+                <span class="slider round"></span>
+            </label>
+            <label class="color-theme">Dark</label>
+        </div>
+
+
+        <div id="account-buttons" class="account-buttons hide">
+            @if (_signInManager.IsSignedIn(User))
+            {
+                var user = await _userManager.GetUserAsync(User);
+                @if (user!.ProfileImgUrl != null)
+                {
+                    <a asp-controller="Account" asp-action="Details">
+                        <img src="~/images/account/@user.ProfileImgUrl" class="profile-img" />
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Details">
+                        <img src="~/images/account/no-profile-img.png" alt="Default img" )´s profile picture" class="no-profile-img" />
+                    </a>
+                }
+                
+@*                 <a asp-controller="Account" asp-action="Details" class="btn-gray">
+                    PROFILBILD *@
+                    
+                    
+@*                     @if (Model.ProfileInfo != null && Model.ProfileInfo.ProfileImgUrl == null)
+                    {
+                        <img src="~/images/account/no-profile-img.png" />
+                    } *@
+                @* </a> *@
+                @* <a asp-controller="Account" asp-action="Details" class="btn-theme"><i class="fa-solid fa-user"></i>My account</a> *@
+            }
+            else
+            {
+                <a asp-controller="Auth" asp-action="SignIn" class="btn-gray"><i class="fa-solid fa-arrow-right-to-bracket"></i>Sign In</a>
+                <a asp-controller="Auth" asp-action="SignUp" class="btn-theme"><i class="fa-solid fa-user"></i>Sign Up</a>
+            }
+        </div>
+
+        <button class="btn-mobile" onclick="toggleMenu()">
+            <i id="mobile-icon" class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+</header>

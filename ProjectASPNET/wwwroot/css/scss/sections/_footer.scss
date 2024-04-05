@@ -1,0 +1,17 @@
+footer {
+    margin: 2rem;
+    @include text-m;
+    color: var(--color-gray-900);
+
+    .container {
+        text-align: center;
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+    }
+}

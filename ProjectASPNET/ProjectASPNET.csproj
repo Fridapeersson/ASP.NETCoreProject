@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>2266c1b7-be37-4824-8e53-299e6a6bafd3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\images\courses\banner.svg" />
+    <None Include="wwwroot\images\courses\bookmark.svg" />
+    <None Include="wwwroot\images\courses\bx-chevrons-right.svg" />
+    <None Include="wwwroot\images\courses\bx-home-alt.svg" />
+    <None Include="wwwroot\images\courses\bx-search.svg" />
+    <None Include="wwwroot\images\courses\chevron-1.svg" />
+    <None Include="wwwroot\images\courses\chevron-2.svg" />
+    <None Include="wwwroot\images\courses\courses-img-1.svg" />
+    <None Include="wwwroot\images\courses\courses-img-2.svg" />
+    <None Include="wwwroot\images\courses\courses-img-3.svg" />
+    <None Include="wwwroot\images\courses\courses-img-4.svg" />
+    <None Include="wwwroot\images\courses\courses-img-5.svg" />
+    <None Include="wwwroot\images\courses\courses-img-6.svg" />
+    <None Include="wwwroot\images\courses\courses-img-7.svg" />
+    <None Include="wwwroot\images\courses\courses-img-8.svg" />
+    <None Include="wwwroot\images\courses\courses-img-9.svg" />
+    <None Include="wwwroot\images\courses\header-image-avatar.svg" />
+    <None Include="wwwroot\images\courses\hours-icon.svg" />
+    <None Include="wwwroot\images\courses\like-icon.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="8.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Components\Courses\" />
+  </ItemGroup>
+
+</Project>

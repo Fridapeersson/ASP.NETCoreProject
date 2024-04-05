@@ -1,0 +1,60 @@
+﻿@model CoursesIndexViewModel
+@{
+    ViewData["Title"] = "Courses";
+}
+
+@* <section id="courses" class="courses">
+    <div class="container"> *@
+<div class="bread-crum">
+    <div class="home">
+        <a asp-action="Index" asp-controller="Home">
+            <i class="fa-light fa-house"></i>
+
+            @* <img src="./images/courses/bx-home-alt.svg" /> *@
+            <p>Home</p>
+        </a>
+    </div>
+    <div class="arrow">
+        <i class="fa-light fa-chevrons-right"></i>
+    </div>
+    <a asp-action="Courses" asp-controller="Courses">
+        <p>Courses</p>
+    </a>
+</div>
+<div class="heading">
+    <h1>Courses</h1>
+
+    <div class="tool-and-search-container">
+
+        <form>
+            <div class="select">
+                <div class="selected">All categories <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="select-options">
+                    <div class="option" data-value="all">All categories</div>
+                    @if (Model.Categories != null)
+                    {
+                        foreach (var category in Model.Categories)
+                        {
+                            <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="input-search">
+                <input class="searchQuery" id="searchQuery" placeholder="Search Courses" type="text">
+                <i class="fa-regular fa-magnifying-glass"></i>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+
+@if (Model.Courses != null)
+{
+    @await Html.PartialAsync("~/Views/Courses/Sections/_DisplayCoursesPartial.cshtml")
+
+}
+
+

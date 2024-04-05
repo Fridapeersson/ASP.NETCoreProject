@@ -1,0 +1,27 @@
+﻿@model ShowcaseViewModel 
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section id="@Model.Id" class="showcase">
+    <img class="background-image" src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+    <div class="container">
+        <div class="content">
+            <h1>@Model.Title</h1>
+            <p>@Model.Description</p>
+            <a class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link.Text</a>
+            <h6>@Model.BrandsText</h6>
+            <div class="brands">
+
+                @if(Model.BrandImages != null)
+                {
+                    foreach (var brandImg in Model.BrandImages)
+                    {
+                        <img src="@brandImg.ImageUrl" alt="@brandImg.AltText" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

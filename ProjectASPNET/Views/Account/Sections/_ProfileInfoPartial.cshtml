@@ -1,0 +1,55 @@
+﻿@model ProfileInfoViewModel
+
+
+@* <section id="account" class="account"> *@
+    <aside>
+        <div class="profile-info">
+            <div class="img-container">
+
+                @if (Model.ProfileImgUrl != null)
+                {
+                    <img src="~/images/account/@Model.ProfileImgUrl" class="profile-img" />
+                }
+                else
+                {
+                    <img src="~/images/account/no-profile-img.png" alt="Default img" )´s profile picture" class="no-profile-img" />
+                }
+                <img src="~/images/account/img-icon.svg" alt="Img icon" class="img-icon" />
+            </div>
+
+            <h5>@Model.FirstName @Model.LastName</h5>
+            <p>@Model.Email</p>
+
+            <nav>
+                @* viewbag sätter tema färg på den aktiva knappen *@
+                <a id="account-details-btn"
+                   class="@(ViewBag.ActiveMenu == "Details" ? "btn-theme-s" : "btn-transparent")"
+                   asp-controller="Account"
+                   asp-action="Details">
+                    <i class="fa-solid fa-gear"></i>Account Details
+                </a>
+
+                <a id="security-btn"
+                   class="@(ViewBag.ActiveMenu == "Security" ? "btn-theme-s" : "btn-transparent")"
+                   asp-controller="Account"
+                   asp-action="Security">
+                    <i class="fa-regular fa-lock"></i>Security
+                </a>
+
+                <a id="saved-courses-btn"
+                   class="@(ViewBag.ActiveMenu == "SavedCourses" ? "btn-theme-s" : "btn-transparent")"
+                   asp-controller="Account"
+                   asp-action="SavedCourses">
+                    <i class="fa-regular fa-bookmark"></i>Saved Courses
+                </a>
+
+                <a id="sign-out-btn"
+                   class="@(ViewBag.ActiveMenu == "SignOut" ? "btn-theme-s" : "btn-transparent")"
+                   asp-controller="Auth"
+                   asp-action="SignOut">
+                    <i class="fa-solid fa-arrow-right-from-bracket rotate"></i>Sign out
+                </a>
+            </nav>
+        </div>
+    </aside>
+@* </section> *@

@@ -1,0 +1,284 @@
+#sign-up {
+    color: var(--color-gray-900);
+
+    .container {
+        .sign-up-form {
+            /*width: 100%;*/
+            display: flex;
+            justify-content: center;
+            position: relative;
+
+            form {
+
+                @include md {
+                    width: 90%;
+                }
+
+                @include lg {
+                    width: 80%;
+                }
+
+                @include xl {
+                    width: 60%;
+                }
+
+                @include xxl {
+                    width: 45%;
+                }
+
+                h1 {
+                    margin-top: 8rem;
+                }
+
+                p {
+                    @include text-s;
+                    margin-bottom: 1.5rem;
+
+
+
+                    .sign-up-here {
+                        text-decoration: underline;
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                .form-input {
+                    border-radius: .5rem;
+                    border: solid var(--color-gray-300) 1px;
+                    padding: .5rem 1rem;
+                    background: var(--color-gray-000);
+
+                    &::placeholder {
+                        color: var(--color-gray-500);
+                    }
+
+                    &.input-validation-error {
+                        position: relative;
+                        border: 1px solid var(--color-danger-dark);
+                        color: var(--color-danger-dark);
+
+                        &::placeholder {
+                            opacity: .4;
+                            color: var(--color-danger-dark);
+                        }
+                    }
+                }
+
+                label {
+                    margin: 0;
+                }
+
+                span {
+                }
+
+                .name-info {
+                    display: grid;
+                    grid-template-columns: auto;
+
+
+                    @include md {
+                        grid-template-columns: auto auto;
+                        gap: 1rem;
+                    }
+
+
+                    .first-name {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 1rem;
+                        position: relative;
+
+                        label {
+                            // margin: 0;
+                            font-weight: bold;
+                        }
+
+                        span {
+                            position: absolute;
+                            right: 0;
+                            @include text-xs;
+                            color: var(--color-danger-dark);
+
+                            @include md {
+                                @include text-s;
+                                color: var(--color-danger-dark);
+                            }
+                        }
+                    }
+
+                    .last-name {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 1rem;
+                        position: relative;
+
+                        label {
+                            // margin: 0;
+                            font-weight: bold;
+                        }
+
+                        span {
+                            position: absolute;
+                            right: 0;
+                            @include text-xs;
+                            color: var(--color-danger-dark);
+
+                            @include md {
+                                @include text-s;
+                                color: var(--color-danger-dark);
+                            }
+                        }
+                    }
+                }
+
+                .email {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 1rem;
+                    position: relative;
+
+                    label {
+                        // margin: 0;
+                        font-weight: bold;
+                    }
+
+                    span {
+                        position: absolute;
+                        right: 0;
+                        @include text-xs;
+                        color: var(--color-danger-dark);
+
+                        @include md {
+                            @include text-s;
+                            color: var(--color-danger-dark);
+                        }
+                    }
+                }
+
+                .password {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 1rem;
+                    position: relative;
+
+                    label {
+                        font-weight: bold;
+                    }
+
+                    span {
+                        position: absolute;
+                        right: 0;
+                        @include text-xs;
+                        color: var(--color-danger-dark);
+
+                        @include md {
+                            @include text-s;
+                            color: var(--color-danger-dark);
+                        }
+                    }
+                }
+
+                .confirm-password {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 1rem;
+                    position: relative;
+
+                    label {
+                        font-weight: bold;
+                    }
+
+                    span {
+                        position: absolute;
+                        right: 0;
+                        @include text-xs;
+                        color: var(--color-danger-dark);
+
+                        @include md {
+                            @include text-s;
+                            color: var(--color-danger-dark);
+                        }
+                    }
+                }
+
+                .terms-and-conditions {
+                    display: flex;
+                    gap: .5rem;
+                    margin: 1.5rem 0;
+                    position: relative;
+
+
+
+                    @include lg {
+                        margin: 1rem 0;
+                    }
+
+                    .checkbox:checked + label::before {
+                        background-color: var(--color-gray-000);
+                        border-color: var(--color-gray-000);
+
+                        a {
+                            text-decoration: underline;
+
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+
+                        span {
+                            position: absolute;
+                            top: -1rem;
+                            left: 1.2rem;
+                            color: var(--color-danger-dark);
+
+                            @include md {
+                                position: static;
+                            }
+
+                            &.field-validation-error {
+                                position: absolute;
+                                top: 45px;
+                                right: 0;
+                                @include text-s;
+                                color: var(--color-danger-dark);
+
+                                @media(min-width: 294px) {
+                                    top: 20px;
+                                }
+
+                                &::after {
+                                    display: none;
+                                    position: absolute;
+                                    right: 10px;
+                                    top: -15px;
+                                    z-index: 1;
+                                    /*display: block;*/
+                                    content: '\2BBF';
+                                    font-size: 1.8rem;
+
+                                    @media(min-width: 340px) {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .sign-up {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-top: 2rem;
+
+                .btn-theme {
+                    flex-grow: 1
+                }
+            }
+        }
+    }
+}

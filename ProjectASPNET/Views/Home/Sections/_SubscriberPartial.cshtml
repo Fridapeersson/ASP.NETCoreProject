@@ -1,0 +1,89 @@
+﻿@model SubscribeViewModel
+
+<section id="news-letter" class="news-letter">
+    <div class="container">
+        <div class="header">
+            <h2>Don't Want to Miss Anything?</h2>
+            <img class="background-line" src="./images/home/background-line.svg" />
+        </div>
+
+        <div class="content">
+            <div class="content-box">
+                
+                <form asp-action="Subscribe" asp-controller="Home" asp-fragment="news-letter" novalidate>
+                    <div class="header-checkbox">
+                        <div class="sign-up">
+                            <h5>Sign up for Newsletters</h5>
+                        </div>
+                        <div class="box-container">
+                            <div class="box">
+                                <input type="checkbox" id="c-box-1" asp-for="@Model.SubscribeModel.DailyNewsletter" />
+                                <label for="c-box-1" asp-for="@Model.SubscribeModel.DailyNewsletter"></label>
+                            </div>
+
+                            <div class="box">
+                                <input type="checkbox" id="c-box-2" asp-for="@Model.SubscribeModel.AdvertisingUpdates" />
+                                <label for="c-box-2" asp-for="@Model.SubscribeModel.AdvertisingUpdates"></label>
+                            </div>
+
+                            <div class="box">
+                                <input type="checkbox" id="c-box-3" asp-for="@Model.SubscribeModel.WeekInReview" />
+                                <label for="c-box-3" asp-for="@Model.SubscribeModel.WeekInReview"></label>
+                            </div>
+
+                            <div class="box">
+                                <input type="checkbox" id="c-box-4" asp-for="@Model.SubscribeModel.EventUpdates" />
+                                <label for="c-box-4" asp-for="@Model.SubscribeModel.EventUpdates"></label>
+                            </div>
+
+                            <div class="box">
+                                <input type="checkbox" id="c-box-5" asp-for="@Model.SubscribeModel.StartupsWeekly" />
+                                <label for="c-box-5" asp-for="@Model.SubscribeModel.StartupsWeekly"></label>
+                            </div>
+
+                            <div class="box">
+                                <input type="checkbox" id="c-box-6" asp-for="@Model.SubscribeModel.Podcasts" />
+                                <label for="c-box-6" asp-for="@Model.SubscribeModel.Podcasts"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-sharp fa-regular fa-envelope"></i>
+                        <input type="email" asp-for="@Model.SubscribeModel.Email" />
+                        <button type="submit" class="btn-theme">Subscribe *</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <span class="info">
+            @if (TempData["status"]?.ToString() == "Success")
+            {
+                <p><span class="alert-success">You are now a subscriber</span></p>
+            }
+            else if (TempData["Status"]?.ToString() == "AlreadyExists")
+            {
+                <p><span class="alert-warning">You are already subscribing</span></p>
+
+            }
+            else if (TempData["Status"]?.ToString() == "Invalid")
+            {
+                <p><span class="alert-danger">You have to enter a valid email address</span></p>
+            }
+            else if (TempData["Status"]?.ToString() == "ConnectionFailed")
+            {
+                <p><span class="alert-danger">Unable to connect to the server. Try again later</span></p>
+            }
+            else if (TempData["Status"]?.ToString() == "Unauthorized")
+            {
+                <p><span class="alert-danger">Something went wrong, please contact web admin</span></p>
+            }
+            else
+            {
+                <p><span class="asterix">*</span> Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy</a>.</p>
+            }
+
+
+        </span>
+    </div>
+</section>

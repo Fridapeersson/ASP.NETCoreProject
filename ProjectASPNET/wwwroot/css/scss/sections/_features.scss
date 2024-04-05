@@ -1,0 +1,88 @@
+.features {
+    background: var(--color-gray-100);
+    padding: 5rem 0;
+
+    @include lg {
+        padding: 7rem 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        h1 {
+            @include md {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        p {
+            @include md {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .tool-features {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: auto;
+
+            @include md {
+                grid-template-columns: auto auto;
+            }
+
+            @include lg {
+                grid-template-columns: auto auto auto;
+                border-radius: 1rem;
+            }
+
+            .box {
+                padding: 20px;
+                border: solid 1px var(--gray-300);
+                transition: ease-in-out;
+
+                @include lg {
+                    &:hover {
+                        border-radius: .7rem;
+                        background-color: var(--color-white);
+                    }
+
+                    &:nth-child(1) {
+                        border-top: none;
+                        border-left: solid 0px var(--gray-300);
+                    }
+
+                    &:nth-child(2) {
+                        border-top: none;
+                        border-left: solid 0px var(--gray-300);
+                    }
+
+                    &:nth-child(3) {
+                        border-top: solid 0px var(--gray-300);
+                        border-left: solid 0px var(--gray-300);
+                    }
+
+                    &:nth-child(4) {
+                        border-left: none;
+                        border-bottom: none;
+                        border-top: solid 0px var(--gray-300);
+                    }
+
+                    &:nth-child(5) {
+                        border-left: none;
+                        border-bottom: none;
+                        border-top: solid 0px var(--gray-300);
+                    }
+
+                    &:nth-child(6) {
+                        border-left: none;
+                        border-bottom: none;
+                        border-top: solid 0px var(--gray-300);
+                    }
+                }
+            }
+        }
+    }
+}

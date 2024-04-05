@@ -1,0 +1,25 @@
+﻿@model CoursesIndexViewModel
+@{
+    ViewData["Title"] = "Courses";
+}
+<section id="courses" class="courses">
+    <div class="container">
+        @* <div class="box-content"> *@
+
+        @await Html.PartialAsync("~/Views/Courses/Sections/_CoursesPartial.cshtml")
+            @* @await Html.PartialAsync("~/Views/Courses/Sections/_DisplayCoursesPartial.cshtml") *@
+
+
+        @* </div> *@
+
+        <div class="banner">
+            <img src="./images/courses/banner.svg" />
+            <div class="skills">
+                <p class="text-m">Ready to get started?</p>
+                <p class="h4">Take Your <span>Skills</span> to the Next Level</p>
+                <button class="btn-theme">Work with us</a>
+            </div>
+        </div>
+    </div>
+</section>
+@await Html.PartialAsync("~/Views/Shared/_IsSavedPartial.cshtml")

@@ -1,0 +1,59 @@
+﻿@model ContactFormViewModel
+
+
+@{
+    // ViewData["Title"] = Model.Title;
+}
+
+@* <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span> *@
+<div class="form-container">
+    <h5>Get In Contact With Us</h5>
+    @if (TempData["Status"] != null && TempData["Status"]?.ToString() == "Success")
+    {
+        <div class="alert alert-success">
+            Thank you! Your message has been sent successfully.
+        </div>
+    }
+    <form id="contact-form" asp-controller="Contact" asp-action="Index" novalidate>
+
+        <div class="form-name">
+            <label asp-for="@Model.Contact.Name"></label>
+            <input asp-for="@Model.Contact.Name" />
+            <span asp-validation-for="@Model.Contact.Name" class="error"></span>
+        </div>
+
+        <div class="form-email">
+            <label asp-for="@Model.Contact.Email"></label>
+            <input asp-for="@Model.Contact.Email" />
+            <span asp-validation-for="@Model.Contact.Email" class="error"></span>
+
+        </div>
+
+
+        <div class="drop-down">
+            <label asp-for="@Model.Contact.SelectedService">Services <p class="optional">(optional)</p></label>
+            <div class="select-wrapper">
+                <select asp-for="@Model.Contact.SelectedService" class="form-control">
+                    <option><p>Choose the service you are interested in</p> <p><i class="fa-solid fa-chevron-down"></i></p></option>
+                    @foreach (var service in Model.Contact.Services)
+                    {
+                        <option value="@service">@service</option>
+                    }
+                </select>
+           @*      <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>  *@
+            </div>
+        </div>
+
+        <div class="form-message-us">
+            <label asp-for="@Model.Contact.Message"></label>
+            <textarea asp-for="@Model.Contact.Message" rows="8"></textarea>
+            <span asp-validation-for="@Model.Contact.Message" class="error"></span>
+
+        </div>
+
+        <button type="submit" class="btn-theme" >Send Contact Request</button>
+    </form>
+    <p>@Model.ErrorMessage</p>
+</div>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

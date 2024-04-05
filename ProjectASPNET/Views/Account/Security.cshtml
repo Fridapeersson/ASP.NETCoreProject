@@ -1,0 +1,24 @@
+﻿@model SecurityViewModel
+@{
+}
+
+
+
+<div class="account-security-section">
+    <div class="container">
+        <div class="security-content">
+            @await Html.PartialAsync("~/Views/Account/Sections/_ProfileInfoPartial.cshtml", Model.ProfileInfo)
+
+
+            <div class="form-content">
+                <div class="headers">
+                    <h4>Security</h4>
+                    <h6>Password</h6>
+                </div>
+                @await Html.PartialAsync("~/Views/Account/Sections/_SecurityFormPartial.cshtml")
+            </div>
+
+        </div>
+    </div>
+</div>
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

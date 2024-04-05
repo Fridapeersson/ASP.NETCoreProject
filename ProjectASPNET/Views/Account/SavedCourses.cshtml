@@ -1,0 +1,43 @@
+﻿@using ProjectASPNET.ViewModels.Account
+@model AccountDetailsViewModel
+@{
+    ViewData["Title"] = "Saved Items";
+}
+
+
+@* <div class="account-details-section">
+    <div class="container"> *@
+
+<div class="account-details-section">
+    <div class="container">
+        <div class="saved-courses-content">
+            @await Html.PartialAsync("~/Views/Account/Sections/_ProfileInfoPartial.cshtml", Model.ProfileInfo)
+
+            <div class="saved-courses">
+                <div class="header">
+                    <h2>Saved Courses</h2>
+                    
+                    <a class="remove-all-courses" asp-controller="Account" asp-action="RemoveAllSavedCourses"><i class="fa-light fa-trash"></i> Delete All</a>
+                </div>
+
+                @if (Model.SavedCourses != null && Model.SavedCourses.Any())
+                {
+                    <div class="box-content">
+
+                        <div class="boxes">
+                            @foreach(var course in Model.SavedCourses)
+                            {
+                                @await Html.PartialAsync("~/Views/Courses/Components/_CourseCardPartial.cshtml", course)
+                            }
+                        </div
+                    </div>
+                }
+                else
+                {
+                    <p>You don't have any saved courses yet.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,199 @@
+
+.account-security-section {
+    color: var(--color-gray-900);
+
+    .container {
+        .security-content {
+            @import "_account-details-aside.scss";
+
+            aside {
+                /*border: solid red 1px;*/
+                .profile-info {
+                    .img-container {
+                        .profile-img {
+                        }
+
+                        .no-profile-img {
+                        }
+
+                        @include xl {
+                            .img-icon {
+                                position: absolute;
+                                top: 5rem;
+                                left: 7rem;
+                            }
+                        }
+
+                        @include xxl {
+                            .img-icon {
+                                position: absolute;
+                                top: 5rem;
+                                left: 8rem;
+                            }
+                        }
+                    }
+
+                    h5 {
+                    }
+                }
+            }
+
+
+
+
+            @include lg {
+                display: flex;
+                gap: 5rem;
+            }
+
+            .form-content {
+                margin-top: 3rem;
+
+                .headers {
+                    h4 {
+                    }
+
+                    h6 {
+                        color: var(--color-theme);
+                    }
+                }
+
+                .change-password-form {
+
+                    .change-password-form-content {
+                        /*border: solid red 1px;*/
+                        display: grid;
+                        gap: 1rem;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-areas: "current-password current-password" "new-password confirm-password";
+
+                        #current-password, #new-password, #confirm-password {
+                            display: grid;
+                            position: relative;
+
+
+
+                            label {
+                                font-weight: 800;
+                            }
+
+                            span {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+
+                            }
+
+                            input {
+                                padding: .3rem;
+                                border-radius: .5rem;
+                                border: solid var(--color-gray-300);
+                                padding-left: .8rem;
+
+
+                                &::placeholder {
+                                }
+                            }
+                        }
+
+                        #current-password {
+                            width: 48%;
+                            grid-area: current-password;
+
+                            label {
+                            }
+
+                            span {
+                            }
+
+                            input {
+                            }
+                        }
+
+                        #new-password {
+                            grid-area: new-password;
+
+                            label {
+                            }
+
+                            span {
+                            }
+
+                            input {
+                            }
+                        }
+
+                        #confirm-password {
+                            grid-area: confirm-password;
+
+                            label {
+                            }
+
+                            span {
+                            }
+
+                            input {
+                            }
+                        }
+                    }
+
+                    .buttons {
+                        margin: 2rem 0;
+                        display: flex;
+                        gap: 1rem;
+                    }
+                }
+            }
+
+            hr {
+                color: var(--color-gray-500);
+            }
+
+            .delete-account {
+                h5 {
+                    margin-top: 2rem;
+                    color: var(--color-theme);
+                }
+
+                p {
+                    @include text-s;
+                }
+
+                .delete-account-form {
+                    .checkbox {
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+
+                        input {
+                        }
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+
+                    .alert-danger {
+                        margin-top: 1rem;
+                        border: solid var(--color-danger-dark) 1px;
+                        width: 20%;
+                        background: var(--color-danger-dark);
+                        color: var(--color-gray-000);
+                        margin-bottom: 2rem;
+
+                        &:hover {
+                            transition: ease-in-out .3s;
+                            background-color: var(--color-gray-400);
+                            border: solid var(--color-gray-400) 1px;
+                            color: var(--color-gray-900);
+                        }
+
+                        @include lg {
+                            width: 13%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,151 @@
+﻿.box {
+    position: relative;
+    border: solid var(--color-gray-200) 1px; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Shady
+    border-radius: .5rem;
+
+    .best-seller {
+        position: absolute;
+        top: .8rem;
+        left: .5rem;
+        background-color: #22C55E;
+        color: var(--color-white);
+        padding: .1rem;
+        border-radius: .5rem;
+        z-index: 1;
+
+        @include md {
+            padding: 0 .5rem;
+        }
+    }
+
+
+    .bookmark {
+        position: absolute;
+        top: .8rem;
+        right: .5rem;
+        border: solid white 1px;
+        background-color: var(--color-white);
+        border-radius: 50%;
+        padding: 1rem;
+        z-index: 1;
+        color: var(--color-black);
+
+        &:hover {
+            background-color: var(--color-white);
+            color: var(--color-theme);
+            transition: ease-in-out .2s
+        }
+
+
+        @include md {
+            padding: .4rem;
+        }
+
+        @include xl {
+        }
+
+        .fa-bookmark {
+            @include md {
+                padding: .3rem;
+            }
+        }
+    }
+
+    .content {
+        transition: filter 0.3s ease;
+
+        &:hover {
+            filter: brightness(0.7);
+        }
+
+        p {
+            color: var(--color-gray-900);
+
+            @include md {
+                margin-left: 1rem;
+            }
+        }
+
+        .h5 {
+            color: var(--color-gray-900);
+
+            @include lg {
+                @include h6;
+                color: var(--color-gray-900);
+            }
+
+            @include xl {
+                @include h5;
+                color: var(--color-gray-900);
+            }
+
+            @include xxl {
+                @include h4;
+                color: var(--color-gray-900);
+            }
+        }
+
+        img {
+            position: relative;
+            width: 100%;
+            border-top-left-radius: .5rem;
+            border-top-right-radius: .5rem;
+        }
+
+        .extra-price {
+            display: flex;
+            justify-content: center;
+            gap: .2rem;
+
+            @include md {
+                justify-content: start;
+                margin-left: .2rem;
+            }
+
+            .new-price {
+                color: var(--color-danger-dark);
+                font-weight: bold;
+            }
+
+            .old-price {
+                color: var(--color-gray-600);
+                text-decoration: line-through;
+                margin-left: .2rem;
+            }
+        }
+
+        .price {
+            color: var(--color-theme);
+            font-weight: bold;
+        }
+
+        .line {
+            border: solid 1px var(--color-gray-300);
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .bottom-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            @include md {
+                justify-content: start;
+                margin-left: 1rem;
+            }
+
+            .likes, .hours {
+                display: grid;
+                grid-template-columns: auto auto;
+                margin-top: .8rem;
+                color: var(--color-gray-800);
+
+                p {
+                    margin-left: .2rem;
+                    @include text-xs;
+                }
+            }
+        }
+    }
+}

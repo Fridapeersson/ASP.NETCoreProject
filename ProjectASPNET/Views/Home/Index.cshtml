@@ -1,0 +1,12 @@
+﻿@model HomeIndexViewModel
+
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@await Html.PartialAsync("~/Views/Home/Sections/_ShowcasePartial.cshtml", Model.Showcase)
+
+@await Html.PartialAsync("~/Views/Home/Sections/_FeaturesPartial.cshtml", Model.Features)
+
+@await Html.PartialAsync("~/Views/Home/Sections/_SubscriberPartial.cshtml", Model.Subscriber)

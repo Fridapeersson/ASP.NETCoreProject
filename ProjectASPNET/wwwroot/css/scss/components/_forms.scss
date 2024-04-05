@@ -1,0 +1,58 @@
+form {
+    width: 100%;
+    display: grid;
+
+    .error-message {
+        color: var(--color-danger-dark);
+        text-align: center;
+        background-color: antiquewhite;
+    }
+
+    .input-group {
+        display: grid;
+    }
+
+    .checkbox-group {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: .5rem;
+
+        input[type="checkbox"] {
+            height: 1.2rem;
+            width: 1.2rem;
+            border: 0.063rem solid red;
+        }
+
+        label {
+            margin: 0;
+            font-weight: 700;
+        }
+    }
+
+    span {
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include text-s;
+        color: var(--color-danger-dark);
+
+        &.field-validation-error {
+            position: absolute;
+            top: 0;
+            right: 0;
+            @include text-s;
+            color: var(--color-danger-dark);
+
+            &::after {
+                position: absolute;
+                right: 10px;
+                top: 37px;
+                z-index: 1;
+                display: block;
+                content: '\2BBF';
+                font-size: 1.8rem;
+            }
+        }
+    }
+}

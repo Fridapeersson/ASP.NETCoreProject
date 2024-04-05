@@ -1,0 +1,403 @@
+.account-details-section {
+    color: var(--color-gray-900);
+
+    .container {
+        @include lg {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        /*@import "_account-details-aside.scss";*/
+
+        /*aside {
+            @include lg {
+            border-right: solid var(--color-gray-300) 1px;
+            padding: 1rem;
+
+            }
+
+
+            .profile-info {
+                display: grid;
+                grid-template-columns: auto;
+                justify-content: center;
+                text-align: center;
+                margin-top: 2rem;
+
+                .img-container {
+                    position: relative;
+
+                    .profile-img {
+                    }
+
+                    .no-profile-img {
+                        width: 120px;
+                        height: 120px;
+                        margin: 0;
+                        padding: 0;
+                        border: solid var(--color-gray-500) 1px;
+                        border-radius: 50%;
+                    }
+
+                    .img-icon {
+                        position: absolute;
+                        top: 5.2rem;
+                        left: 6.9rem;
+
+                        @include xl {
+                            left: 8.8rem;
+                        }
+
+                        @include xxl {
+                            left: 9.5rem;
+                        }
+                    }
+                }
+
+                h5 {
+                    margin-top: 1rem;
+                }
+
+                p {*/
+                    /*@include text-s;*/
+                /*}
+
+                nav {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    text-align: left;
+
+                    .btn-theme-s {
+
+                        @include xl {
+                            padding-right: 6rem;
+                        }
+
+                        @include xxl {
+                            padding-right: 7rem;
+                            padding-left: 2rem;
+                        }
+                    }
+
+                    .btn-transparent {
+                        color: var(--color-gray-800);
+                        font-weight: 700;
+                        margin-left: 1.3rem;
+
+                        @include xxl {
+                            margin-left: 1.6rem;
+                        }
+
+                        .rotate {
+                            transform: rotateY(180deg);
+                        }
+
+                        i {
+                            color: var(--color-gray-600);
+                            margin: 0 .4rem;
+                        }
+                    }
+                }
+            }
+        }*/
+        /*}*/
+
+
+        .account-details {
+            width: 100%;
+            margin-top: 2rem;
+
+            @include lg {
+                width: 60%;
+                margin-top: 4rem;
+            }
+
+            .basic-info {
+                form {
+                    .error-message {
+                        border: solid red 1px;
+                    }
+
+                    input, textarea {
+                        border-radius: .5rem;
+                        padding: .6rem;
+                        padding-left: .5rem;
+                        border: solid var(--color-gray-400) 1px;
+                        color: var(--color-gray-700);
+
+                        &::placeholder {
+                            color: var(--color-gray-500);
+                        }
+
+                        @include lg {
+                            padding-left: .8rem;
+                        }
+                    }
+
+                    label {
+                        font-weight: bold;
+                    }
+
+                    h2 {
+                        text-align: center;
+
+                        @include lg {
+                            text-align: left;
+                        }
+                    }
+
+                    h5 {
+                        color: var(--color-theme);
+                        text-align: center;
+                        margin-bottom: 1rem;
+
+                        @include lg {
+                            text-align: left;
+                        }
+                    }
+
+                    .content {
+                        display: grid;
+                        gap: 1rem;
+                        grid-template-columns: 1fr;
+
+                        @include lg {
+                            grid-template-columns: 1fr 1fr;
+                            grid-template-areas: "firstname lastname" "email phone" "bio bio"
+                        }
+
+                        #form-firstname, #form-lastname, #form-email, #form-phone, #form-bio {
+                            display: grid;
+                            grid-template-columns: 1fr;
+                            position: relative;
+
+                            span {
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                /*padding: 1rem;*/
+                                @include text-xs;
+                                color: var(--color-danger);
+                                /*border: solid red 1px;*/
+
+                                @include md {
+                                    @include text-s;
+                                    color: var(--color-danger);
+                                }
+                            }
+                        }
+
+
+
+                        #form-firstname {
+                            @include lg {
+                                grid-area: firstname;
+                            }
+
+                            label {
+                                // margin: 0;
+                                font-weight: bold;
+                            }
+                            /*                            span {
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                padding: 1rem;
+                                @include text-xs;
+                                color: var(--danger;
+                                border: solid red 1px;
+
+                                @include md {
+                                    @include text-s;
+                                    color: var(--danger;
+                                }
+                            }*/
+                        }
+
+                        #form-lastname {
+                            @include lg {
+                                grid-area: lastname;
+                            }
+                        }
+
+                        #form-email {
+                            @include lg {
+                                grid-area: email;
+                            }
+                        }
+
+                        #form-phone {
+
+                            @include lg {
+                                grid-area: phone;
+                            }
+
+                            label {
+                                display: flex;
+                                margin: 0;
+                                padding: 0;
+
+                                p {
+                                    margin: 0;
+                                    padding: 0;
+                                    opacity: .4;
+                                }
+                            }
+                        }
+
+                        #form-bio {
+                            @include lg {
+                                grid-area: bio;
+                            }
+
+                            label {
+                                display: flex;
+                                gap: .2rem;
+
+                                p {
+                                    opacity: .4;
+                                    margin: 0;
+                                }
+                            }
+                        }
+
+                        .form-buttons {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1rem;
+                            margin-bottom: 1rem;
+
+                            @include lg {
+                                flex-direction: row;
+                                margin: 1.5rem 0;
+                            }
+
+                            .btn-gray {
+                            }
+
+                            .btn-theme {
+                            }
+                        }
+                    }
+                }
+            }
+
+            .address-info {
+                form {
+                    display: grid;
+
+                    input {
+                        border-radius: .5rem;
+                        padding: .2rem;
+                        padding-left: .5rem;
+                        border: solid var(--color-gray-400) 1px;
+                        color: var(--color-gray-700);
+
+                        &::placeholder {
+                            color: var(--color-gray-500);
+                        }
+
+                        @include lg {
+                            padding: .6rem;
+                            padding-left: .8rem;
+                        }
+                    }
+
+                    label {
+                        font-weight: bold;
+                    }
+
+                    h5 {
+                        color: var(--color-theme);
+                        text-align: center;
+                        margin-bottom: 1rem;
+
+                        @include lg {
+                            text-align: left;
+                            margin: 1.5rem 0;
+                        }
+                    }
+
+                    .content {
+                        display: grid;
+                        gap: 1rem;
+
+                        @include lg {
+                            grid-template-columns: 1fr 1fr;
+                            grid-template-areas: "address_1 address_1" "address_2 address_2" "postal-code city"
+                        }
+
+                        #form-address-line_1, #form-address-line_2, #form-postal-code, #form-city {
+                            display: grid;
+                            grid-template-columns: 1fr;
+                            position: relative;
+
+                            span {
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                /*padding: 1rem;*/
+                                @include text-xs;
+                                color: var(--color-danger);
+                                /*border: solid red 1px;*/
+
+                                @include md {
+                                    @include text-s;
+                                    color: var(--color-danger);
+                                }
+                            }
+                        }
+
+                        #form-address-line_1 {
+                            @include lg {
+                                grid-area: address_1;
+                            }
+                        }
+
+                        #form-address-line_2 {
+
+                            label {
+                                display: flex;
+                                gap: .2rem;
+
+                                p {
+                                    opacity: .4;
+                                    margin: 0;
+                                }
+                            }
+
+                            @include lg {
+                                grid-area: address_2;
+                            }
+                        }
+
+                        #form-postal-code {
+                            @include lg {
+                                grid-area: postal-code;
+                            }
+                        }
+
+                        #form-city {
+                            @include lg {
+                                grid-area: city;
+                            }
+                        }
+
+                        .form-buttons {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1rem;
+                            margin-bottom: 1rem;
+
+                            @include lg {
+                                flex-direction: row;
+                                margin-top: 1.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

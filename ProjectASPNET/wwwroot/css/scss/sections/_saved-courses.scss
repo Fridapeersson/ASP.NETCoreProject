@@ -1,0 +1,225 @@
+
+.account-details-section {
+    .container {
+        .saved-courses-content {
+            @include lg {
+                display: grid;
+                grid-template-columns: auto auto;
+                gap: 5rem;
+
+            }
+
+            @include xl {
+                grid-template-columns: auto 1fr;
+            }
+
+            .saved-courses {
+
+
+                .header {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 2rem;
+                    margin-top: 4rem;
+
+                    h2 {
+                    }
+
+                    a {
+                        font-weight: 600;
+                        text-decoration: none;
+                        align-content: center;
+                        padding: .3rem 1rem;
+                        color: var(--color-danger-dark);
+                        background: var(--color-gray-000);
+                        border: solid var(--color-danger-dark) 1px;
+                        border-radius: .3rem;
+
+                        &:hover, &:hover i {
+                            color: var(--color-gray-000);
+                            background: var(--color-danger-dark);
+                            transition: ease-in-out .3s;
+                        }
+
+                        i {
+                            margin-right: .5rem;
+                            font-weight: 600;
+                            color: var(--color-danger-dark);
+                        }
+                    }
+                }
+
+                .boxes {
+                    @include lg {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*        .saved-courses {
+            h2{
+
+            }
+            .course-list{
+                .box{
+                    .best-seller{
+
+                    }
+                    form{
+                        input{
+
+                        }
+                        .bookmark{
+                            div{
+                                .hidden{
+
+                                }
+                                i{
+
+                                }
+                            }
+                        }
+                    }
+                    .content{
+                        a{
+
+                        }
+                        img{
+
+                        }
+                        .h5{
+
+                        }
+                        .text-s{
+
+                        }
+                        .extra-price{
+                            .price{
+
+                            }
+                            .new-price{
+                                .old-price{
+
+                                }
+
+                            }
+                        }
+                        .line{
+
+                        }
+                        .bottom-info{
+                            .hours{
+                                i{
+
+                                }
+                                p{
+
+                                }
+                            }
+                            .likes{
+                                i{
+
+                                }
+                                p{
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }*/
+/*    }
+}*/
+
+
+/*@import "_account-details.scss";*/
+/*aside {
+            .profile-info {
+                display: grid;
+                grid-template-columns: auto;
+                justify-content: center;
+                text-align: center;
+                margin-top: 2rem;
+
+                .img-container {
+                    position: relative;
+
+                    .profile-img {
+                    }
+
+                    .no-profile-img {
+                        width: 120px;
+                        height: 120px;
+                        margin: 0;
+                        padding: 0;
+                        border: solid var(--color-gray-500) 1px;
+                        border-radius: 50%;
+                    }
+
+                    .img-icon {
+                        position: absolute;
+                        top: 5.2rem;
+                        left: 6.9rem;
+
+                        @include xl {
+                            left: 8.8rem;
+                        }
+
+                        @include xxl {
+                            left: 9.5rem;
+                        }
+                    }
+                }
+
+                h5 {
+                    margin-top: 1rem;
+                }
+
+                p {*/
+/*@include text-s;*/
+/*}
+
+                nav {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    text-align: left;
+
+                    .btn-theme-s {
+
+                        @include xl {
+                            padding-right: 6rem;
+                        }
+
+                        @include xxl {
+                            padding-right: 7rem;
+                            padding-left: 2rem;
+                        }
+                    }
+
+                    .btn-transparent {
+                        color: var(--color-gray-800);
+                        font-weight: 700;
+                        margin-left: 1.3rem;
+
+                        @include xxl {
+                            margin-left: 1.6rem;
+                        }
+
+                        .rotate {
+                            transform: rotateY(180deg);
+                        }
+
+                        i {
+                            color: var(--color-gray-600);
+                            margin: 0 .4rem;
+                        }
+                    }
+                }
+            }*/
+/*}*/
