@@ -11,7 +11,7 @@
                 foreach (var boxModel in Model.FeaturesBox)
                 {
                     <div class="box">
-                        <img src=@boxModel.FeaturesImg.ImageUrl alt=@boxModel.FeaturesImg.AltText = "Feature images" />
+                        <img src=@boxModel.FeaturesImg.ImageUrl alt=@boxModel.FeaturesImg.AltText = "@boxModel.FeaturesImg.AltText" class="features-icon"/>
                         <h5>@boxModel.FeaturesTitle</h5>
                         <p>@boxModel.FeaturesDescription</p>
                     </div>

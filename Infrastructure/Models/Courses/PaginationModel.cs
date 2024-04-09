@@ -10,7 +10,7 @@ public class PaginationModel
 
     public void UpdateTotalPages()
     {
-        TotalPages = (int)Math.Ceiling((double)TotalPages / PageSize);
+        TotalPages = (int)Math.Ceiling(TotalItems / (double)PageSize);
     }
 }
 

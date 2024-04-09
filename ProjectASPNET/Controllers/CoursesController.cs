@@ -2,9 +2,11 @@
 using Infrastructure.Models.Courses;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ProjectASPNET.ViewModels.Courses;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web;
@@ -102,66 +104,144 @@ public class CoursesController : Controller
 
 
     [Route("/courses")]
-    public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 9)
+    public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 3)
     {
-        var savedCourses = await _coursesService.GetAllSavedCourses(User);
-        var savedCoursesIds = savedCourses.Select(x => x.CourseId).ToList();
+        var courseApiUrl = $"https://localhost:7107/api/courses?key={_config["ApiKey:Secret"]}&category={HttpUtility.UrlEncode(category)}&searchQuery={HttpUtility.UrlEncode(searchQuery)}&pageNumber={pageNumber}&pageSize={pageSize}";
 
-        var courseResult = await _coursesService.GetCoursesAsync(category, searchQuery, pageNumber, pageSize);
-
-        var coursesViewModel = courseResult.Courses!.Select(x => new CourseViewModel
+        try
         {
-            Id = x.Id,
-            Title = x.Title,
-            Price = x.Price,
-            DiscountPrice = x.DiscountPrice,
-            BackgroundImageName = x.BackgroundImageName!,
-            LikesInNumbers = x.LikesInNumbers,
-            LikesInPercent = x.LikesinPercent,
-            IsBestSeller = x.IsBestSeller,
-            HoursToComplete = x.HoursToComplete,
-            IsSaved = savedCoursesIds.Contains(x.Id), 
-            Author = new AuthorViewModel
+            if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
             {
-                Id = x.Id,
-                AuthorTitle = x.Author.AuthorTitle,
-                AuthorName = x.Author.AuthorName,
-                AuthorDescritpion = x.Author.AuthorDescription,
-                AuthorImageUrl = x.Author.AuthorImageUrl,
-                FacebookSubs = x.Author.FacebookSubs,
-                YoutubeSubs = x.Author.YoutubeSubs,
+                _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             }
-        }).ToList();
 
-        var categoryEntities = await _categoryService.GetCategoriesAsync();
-        var categoryViewModel = categoryEntities.Select(x => new CategoryViewModel
-        {
-            Id = x.Id,
-            CategoryName = x.CategoryName,
-        });
-
-
-        var viewModel = new CoursesIndexViewModel
-        {
-            Categories = categoryViewModel,
-            Courses = coursesViewModel,
-            SearchQuery = searchQuery,
-            Pagination = new PaginationModel
+            var courseResponse = await _http.GetAsync(courseApiUrl);
+            if (courseResponse.IsSuccessStatusCode)
             {
-                CurrentPage = pageNumber,
-                TotalPages = courseResult.TotalPages,
-                PageSize = pageSize,
-                TotalItems = courseResult.TotalItems,
+                var savedCourses = await _coursesService.GetAllSavedCourses(User);
+                var savedCoursesIds = savedCourses.Select(x => x.CourseId).ToList();
+
+                var jsonCourses = await courseResponse.Content.ReadAsStringAsync();
+                var courses = JsonConvert.DeserializeObject<CourseResult>(jsonCourses);
+
+                var coursesViewModel = courses.Courses.Select(x => new CourseViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Price = x.Price,
+                    DiscountPrice = x.DiscountPrice,
+                    BackgroundImageName = x.BackgroundImageName!,
+                    LikesInNumbers = x.LikesInNumbers,
+                    LikesInPercent = x.LikesinPercent,
+                    IsBestSeller = x.IsBestSeller,
+                    HoursToComplete = x.HoursToComplete,
+                    IsSaved = savedCoursesIds.Contains(x.Id),
+                    Author = new AuthorViewModel
+                    {
+                        Id = x.Id,
+                        AuthorTitle = x.Author.AuthorTitle,
+                        AuthorName = x.Author.AuthorName,
+                        AuthorDescritpion = x.Author.AuthorDescription,
+                        AuthorImageUrl = x.Author.AuthorImageUrl,
+                        FacebookSubs = x.Author.FacebookSubs,
+                        YoutubeSubs = x.Author.YoutubeSubs,
+                    }
+                }).ToList();
+
+                var categoryEntities = await _categoryService.GetCategoriesAsync(); 
+                var categoryViewModel = categoryEntities.Select(x => new CategoryViewModel
+                {
+                    Id = x.Id,
+                    CategoryName = x.CategoryName,
+                });
+
+                var viewModel = new CoursesIndexViewModel
+                {
+                    Categories = categoryViewModel,
+                    Courses = coursesViewModel,
+                    SearchQuery = searchQuery,
+                    Pagination = new PaginationModel
+                    {
+                        CurrentPage = pageNumber,
+                        TotalPages = courses.TotalPages,
+                        PageSize = pageSize,
+                        TotalItems = courses.TotalItems,
+
+                    }
+                };
+
+                return View(viewModel);
             }
-            //CurrentPage = pageNumber,
-            //PageSize = pageSize,
-            //TotalItems = courses.TotalItems,
-            //TotalPages = courses.TotalPages,
+        }
+        catch (Exception ex) { Debug.WriteLine(ex.Message); }
+        return null!;
 
-};
-
-        return View(viewModel);
     }
+
+
+    //[Route("/courses")]
+    //public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 9)
+    //{
+    //    var savedCourses = await _coursesService.GetAllSavedCourses(User);
+    //    var savedCoursesIds = savedCourses.Select(x => x.CourseId).ToList();
+
+    //    var courseResult = await _coursesService.GetCoursesAsync(category, searchQuery, pageNumber, pageSize);
+
+    //    var coursesViewModel = courseResult.Courses!.Select(x => new CourseViewModel
+    //    {
+    //        Id = x.Id,
+    //        Title = x.Title,
+    //        Price = x.Price,
+    //        DiscountPrice = x.DiscountPrice,
+    //        BackgroundImageName = x.BackgroundImageName!,
+    //        LikesInNumbers = x.LikesInNumbers,
+    //        LikesInPercent = x.LikesinPercent,
+    //        IsBestSeller = x.IsBestSeller,
+    //        HoursToComplete = x.HoursToComplete,
+    //        IsSaved = savedCoursesIds.Contains(x.Id), 
+    //        Author = new AuthorViewModel
+    //        {
+    //            Id = x.Id,
+    //            AuthorTitle = x.Author.AuthorTitle,
+    //            AuthorName = x.Author.AuthorName,
+    //            AuthorDescritpion = x.Author.AuthorDescription,
+    //            AuthorImageUrl = x.Author.AuthorImageUrl,
+    //            FacebookSubs = x.Author.FacebookSubs,
+    //            YoutubeSubs = x.Author.YoutubeSubs,
+    //        }
+    //    }).ToList();
+
+    //    var categoryEntities = await _categoryService.GetCategoriesAsync();
+    //    var categoryViewModel = categoryEntities.Select(x => new CategoryViewModel
+    //    {
+    //        Id = x.Id,
+    //        CategoryName = x.CategoryName,
+    //    });
+
+
+    //    var viewModel = new CoursesIndexViewModel
+    //    {
+    //        Categories = categoryViewModel,
+    //        Courses = coursesViewModel,
+    //        SearchQuery = searchQuery,
+    //        Pagination = new PaginationModel
+    //        {
+    //            CurrentPage = pageNumber,
+    //            TotalPages = courseResult.TotalPages,
+    //            PageSize = pageSize,
+    //            TotalItems = courseResult.TotalItems,
+
+    //        }
+    //        //CurrentPage = pageNumber,
+    //        //PageSize = pageSize,
+    //        //TotalItems = courses.TotalItems,
+    //        //TotalPages = courses.TotalPages,
+
+    //    };
+    //    viewModel.Pagination.UpdateTotalPages();
+
+    //    return View(viewModel);
+    //}
 
     //[Route("/courses")]
     //public async Task<IActionResult> Courses(/*string searchQuery, int? categoryId*/)

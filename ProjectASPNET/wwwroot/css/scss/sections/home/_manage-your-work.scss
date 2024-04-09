@@ -1,0 +1,65 @@
+.manage-work {
+    color: var(--color-gray-900);
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        @include lg {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @include xl {
+            justify-content: space-around;
+        }
+
+        img {
+            @include lg {
+                width: 60%;
+            }
+
+            @include xl {
+                width: 55%;
+            }
+        }
+
+        .content {
+            text-align: center;
+
+            @include lg {
+                text-align: left;
+            }
+
+            h3 {
+                font-weight: 900;
+                margin-bottom: 2rem;
+                border: solid red 1px;
+
+                @include lg {
+                    margin-top: 4rem;
+                }
+
+                @include xl {
+                    margin-top: 0;
+                }
+            }
+
+            p {
+                i {
+                    margin-right: .3rem;
+                    color: var(--color-theme);
+                }
+            }
+
+            .btn-theme {
+                margin-top: 2rem;
+                width: 100%;
+
+                @include lg {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}

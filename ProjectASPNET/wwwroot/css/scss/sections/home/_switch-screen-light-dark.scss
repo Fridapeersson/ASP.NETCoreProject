@@ -1,0 +1,110 @@
+.light-dark {
+    background: linear-gradient(to right, var(--color-gray-900) 50%, var(--color-gray-000) 50%);
+
+    .container {
+        position: relative;
+
+        .content {
+            h3 {
+                @include h4;
+                color: var(--color-theme);
+                text-align: center;
+                padding-top: 2rem;
+
+                @include md {
+                    @include h2;
+                    color: var(--color-gray-000);
+                    margin-left: 1.5rem;
+                    padding-top: 3rem;
+                    margin-bottom: 1rem;
+                }
+
+                span {
+                    @include md {
+                        color: var(--color-gray-900);
+                    }
+                }
+            }
+
+            .divider {
+                display: flex;
+                height: 500px;
+
+                @include md {
+                    height: 500px;
+                }
+
+                @include lg {
+                    height: 700px;
+                }
+
+                @include xl {
+                    height: 750px;
+                }
+
+                .dark-side {
+                    background-color: var(--color-gray-900);
+                }
+
+                .light-side, .dark-side {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            .image {
+                img {
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    right: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    @include md {
+                        width: 80%;
+                    }
+
+                    @include lg {
+                        width: 85%;
+                    }
+
+                    @include xl {
+                        height: 60%;
+                    }
+                }
+            }
+
+            .slider {
+                position: absolute;
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%);
+                background-color: var(--color-theme);
+
+                &::before {
+                    content: "";
+                    width: 30px;
+                    aspect-ratio: 1;
+                    background-color: inherit;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+                    // padding: .5rem;
+                }
+
+                .fa-arrows-left-right {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: var(--color-gray-000);
+                }
+            }
+        }
+    }
+}

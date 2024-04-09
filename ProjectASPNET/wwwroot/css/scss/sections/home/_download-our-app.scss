@@ -1,0 +1,141 @@
+
+.download {
+    background-color: var(--color-gray-200);
+
+    .container {
+        @include lg {
+            display: flex;
+            padding: 4rem 0;
+            justify-content: space-between;
+            gap: 12rem;
+        }
+
+        .app-img-container {
+            // border: solid red 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            .app-img {
+                /*width: 100%;*/
+                margin: 2rem 0;
+
+                @include md {
+                    width: 60%;
+                }
+
+                @include lg {
+                    width: 90%;
+                    margin-left: 6rem;
+                }
+
+                @include xl {
+                    width: 100%;
+                }
+            }
+        }
+
+        .downloads {
+            text-align: center;
+
+            @include lg {
+                margin-top: 4rem;
+                text-align: left;
+            }
+
+            h2 {
+                margin: 2rem 0;
+
+                @include lg {
+                    margin-bottom: 2rem;
+                    width: 100%;
+                    @include d6;
+                }
+
+                @include xl {
+                    width: 80%;
+                }
+
+                @include xxl {
+                    width: 70%;
+                }
+            }
+
+            .content {
+                .app-store, .google-play {
+                    @include lg {
+                        display: flex;
+                        gap: 1rem;
+                        margin-bottom: 3rem;
+                    }
+
+                    .google-play-content, .app-store-content {
+                        p {
+                            color: var(--color-gray-600);
+                            margin: 0;
+                        }
+
+                        .stars {
+
+                            i {
+                                color: var(--color-warning-dark);
+                                margin-bottom: 1rem;
+
+                                @include lg {
+                                    font-size: .8rem;
+                                }
+                            }
+                        }
+
+                        h5 {
+                            margin: 0;
+                        }
+
+                        .rating {
+                            color: var(--color-gray-700);
+
+                            @include lg {
+                                @include text-m
+                            }
+                        }
+                    }
+
+                    .img-container {
+                        @include lg {
+                            display: flex;
+                            align-items: end;
+                            margin-left: 2rem;
+                        }
+
+                        a {
+                            &:hover {
+                                opacity: .6;
+                                transition: ease-in-out .2s;
+                            }
+
+                            img {
+                                margin-bottom: 2.5rem;
+                                margin-top: 1rem;
+                                width: 60%;
+
+                                @media(min-width: 360px) {
+                                    width: 40%;
+                                }
+
+                                @include md {
+                                    width: 30%;
+                                }
+
+                                @include lg {
+                                    width: 100%;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

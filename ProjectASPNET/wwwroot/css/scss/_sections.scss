@@ -1,13 +1,11 @@
 @import './sections/_header.scss';
-@import './sections/_showcase.scss';
-@import './sections/_features.scss';
+
 @import './sections/_signup.scss';
 @import './sections/_signin.scss';
 @import './sections/_account-details.scss';
 @import './sections/_footer.scss';
 @import './sections/_courses.scss';
 @import './sections/_course-details.scss';
-@import './sections/_news-letter.scss';
 @import './sections/_contact-us.scss';
 @import './sections/_saved-courses.scss';
 @import './sections/_display-courses.scss';
@@ -18,4 +16,11 @@
 
 
 
-
+//home
+@import './sections/home/_showcase.scss';
+@import './sections/home/_features.scss';
+@import './sections/home/_switch-screen-light-dark.scss';
+@import './sections/home/_manage-your-work.scss';
+@import './sections/home/_download-our-app.scss';
+@import './sections/home/_work-tools.scss';
+@import './sections/home/_news-letter.scss';

@@ -4,9 +4,9 @@
 @* PAGNERING FÖRSVINNER INTE NÄR MAN DET ÄR MINDRE ÄN 2 SIDOR, fixa *@
 
 
-@if (Model.Pagination != null && Model.Pagination.TotalItems > 1)
+@if (Model.Pagination != null && Model.Pagination.TotalPages > 1)
 {
-    <div class="change-page">
+    <div class="change-page pagination">
         @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
         {
             if (i == Model.Pagination.CurrentPage)

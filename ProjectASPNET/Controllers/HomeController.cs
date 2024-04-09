@@ -4,6 +4,7 @@ using ProjectASPNET.ViewModels.Components;
 using ProjectASPNET.ViewModels.Home;
 using System.Net;
 
+
 namespace ProjectASPNET.Controllers;
 
 public class HomeController : Controller
@@ -23,7 +24,7 @@ public class HomeController : Controller
     {
         //if(HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
         //{
-            
+
         //}
 
         var viewModel = new HomeIndexViewModel
@@ -100,10 +101,85 @@ public class HomeController : Controller
                 }
             },
 
-            Subscriber = new SubscribeViewModel()
+            SwitchLight = new SwitchLightDarkModeViewModel
+            {
+                Title = "Switch between Light & Dark Mode",
+                Image = new ImageViewModel
+                {
+                    ImageUrl = "./images/home/switch-screen/mockup.svg",
+                    AltText = "switch lights"
+                }
+            },
 
+            ManageYourWork = new ManageYourWorkViewModel
+            {
+                Id = "manage-work",
+                Title = "Manage Your Work",
+                //Image = new ImageViewModel
+                //{
+                //    ImageUrl = "./images/home/manage-work/manage-your-work-img.svg",
+                //    AltText = "Manage your work",
+                //}
+            },
+
+            DownloadOurApp = new DownloadOurAppViewModel
+            {
+                Id = "download",
+                Title = "Download Our App for Any Devices:"
+            },
+
+            WorkTools = new WorkToolsViewModel
+            {
+                Title = "Integrate Top Work Tools",
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.",
+
+                WorkToolBox = new HashSet<FeaturesBoxViewModel>()
+                {
+                    new()
+                    {
+                        FeaturesDescription = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/google.svg", AltText = "google-icon" },
+                    },
+                    new()
+                    {
+                        FeaturesDescription = "In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/zoom.svg", AltText = "zoom-icon" },
+                    },
+                    new()
+                    {
+                        FeaturesDescription = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/slack.svg", AltText = "slack-icon" },
+                    },
+                    new()
+                    {
+                        FeaturesDescription = "Rutrum interdum tortor, sed at nulla. A cursus bibendum elit purus cras praesent.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/gmail.svg", AltText = "gmail-icon" },
+                    },
+                    new()
+                    {
+                        FeaturesDescription = "Congue pellentesque amet, viverra curabitur quam diam scelerisque fermentum urna.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/trello.svg", AltText = "trello-icon" },
+                    },
+                    new()
+                    {
+                        FeaturesDescription = "A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/MailChimp.svg", AltText = "mailchimp-icon" },
+                    },
+                    new()
+                    {
+                        FeaturesDescription = "Ut in turpis consequat odio diam lectus elementum. Est faucibus blandit platea.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/dropbox.svg", AltText = "dropbox-icon" },
+                    },
+                    new()
+                    {
+                        FeaturesDescription = "Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu.",
+                        FeaturesImg = new() { ImageUrl = "./images/home/work-tools/evernote.svg", AltText = "evernote-icon" },
+                    },
+                }
+            },
+
+            Subscriber = new SubscribeViewModel(),
         };
-
         return View(viewModel);
     }
 

@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     switchBtn.addEventListener("change", function () {
         let theme = this.checked ? "dark" : "light"
 
+
         //AJAX - renderar inte om sidan
         fetch(`/settings/changetheme?theme=${theme}`)
             .then(res => {
@@ -47,8 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 })
 
-
-//changing symbol based on if course is saved or not
+//Ändra symbol baserat på om kurs är sparad eller inte
 document.addEventListener("DOMContentLoaded", function () {
     var bookmarks = document.querySelectorAll(".bookmark");
     bookmarks.forEach(function (bookmark) {
@@ -112,45 +112,25 @@ function SearchQuery() {
     catch { }
 }
 
-//function UpdateCourses() {
-//    const category = document.querySelector(".select ")
-//}
-
 function updateCoursesByFilter(category, searchValue = "") {
     const query = searchValue || "";
-    console.log(`Category: ${category}, SearchQuery: ${searchValue}`);
+    //console.log(`CATEGORY: ${category}, SEARCHQUERY: ${searchValue}`);
     fetch(`/courses?category=${encodeURIComponent(category)}&searchQuery=${encodeURIComponent(query)}`)
         .then(res => res.text())
         .then(data => {
             const parser = new DOMParser();
             const dom = parser.parseFromString(data, "text/html");
-            document.querySelector("#boxes").innerHTML = dom.querySelector("#boxes").innerHTML;
 
-            const pagination = document.querySelector(".pagination") ? dom.querySelector(".pagination").innerHTML : "";
-            document.querySelector(".pagination").innerHTML = pagination;
+            const newBoxesContent = dom.querySelector("#boxes");
+
+            if (newBoxesContent) {
+                document.querySelector("#boxes").innerHTML = newBoxesContent.innerHTML;
+            }
+
+            const newPaginationContent = dom.querySelector(".pagination");
+            const pagination = document.querySelector(".pagination");
+            if (pagination) {
+                pagination.innerHTML = newPaginationContent ? newPaginationContent.innerHTML : "";
+            }
         })
 }
-
-//pagnering
-//function SetupPagination() {
-//    document.querySelector(".numbers a").forEach(pageLink => {
-//        pageLink.addEventListener("click", function (e) {
-//            e.preventDefault();
-//            const pageNbr = this.getAttribute("data-page");
-//            const category = document.querySelector(".select .selected").getAttribute("data-value") || "all";
-//            const searchQuery = document.querySelector(".searchQuery").value || "";
-//            updateCoursesByPage(category, searchQuery, pageNbr);
-//        })
-//    })
-//}
-
-//function updateCoursesByPage(category, searchQuery, pageNumber) {
-//    fetch(`/courses?category=${encodeURIComponent(category)}&searchQuery=${encodeURIComponent(searchQuery)}&pageNumber=${encodeURIComponent(pageNumber)}`)
-//        .then(res => res.text())
-//        .then(data => {
-//            const parser = new DOMParser();
-//            const dom = parser.parseFromString(data, "text/html");
-//            document.querySelector("#boxes").innerHTML = dom.querySelector("#boxes").innerHTML;
-//            setupPagination();
-//        });
-//}
