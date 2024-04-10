@@ -12,10 +12,12 @@
 
             @foreach(var box in Model.WorkToolBox)
             {
-                <div class="box">
-                    <img src="@box.FeaturesImg.ImageUrl" alt="@box.FeaturesImg.AltText" />
-                    <p>@box.FeaturesDescription</p>
-                </div>
+                    <a href="#">
+                        <div class="box">
+                            <img src="@box.FeaturesImg.ImageUrl" alt="@box.FeaturesImg.AltText" />
+                            <p>@box.FeaturesDescription</p>
+                        </div>
+                    </a>
             }
 
             @* <div class="box">

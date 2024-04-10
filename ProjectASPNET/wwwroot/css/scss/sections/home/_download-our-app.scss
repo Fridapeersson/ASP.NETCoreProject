@@ -1,56 +1,53 @@
 
 .download {
-    background-color: var(--color-gray-200);
+    background-color: var(--color-gray-100);
 
     .container {
-        @include lg {
+        background-color: var(--color-gray-200);
+
+
+        @media(min-width: 550px) {
             display: flex;
-            padding: 4rem 0;
-            justify-content: space-between;
-            gap: 12rem;
+        }
+
+        @include md {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 2rem 0;
         }
 
         .app-img-container {
-            // border: solid red 1px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-
             .app-img {
-                /*width: 100%;*/
+                display: none;
                 margin: 2rem 0;
 
                 @include md {
-                    width: 60%;
-                }
-
-                @include lg {
-                    width: 90%;
-                    margin-left: 6rem;
-                }
-
-                @include xl {
+                    display: block;
                     width: 100%;
                 }
             }
         }
 
         .downloads {
-            text-align: center;
+            @include md {
+                width: 66%;
+            }
 
             @include lg {
                 margin-top: 4rem;
-                text-align: left;
+            }
+
+            @include xl {
+                width: 35%;
             }
 
             h2 {
                 margin: 2rem 0;
 
-                @include lg {
+                @include md {
                     margin-bottom: 2rem;
                     width: 100%;
-                    @include d6;
                 }
 
                 @include xl {
@@ -63,24 +60,40 @@
             }
 
             .content {
+                text-align: center;
+
+                @media(min-width: 450px) {
+                    display: flex;
+                    justify-content: space-between;
+                    text-align: left;
+                }
+
+                @include md {
+                    display: grid;
+                    gap: 0;
+                }
+                @include lg {
+                    justify-content: normal;
+                }
                 .app-store, .google-play {
-                    @include lg {
-                        display: flex;
-                        gap: 1rem;
-                        margin-bottom: 3rem;
+
+                    @include md {
+                        display: grid;
+                        grid-template-columns: auto auto;
                     }
 
                     .google-play-content, .app-store-content {
+                        margin-bottom: 1rem;
+
                         p {
                             color: var(--color-gray-600);
                             margin: 0;
                         }
 
                         .stars {
-
                             i {
                                 color: var(--color-warning-dark);
-                                margin-bottom: 1rem;
+                                margin-bottom: .5rem;
 
                                 @include lg {
                                     font-size: .8rem;
@@ -94,18 +107,19 @@
 
                         .rating {
                             color: var(--color-gray-700);
-
-                            @include lg {
-                                @include text-m
-                            }
                         }
                     }
 
                     .img-container {
-                        @include lg {
+                        @include md {
                             display: flex;
                             align-items: end;
                             margin-left: 2rem;
+                            margin-top: 3.3rem;
+                        }
+
+                        @include lg {
+                            margin-left: 0;
                         }
 
                         a {
@@ -117,19 +131,18 @@
                             img {
                                 margin-bottom: 2.5rem;
                                 margin-top: 1rem;
-                                width: 60%;
+                                width: 30%;
 
-                                @media(min-width: 360px) {
-                                    width: 40%;
+                                @media(min-width: 450px) {
+                                    width: 80%;
                                 }
 
                                 @include md {
-                                    width: 30%;
+                                    width: 100%;
                                 }
 
                                 @include lg {
-                                    width: 100%;
-                                    margin: 0;
+                                    width: 70%;
                                 }
                             }
                         }

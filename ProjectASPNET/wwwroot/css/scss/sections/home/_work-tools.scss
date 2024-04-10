@@ -1,9 +1,11 @@
 .work-tools {
+    color: var(--color-gray-900);
+
     .container {
-        text-align: center;
+        /*text-align: center;*/
 
         @include md {
-            text-align: left;
+            /*text-align: left;*/
         }
 
         @include xxl {
@@ -34,11 +36,10 @@
                 margin-bottom: 2rem;
                 @include text-s;
                 color: var(--color-gray-600);
-
-                @include md {
-                    @include text-s;
-                    color: var(--color-gray-600);
-                }
+                /*@include md {*/
+                /*   @include text-s;
+                    color: var(--color-gray-600);*/
+                /*}*/
 
                 @include lg {
                     margin-top: 1rem;
@@ -47,13 +48,16 @@
         }
 
         .tools {
-            display: flex;
-            flex-direction: column;
+            a {
+                text-decoration: none;
+            }
+
+            display: grid;
+            grid-template-columns: auto auto;
             gap: 1.5rem;
 
             @include md {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
                 margin-top: 1rem;
             }
 
@@ -65,10 +69,11 @@
             .box {
                 padding: 1rem;
                 border-radius: .8rem;
+                border: none;
                 @include text-s;
 
                 img {
-                    width: 10%;
+                    width: 20%;
                     margin-bottom: .8rem;
 
                     @include md {

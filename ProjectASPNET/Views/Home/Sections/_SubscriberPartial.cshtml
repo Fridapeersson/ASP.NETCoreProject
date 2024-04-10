@@ -59,24 +59,24 @@
         <span class="info">
             @if (TempData["status"]?.ToString() == "Success")
             {
-                <p><span class="alert-success">You are now a subscriber</span></p>
+                <p><span class="alert-success alert-message">You are now a subscriber</span></p>
             }
             else if (TempData["Status"]?.ToString() == "AlreadyExists")
             {
-                <p><span class="alert-warning">You are already subscribing</span></p>
+                <p><span class="alert-warning alert-message">You are already subscribing</span></p>
 
             }
             else if (TempData["Status"]?.ToString() == "Invalid")
             {
-                <p><span class="alert-danger">You have to enter a valid email address</span></p>
+                <p><span class="alert-danger alert-message">You have to enter a valid email address</span></p>
             }
             else if (TempData["Status"]?.ToString() == "ConnectionFailed")
             {
-                <p><span class="alert-danger">Unable to connect to the server. Try again later</span></p>
+                <p><span class="alert-danger alert-message">Unable to connect to the server. Try again later</span></p>
             }
             else if (TempData["Status"]?.ToString() == "Unauthorized")
             {
-                <p><span class="alert-danger">Something went wrong, please contact web admin</span></p>
+                <p><span class="alert-danger alert-message">Something went wrong, please contact web admin</span></p>
             }
             else
             {

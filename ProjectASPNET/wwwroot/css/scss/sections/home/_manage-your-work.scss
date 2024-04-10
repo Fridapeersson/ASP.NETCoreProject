@@ -1,13 +1,14 @@
 .manage-work {
     color: var(--color-gray-900);
+    margin: 2rem 0;
     .container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
 
         @include lg {
             flex-direction: row;
-            justify-content: space-between;
             align-items: center;
+
         }
 
         @include xl {
@@ -15,8 +16,12 @@
         }
 
         img {
+            width: 50%;
+            @include md {
+                width: 50%;
+            }
             @include lg {
-                width: 60%;
+                width: 65%;
             }
 
             @include xl {
@@ -25,16 +30,15 @@
         }
 
         .content {
-            text-align: center;
 
             @include lg {
-                text-align: left;
+                margin-left: 1.4rem;
             }
 
             h3 {
                 font-weight: 900;
                 margin-bottom: 2rem;
-                border: solid red 1px;
+                /*border: solid red 1px;*/
 
                 @include lg {
                     margin-top: 4rem;

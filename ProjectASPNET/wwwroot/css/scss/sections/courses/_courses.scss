@@ -1,7 +1,7 @@
 .courses {
     color: var(--color-gray-900);
     display: flex;
-    color: var(--color-gray-900);
+    /*color: var(--color-gray-900);*/
 
 
     .container {
@@ -18,6 +18,10 @@
 
             @include lg {
                 margin-top: 2rem;
+            }
+
+            .fa-chevrons-right {
+                font-size: .8rem;
             }
 
             .home {

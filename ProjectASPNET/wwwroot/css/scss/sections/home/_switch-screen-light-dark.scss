@@ -6,22 +6,28 @@
 
         .content {
             h3 {
-                @include h4;
-                color: var(--color-theme);
+                margin-left: 1rem;
+                @include h3;
+                color: var(--color-gray-000);
                 text-align: center;
                 padding-top: 2rem;
+                margin-bottom: 2rem;
+
 
                 @include md {
                     @include h2;
                     color: var(--color-gray-000);
                     margin-left: 1.5rem;
-                    padding-top: 3rem;
-                    margin-bottom: 1rem;
+                    padding-top: 2rem;
+                    margin-bottom: 0;
                 }
 
                 span {
+                    margin-left: 1rem;
+                    color: var(--color-gray-900);
+
                     @include md {
-                        color: var(--color-gray-900);
+                        /*color: var(--color-gray-900);*/
                     }
                 }
             }

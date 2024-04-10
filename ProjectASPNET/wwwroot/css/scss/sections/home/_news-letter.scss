@@ -76,7 +76,7 @@
 
                     .box-container {
                         display: grid;
-                        grid-template-columns: auto;
+                        grid-template-columns: 1fr 1fr;
                         justify-content: center;
                         gap: 1rem;
 
@@ -99,11 +99,13 @@
                             display: grid;
                             grid-template-columns: auto 1fr;
                             align-items: center;
+                            border: none;
+                            @include text-xs;
                             color: var(--color-gray-700);
-
 
                             @include md {
                                 margin-left: 1rem;
+                                /*@include text-s;*/
                             }
 
                             @include lg {
@@ -178,7 +180,8 @@
             color: var(--color-gray-600);
 
             span {
-                color: var(--color-theme);
+                color: var(--color-gray-900);
+                font-weight: 700;
             }
 
             a {

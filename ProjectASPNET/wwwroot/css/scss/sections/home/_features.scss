@@ -1,5 +1,5 @@
 .features {
-    color: var(--color-gray-700);
+    color: var(--color-gray-800);
     background: var(--color-gray-100);
     padding: 5rem 0;
 
@@ -32,13 +32,14 @@
         }
 
         .tool-features {
-            margin-top: 20px;
+            margin-top: 2rem;
             display: grid;
-            grid-template-columns: auto;
+            grid-template-columns: auto auto;
 
-            @include md {
+
+/*            @include md {
                 grid-template-columns: auto auto;
-            }
+            }*/
 
             @include lg {
                 grid-template-columns: auto auto auto;

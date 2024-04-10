@@ -76,6 +76,7 @@ namespace ProjectASPNET.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(userEntity, defaultRole);
+                    TempData["SuccessMessage"] = "Signup completed successfully";
                     return RedirectToAction("SignIn", "Auth");
                 }
             }

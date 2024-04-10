@@ -1,12 +1,10 @@
 ﻿using Infrastructure.Entities;
-using Infrastructure.Models.Courses;
 using Infrastructure.Models.Dtos;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using WebApi.Filters;
 
@@ -57,7 +55,6 @@ public class CoursesController : ControllerBase
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            // Log the exception as needed.
             return StatusCode(500, "An error occurred while processing your request.");
         }
     }

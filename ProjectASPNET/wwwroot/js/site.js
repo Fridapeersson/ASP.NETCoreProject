@@ -134,3 +134,14 @@ function updateCoursesByFilter(category, searchValue = "") {
             }
         })
 }
+
+//document.addEventListener("DOMContentLoaded", function () {
+//    var messages = document.querySelectorAll('.alert-message');
+//    messages.forEach(function (message) {
+//        console.log(message);
+
+//        setTimeout(function () {
+//            message.style.display = 'none';
+//        }, 5000); 
+//    });
+//});
