@@ -449,6 +449,7 @@ a:hover {
 .btn-circle {
   background: white;
   border-radius: 50%;
+  color: var(--color-black);
 }
 
 form {
@@ -851,6 +852,7 @@ footer .container .social-media {
   border: solid 1px var(--color-gray-300);
   transition: ease-in-out;
   border-radius: 0;
+  cursor: pointer;
 }
 @media (min-width: 992px) {
   .features .container .tool-features .box:hover {

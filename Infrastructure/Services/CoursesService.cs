@@ -42,6 +42,11 @@ public class CoursesService
     }
 
 
+    /// <summary>
+    ///     Creates a new course async
+    /// </summary>
+    /// <param name="coursedto">the model containing the course info </param>
+    /// <returns>true if created successfully, else false, also returns false if the course already exists</returns>
     public async Task<bool> CreateCourseAsync(CourseDto coursedto)
     {
         try
@@ -114,6 +119,11 @@ public class CoursesService
         }
     }
 
+    /// <summary>
+    ///     Gets one course async
+    /// </summary>
+    /// <param name="id">the id(unique identifyer) of the course to retrieve</param>
+    /// <returns>the course entity if found, else null</returns>
     public async Task<CoursesEntity> GetOneCourseAsync(int id)
     {
         try
@@ -134,6 +144,10 @@ public class CoursesService
         return null!;
     }
 
+    /// <summary>
+    ///     Gets all courses async
+    /// </summary>
+    /// <returns>a list of all course entities, else returns an empty list</returns>
     public async Task<IEnumerable<CoursesEntity>> GetAllAsync()
     {
         try
@@ -155,7 +169,14 @@ public class CoursesService
 
 
 
-
+    /// <summary>
+    ///     gets a filtered list of courses based on the specific criterias async.
+    /// </summary>
+    /// <param name="category">the category to fiilter courses by</param>
+    /// <param name="searchQuery">the searchquery to filter courses by</param>
+    /// <param name="pageNumber">the pagenumber for pagination</param>
+    /// <param name="pageSize">the number of courses on each page</param>
+    /// <returns>a courseResult object containing the filtered list of courses</returns>
     public async Task<CourseResult> GetCoursesAsync(string category, string searchQuery, int pageNumber, int pageSize)
     {
         try
@@ -221,7 +242,12 @@ public class CoursesService
 
     //}
 
-
+    /// <summary>
+    ///     Updates an existing course async
+    /// </summary>
+    /// <param name="courseId">the unique identifyer of the course to be updated</param>
+    /// <param name="courseToBeUpdated">the course entity containing the updated details</param>
+    /// <returns>true if updated successfully, else false</returns>
     public async Task<bool> UpdateCourseAsync(int courseId, CoursesEntity courseToBeUpdated)
     {
         try
@@ -291,6 +317,11 @@ public class CoursesService
         }
     }
 
+    /// <summary>
+    ///     deletes a course based on specific predicate async
+    /// </summary>
+    /// <param name="predicate">the predicate used to identify wich course to be deleted </param>
+    /// <returns>true if deleted successfully, else false</returns>
     public async Task<bool> DeleteCourseAsync(Expression<Func<CoursesEntity, bool>> predicate)
     {
         try
@@ -308,7 +339,12 @@ public class CoursesService
     }
 
 
-
+    /// <summary>
+    ///     saves a course to the users profile async
+    /// </summary>
+    /// <param name="userId">the user id to identify specific user where the course will be saved</param>
+    /// <param name="courseId">the course id to identify the specific course to be saved on the user profile</param>
+    /// <returns>true if saved successfully, else false</returns>
     public async Task<bool> SaveCourseToProfile(string userId, int courseId)
     {
         try
@@ -340,6 +376,12 @@ public class CoursesService
         return false;
     }
 
+    /// <summary>
+    ///     removes a course from the user profile async
+    /// </summary>
+    /// <param name="userId">the user id to identify specific user where the course will be removed</param>
+    /// <param name="courseId">the course id to identify the specific course to be removed on the user profile</param>
+    /// <returns>true if removed successfully, else false</returns>
     public async Task<bool> RemoveCourseFromProfileAsync(string userId, int courseId)
     {
         try
@@ -364,6 +406,11 @@ public class CoursesService
         return false;
     }
 
+    /// <summary>
+    ///     Removes all courses from the user profile async
+    /// </summary>
+    /// <param name="userId">the user id to identify specific user where all courses will be removed</param>
+    /// <returns>true if all saved courses was removed successfully, else false</returns>
     public async Task<bool> RemoveAllSavedCoursesAsync(string userId)
     {
         try
@@ -394,6 +441,11 @@ public class CoursesService
         return false;
     }
 
+    /// <summary>
+    ///     gets all saved courses for a logged in user
+    /// </summary>
+    /// <param name="loggedInUser">the ClaimsPrincipal that represents the currenyly logged in user</param>
+    /// <returns>an IEnumerable of savedcourses entity that represents all saved courses by the user, else returns a empty list if no courses are saved</returns>
     public async Task<IEnumerable<SavedCoursesEntity>> GetAllSavedCourses(ClaimsPrincipal loggedInUser)
     {
         try

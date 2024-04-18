@@ -162,10 +162,3 @@ public class SubscribersController : ControllerBase
     #endregion
 
 }
-
-
-//try
-//{
-
-//}
-//catch (Exception ex) { Debug.WriteLine(ex); }

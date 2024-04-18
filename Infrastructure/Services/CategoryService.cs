@@ -17,14 +17,13 @@ public class CategoryService
         _config = config;
     }
 
-    public async Task<IEnumerable<CategoryEntity>> GetCategoriesAsync(string category = "", string searchQuery="")
+    public async Task<IEnumerable<CategoryEntity>> GetCategoriesAsync(/*string category = "", string searchQuery=""*/)
     {
         try
         {
             var response = await _http.GetAsync(_config["ApiUris:Categories"]);
             if (response.IsSuccessStatusCode)
             {
-
                 var categories = JsonConvert.DeserializeObject<IEnumerable<CategoryEntity>>(await response.Content.ReadAsStringAsync());
 
                 if (categories != null)

@@ -18,6 +18,11 @@ public class ContactService
 
 
     #region create ContactUs
+    /// <summary>
+    ///     creates a new contact request async
+    /// </summary>
+    /// <param name="contactDto">the model(dto) containing the contact's info</param>
+    /// <returns>true if created successfully, else false</returns>
     public async Task<bool> CreateContactUsAsync(ContactDto contactDto)
     {
         try

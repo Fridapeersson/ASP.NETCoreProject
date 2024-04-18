@@ -1,4 +1,4 @@
-console.log("HEJ");
+//console.log("HEJ");
 
 let formErrorHandler = (element, validationResult) => {
     let spanElement = document.querySelector(`[data-valmsg-for="${element.name}"]`);
@@ -44,8 +44,29 @@ const passwordValidator = (element) => {
     }
 }
 
+const textAreaValidator = (element, minLength = 5) => {
+    if (element.value.length >= minLength) {
+        formErrorHandler(element, true);
+    }
+    else {
+        formErrorHandler(element, false);
+    }
+}
 
-
+document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.querySelector("#contact-form");
+    if (contactForm) {
+        const inputs = contactForm.querySelectorAll("textarea");
+        console.log(inputs);
+        inputs.forEach(input => {
+            if (input.dataset.val === "true") {
+                input.addEventListener("keyup", (e) => {
+                    textAreaValidator(e.target);
+                });
+            }
+        });
+    }
+});
 
 
 
@@ -67,7 +88,7 @@ inputs.forEach((input) => {
                 switch (e.target.type) {
                     case "text":
                         textValidator(e.target);
-                        console.log(input)
+                        //console.log(input)
                         break;
 
                     case "email":
@@ -101,31 +122,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 const deleteAccount = document.querySelector(".delete-account-form");
-console.log(deleteAccount);
+//console.log(deleteAccount);
 if (deleteAccount) {
     const checkbox = deleteAccount.querySelector("input[type = 'checkbox']");
     checkbox.addEventListener("change", () => {
         checkboxValidator(checkbox);
     })
 }
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const contactForm = document.querySelector("#contact-form");
-    console.log(contactForm);
-    if (contactForm) {
-        const inputs = contactForm.querySelectorAll("input[type='textarea']");
-        inputs.forEach(input => {
-            if (input.dataset.val === "true") {
-                input.addEventListener("keyup", (e) => {
-                    textAreaValidator(e.target);
-                });
-            }
-        });
-    }
-});

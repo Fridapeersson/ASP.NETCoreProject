@@ -23,6 +23,12 @@ public class AccountService
         _config = config;
     }
 
+    /// <summary>
+    ///     Uploads a user's profile image async
+    /// </summary>
+    /// <param name="user">the user who is uploading the image</param>
+    /// <param name="file">the file to be uploaded</param>
+    /// <returns>true if uploaded successfully, else false</returns>
     public async Task<bool> UploadUserProfileImageAsync(ClaimsPrincipal user, IFormFile file)
     {
         try

@@ -37,14 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`/settings/changetheme?theme=${theme}`)
             .then(res => {
                 if (res.ok) {
-                    console.log(theme);
+                    //console.log(theme);
                     window.location.reload();
                 }
                 else {
                     console.log("Wrong, try again");
                 }
             })
-        console.log(theme);
     })
 })
 
@@ -78,13 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
     Select();
     SearchQuery();
-    //SetupPagination();
 });
 
 function Select() {
     try {
         const select = document.querySelector(".select");
-        console.log(select);
+        //console.log(select);
         const selected = select.querySelector(".selected");
         const selectOptions = select.querySelector(".select-options");
 
@@ -150,15 +148,6 @@ function updateCoursesByFilter(category, searchValue = "") {
         })
 }
 
-//document.addEventListener("DOMContentLoaded", function () {
-//    var successMessage = document.getElementsByClassName('alert alert-success');
-//        console.log(successMessage);
-//    if (successMessage) {
-//        setTimeout(function () {
-//            successMessage.style.display = 'none';
-//        }, 5000);
-//    }
-//})
 
 document.addEventListener("DOMContentLoaded", function () {
     const successMessage = document.querySelector(".alert-success");
@@ -191,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function handleProfileImgUpload() {
     try {
         const form = document.querySelector(".ho");
-        console.log(form);
         let uploadFile = document.querySelector("#uploadFile");
         if (uploadFile != undefined) {
             uploadFile.addEventListener("change", function() {
@@ -201,7 +189,5 @@ function handleProfileImgUpload() {
             });
         }
     }
-    catch {
-
-    }
+    catch { }
 }

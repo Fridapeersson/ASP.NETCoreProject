@@ -40,7 +40,7 @@
                 border: solid 1px var(--color-gray-300);
                 transition: ease-in-out;
                 border-radius: 0;
-
+                cursor: pointer;
 
                 @include lg {
                     &:hover {

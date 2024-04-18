@@ -91,10 +91,8 @@ public class CoursesController : Controller
                         TotalPages = courses.TotalPages,
                         PageSize = pageSize,
                         TotalItems = courses.TotalItems,
-
                     }
                 };
-
                 return View(viewModel);
             }
         }
@@ -106,20 +104,25 @@ public class CoursesController : Controller
     [HttpGet]
     public async Task<IActionResult> CourseDetails(int id)
     {
-        var response = await _http.GetAsync($"https://localhost:7107/api/courses/{id}?key={_config["ApiKey:Secret"]}");
-
-        if (response.IsSuccessStatusCode)
+        try
         {
-            var json = await response.Content.ReadAsStringAsync();
-            var viewModel = JsonConvert.DeserializeObject<CourseViewModel>(json);
+            var response = await _http.GetAsync($"https://localhost:7107/api/courses/{id}?key={_config["ApiKey:Secret"]}");
 
-            return View(viewModel);
-        }
-        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
-        {
-            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var viewModel = JsonConvert.DeserializeObject<CourseViewModel>(json);
 
+                return View(viewModel);
+            }
+            if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+            {
+                _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            }
+            return View();
         }
-        return View();
+        catch(Exception ex) { Debug.WriteLine(ex.Message); }
+        return null!;
     }
 }

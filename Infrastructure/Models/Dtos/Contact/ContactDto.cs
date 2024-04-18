@@ -19,10 +19,10 @@ public class ContactDto
     public string Email { get; set; } = null!;
 
 
-    [Required(ErrorMessage = "You have to enter a message")]
+    [Required(ErrorMessage = "Message must be atleast 5 characters")]
     [Display(Name = "Message", Prompt = "Enter your message here...")]
     [DataType(DataType.MultilineText)]
-    [StringLength(1000, MinimumLength = 5, ErrorMessage = "Message must be atleast 5 characters")]
+    [StringLength(1000, MinimumLength = 5)]
     public string Message { get; set; } = null!;
 
 

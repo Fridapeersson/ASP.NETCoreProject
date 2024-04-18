@@ -1,6 +1,6 @@
-﻿"use strict";
+﻿//console.log("HEJ");
 
-console.log("HEJ");
+"use strict";
 
 var formErrorHandler = function formErrorHandler(element, validationResult) {
     var spanElement = document.querySelector("[data-valmsg-for=\"" + element.name + "\"]");
@@ -47,6 +47,31 @@ var passwordValidator = function passwordValidator(element) {
     }
 };
 
+var textAreaValidator = function textAreaValidator(element) {
+    var minLength = arguments.length <= 1 || arguments[1] === undefined ? 5 : arguments[1];
+
+    if (element.value.length >= minLength) {
+        formErrorHandler(element, true);
+    } else {
+        formErrorHandler(element, false);
+    }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    var contactForm = document.querySelector("#contact-form");
+    if (contactForm) {
+        var _inputs = contactForm.querySelectorAll("textarea");
+        console.log(_inputs);
+        _inputs.forEach(function (input) {
+            if (input.dataset.val === "true") {
+                input.addEventListener("keyup", function (e) {
+                    textAreaValidator(e.target);
+                });
+            }
+        });
+    }
+});
+
 var checkboxValidator = function checkboxValidator(element) {
     formErrorHandler(element, element.checked);
 };
@@ -65,7 +90,7 @@ inputs.forEach(function (input) {
                 switch (e.target.type) {
                     case "text":
                         textValidator(e.target);
-                        console.log(input);
+                        //console.log(input)
                         break;
 
                     case "email":
@@ -84,8 +109,8 @@ inputs.forEach(function (input) {
 document.addEventListener("DOMContentLoaded", function () {
     var addressForm = document.querySelector(".address-form-info");
     if (addressForm) {
-        var _inputs = addressForm.querySelectorAll("input[type='text']");
-        _inputs.forEach(function (input) {
+        var _inputs2 = addressForm.querySelectorAll("input[type='text']");
+        _inputs2.forEach(function (input) {
             if (input.dataset.val === "true") {
                 input.addEventListener("keyup", function (e) {
                     textValidator(e.target);
@@ -96,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 var deleteAccount = document.querySelector(".delete-account-form");
-console.log(deleteAccount);
+//console.log(deleteAccount);
 if (deleteAccount) {
     (function () {
         var checkbox = deleteAccount.querySelector("input[type = 'checkbox']");
@@ -105,19 +130,4 @@ if (deleteAccount) {
         });
     })();
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    var contactForm = document.querySelector("#contact-form");
-    console.log(contactForm);
-    if (contactForm) {
-        var _inputs2 = contactForm.querySelectorAll("input[type='textarea']");
-        _inputs2.forEach(function (input) {
-            if (input.dataset.val === "true") {
-                input.addEventListener("keyup", function (e) {
-                    textAreaValidator(e.target);
-                });
-            }
-        });
-    }
-});
 

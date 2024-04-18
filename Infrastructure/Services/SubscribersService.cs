@@ -17,6 +17,11 @@ public class SubscribersService
         _subscribersRepository = subscribersRepository;
     }
 
+    /// <summary>
+    ///     Creates a new subscriber async
+    /// </summary>
+    /// <param name="model">the model containing the info about the new subscriber</param>
+    /// <returns>true if the subscriber was successfully created and doens't already exists, else false</returns>
     public async Task<bool> CreateSubscriberAsync(SubscribeModel model)
     {
         try
@@ -45,6 +50,11 @@ public class SubscribersService
         return false;
     }
 
+    /// <summary>
+    ///     gets one subscriber async
+    /// </summary>
+    /// <param name="id">the id of the subscriber to be retrieved</param>
+    /// <returns>the subscriber entity if a subscriber with the specified id exists, else null</returns>
     public async Task<SubscribersEntity> GetOneSubscriberAsync(int id)
     {
         try
@@ -59,6 +69,10 @@ public class SubscribersService
         return null!;
     }
 
+    /// <summary>
+    ///     gets all subscribers async
+    /// </summary>
+    /// <returns>an IEnumerable of subscribersEntity containing all subscribers in database, else a empty list</returns>
     public async Task<IEnumerable<SubscribersEntity>> GetAllSubscribersAsync()
     {
         try
@@ -72,6 +86,7 @@ public class SubscribersService
         catch (Exception ex) { Debug.WriteLine(ex); }
         return [];
     }
+
 
     public async Task<bool> UpdateSubscriberAsync(SubscribersEntity entity)
     {
@@ -88,6 +103,11 @@ public class SubscribersService
         return false;
     }
 
+    /// <summary>
+    ///     deletes a subscriber async
+    /// </summary>
+    /// <param name="predicate">the predicate that filters wich subscriber to be deleted</param>
+    /// <returns>true if deleted successfully, else false</returns>
     public async Task<bool> DeleteSubscriberAsync(Expression<Func<SubscribersEntity, bool>> predicate)
     {
         try
