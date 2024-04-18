@@ -22,12 +22,11 @@ public class ContactDto
     [Required(ErrorMessage = "You have to enter a message")]
     [Display(Name = "Message", Prompt = "Enter your message here...")]
     [DataType(DataType.MultilineText)]
-    [StringLength(1000, MinimumLength = 2, ErrorMessage = "Message must be atleast 2 characters")]
+    [StringLength(1000, MinimumLength = 5, ErrorMessage = "Message must be atleast 5 characters")]
     public string Message { get; set; } = null!;
 
 
-    [Display(Name = "Services", Prompt = "Choose the service you are interested in")]
-    [DataType(DataType.Text)]
+
     public string[] Services { get; set; } = new string[]
     {
         "Software Development",
@@ -40,5 +39,8 @@ public class ContactDto
         "Connect"
     };
 
+
+    [Display(Name = "Services", Prompt = "Choose the service you are interested in")]
+    [DataType(DataType.Text)]
     public string SelectedService { get; set; } = null!;
 }

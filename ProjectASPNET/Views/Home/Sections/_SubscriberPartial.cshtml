@@ -50,8 +50,13 @@
                     <div class="input-container">
                         <i class="fa-sharp fa-regular fa-envelope"></i>
                         <input type="email" asp-for="@Model.SubscribeModel.Email" />
+                        <span class="error" asp-validation-for="@Model.SubscribeModel.Email"></span>
                         <button type="submit" class="btn-theme">Subscribe *</button>
                     </div>
+
+@*                     <label asp-for="Form.Password">Password</label>
+                    <span asp-validation-for="Form.Password"></span>
+                    <input asp-for="Form.Password" class="form-input" type="password" /> *@
                 </form>
             </div>
         </div>
@@ -82,8 +87,7 @@
             {
                 <p><span class="asterix">*</span> Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy</a>.</p>
             }
-
-
         </span>
     </div>
 </section>
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

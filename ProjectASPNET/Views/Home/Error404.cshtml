@@ -2,10 +2,16 @@
     ViewData["Title"] = "Error";
 }
 
-<section>
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var imgPath = themeMode == "dark" ? "./images/home/error/404_dark.svg" : "./images/home/error/404.svg";
+}
+
+<section class="error-page">
     <div class="container">
         <div class="content">
-            <img src="~/images/home/error/404.svg" />
+            
+            <img src=@imgPath />
             <h1>Woopsie</h1>
             <p>The page you are looking for doesn't exist</p>
         </div>

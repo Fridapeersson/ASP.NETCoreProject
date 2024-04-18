@@ -1,8 +1,8 @@
 console.log("HEJ");
 
-const formErrorHandler = (element, validationResult) => {
+let formErrorHandler = (element, validationResult) => {
     let spanElement = document.querySelector(`[data-valmsg-for="${element.name}"]`);
-    //console.log(spanElement);
+    
     if (validationResult) {
         element.classList.remove("input-validation-error");
         spanElement.classList.remove("field-validation-error");
@@ -27,7 +27,7 @@ const textValidator = (element, minLength = 2) => {
 const emailValidator = (element) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     formErrorHandler(element, regex.test(element.value));
-    console.log(element);
+    
 };
 
 const passwordValidator = (element) => {
@@ -67,6 +67,7 @@ inputs.forEach((input) => {
                 switch (e.target.type) {
                     case "text":
                         textValidator(e.target);
+                        console.log(input)
                         break;
 
                     case "email":
@@ -81,3 +82,50 @@ inputs.forEach((input) => {
     }
 });
 
+
+
+//account details address validation
+document.addEventListener("DOMContentLoaded", function () {
+    const addressForm = document.querySelector(".address-form-info");
+    if (addressForm) {
+        const inputs = addressForm.querySelectorAll("input[type='text']");
+        inputs.forEach(input => {
+            if (input.dataset.val === "true") {
+                input.addEventListener("keyup", (e) => {
+                    textValidator(e.target);
+                });
+            }
+        });
+    }
+});
+
+
+const deleteAccount = document.querySelector(".delete-account-form");
+console.log(deleteAccount);
+if (deleteAccount) {
+    const checkbox = deleteAccount.querySelector("input[type = 'checkbox']");
+    checkbox.addEventListener("change", () => {
+        checkboxValidator(checkbox);
+    })
+}
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.querySelector("#contact-form");
+    console.log(contactForm);
+    if (contactForm) {
+        const inputs = contactForm.querySelectorAll("input[type='textarea']");
+        inputs.forEach(input => {
+            if (input.dataset.val === "true") {
+                input.addEventListener("keyup", (e) => {
+                    textAreaValidator(e.target);
+                });
+            }
+        });
+    }
+});

@@ -145,6 +145,10 @@
 
                 .btn-theme {
                     width: 100%;
+
+                    &:hover {
+                        transition: ease-in-out .2s;
+                    }
                 }
 
                 a {
@@ -187,6 +191,9 @@
                     a {
                         color: var(--color-gray-800);
 
+                        &:hover {
+                            background: var(--color-gray-400);
+                        }
                         @include md {
                             padding: .7rem 3rem;
                         }

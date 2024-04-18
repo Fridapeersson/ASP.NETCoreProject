@@ -11,7 +11,7 @@ namespace WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[UseApiKey] //gäller för alla routes, har jag ingen nyckel kommer jag inte kunna köra något 
+[UseApiKey] 
 public class SubscribersController : ControllerBase
 {
     private readonly SubscribersService _subscribersService;

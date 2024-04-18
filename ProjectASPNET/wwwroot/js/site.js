@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`/settings/changetheme?theme=${theme}`)
             .then(res => {
                 if (res.ok) {
+                    console.log(theme);
                     window.location.reload();
-
                 }
                 else {
                     console.log("Wrong, try again");
@@ -47,6 +47,21 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(theme);
     })
 })
+
+function changeImageSources(theme) {
+    const imgs = document.querySelectorAll(".features-icon");
+    imgs.forEach(img => {
+        let src = img.src;
+        if (theme === "dark") {
+            img.src = src.replace(".svg", "_dark.svg");
+        } else {
+            img.src = src.replace("_dark.svg", ".svg");
+        }
+    })
+}
+
+
+
 
 //Ändra symbol baserat på om kurs är sparad eller inte
 document.addEventListener("DOMContentLoaded", function () {
@@ -136,12 +151,34 @@ function updateCoursesByFilter(category, searchValue = "") {
 }
 
 //document.addEventListener("DOMContentLoaded", function () {
-//    var messages = document.querySelectorAll('.alert-message');
-//    messages.forEach(function (message) {
-//        console.log(message);
-
+//    var successMessage = document.getElementsByClassName('alert alert-success');
+//        console.log(successMessage);
+//    if (successMessage) {
 //        setTimeout(function () {
-//            message.style.display = 'none';
-//        }, 5000); 
-//    });
-//});
+//            successMessage.style.display = 'none';
+//        }, 5000);
+//    }
+//})
+
+document.addEventListener("DOMContentLoaded", function () {
+    const successMessage = document.querySelector(".alert-success");
+    const warningMessage = document.querySelector(".alert-warning")
+    const errorMessage = document.querySelector(".alert-danger")
+    //console.log(errorMessage);
+
+    if (successMessage) {
+        setTimeout(function () {
+            successMessage.style.display = "none";
+        }, 5000);
+    }
+    if (warningMessage) {
+        setTimeout(function () {
+            warningMessage.style.display = "none";
+        }, 5000);
+    }
+    if (errorMessage) {
+        setTimeout(function () {
+            errorMessage.style.display = "none";
+        }, 5000);
+    }
+})

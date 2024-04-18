@@ -1,7 +1,7 @@
 
 .account-details-section {
     color: var(--color-gray-900);
-
+    
     .container {
         .saved-courses-content {
             @include lg {
@@ -22,6 +22,10 @@
                     justify-content: space-between;
                     margin-bottom: 2rem;
                     margin-top: 4rem;
+
+                    @include lg {
+                        gap: 5rem;
+                    }
 
                     h2 {
                     }

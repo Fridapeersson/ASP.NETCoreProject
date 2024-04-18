@@ -562,6 +562,9 @@ header .container #menu .nav {
 header .container .btn-switch span {
   /*color: var(--color-gray-900);*/
 }
+header .container #account-buttons {
+  margin: 0 auto;
+}
 @media (min-width: 992px) {
   header .container #account-buttons {
     display: flex;
@@ -574,7 +577,7 @@ header .container #account-buttons .no-profile-img {
   margin: 0;
   padding: 0;
   text-align: center;
-  border: solid var(--gray-500) 1px;
+  border: solid var(--color-gray-500) 1px;
   border-radius: 50%;
 }
 header .container .btn-mobile {
@@ -804,16 +807,10 @@ footer .container .social-media {
   justify-content: center;
   text-align: center;
 }
-.features .container h1 {
-  /*color: var(--color-gray-700);*/
-}
 @media (min-width: 768px) {
   .features .container h1 {
     margin-bottom: 1.5rem;
   }
-}
-.features .container p {
-  /*color: var(--color-gray-500);*/
 }
 @media (min-width: 768px) {
   .features .container p {
@@ -824,57 +821,52 @@ footer .container .social-media {
   margin-top: 2rem;
   display: grid;
   grid-template-columns: auto auto;
-  /*            @include md {
-                  grid-template-columns: auto auto;
-              }*/
 }
 @media (min-width: 992px) {
   .features .container .tool-features {
     grid-template-columns: auto auto auto;
-    border-radius: 1rem;
   }
 }
 .features .container .tool-features .box {
-  padding: 20px;
-  border: solid 1px var(--gray-300);
+  padding: 2rem;
+  border: solid 1px var(--color-gray-300);
   transition: ease-in-out;
+  border-radius: 0;
 }
 @media (min-width: 992px) {
   .features .container .tool-features .box:hover {
-    border-radius: 0.7rem;
-    background-color: var(--color-white);
+    border-radius: 0.4rem;
+    background-color: var(--color-gray-300);
   }
   .features .container .tool-features .box:nth-child(1) {
-    border-top: none;
-    border-left: solid 0px var(--gray-300);
+    border: none;
+    border-bottom: solid 1px var(--color-gray-300);
+    border-right: solid 1px var(--color-gray-300);
   }
   .features .container .tool-features .box:nth-child(2) {
-    border-top: none;
-    border-left: solid 0px var(--gray-300);
+    border: none;
+    border-right: solid 1px var(--color-gray-300);
+    border-bottom: solid 1px var(--color-gray-300);
   }
   .features .container .tool-features .box:nth-child(3) {
-    border-top: solid 0px var(--gray-300);
-    border-left: solid 0px var(--gray-300);
+    border: none;
+    border-bottom: solid 1px var(--color-gray-300);
   }
   .features .container .tool-features .box:nth-child(4) {
-    border-left: none;
-    border-bottom: none;
-    border-top: solid 0px var(--gray-300);
+    border: none;
+    border-right: solid 1px var(--color-gray-300);
   }
   .features .container .tool-features .box:nth-child(5) {
-    border-left: none;
-    border-bottom: none;
-    border-top: solid 0px var(--gray-300);
+    border: none;
+    border-right: solid 1px var(--color-gray-300);
   }
   .features .container .tool-features .box:nth-child(6) {
-    border-left: none;
-    border-bottom: none;
-    border-top: solid 0px var(--gray-300);
+    border: none;
   }
 }
 
 .light-dark {
-  background: linear-gradient(to right, var(--color-gray-900) 50%, var(--color-gray-000) 50%);
+  background: linear-gradient(to right, var(--color-black) 50%, var(--color-white) 50%);
 }
 .light-dark .container {
   position: relative;
@@ -888,7 +880,7 @@ footer .container .social-media {
   font-weight: 800;
   color: var(--gray-900);
   font-size: 28px !important;
-  color: var(--color-gray-000);
+  color: var(--color-white);
   text-align: center;
   padding-top: 2rem;
   margin-bottom: 2rem;
@@ -902,7 +894,7 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--gray-900);
     font-size: 32px !important;
-    color: var(--color-gray-000);
+    color: var(--color-white);
     margin-left: 1.5rem;
     padding-top: 2rem;
     margin-bottom: 0;
@@ -910,15 +902,11 @@ footer .container .social-media {
 }
 .light-dark .container .content h3 span {
   margin-left: 1rem;
-  color: var(--color-gray-900);
-}
-@media (min-width: 768px) {
-  .light-dark .container .content h3 span {
-    /*color: var(--color-gray-900);*/
-  }
+  color: var(--color-black);
 }
 .light-dark .container .content .divider {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   height: 500px;
 }
 @media (min-width: 768px) {
@@ -935,13 +923,6 @@ footer .container .social-media {
   .light-dark .container .content .divider {
     height: 750px;
   }
-}
-.light-dark .container .content .divider .dark-side {
-  background-color: var(--color-gray-900);
-}
-.light-dark .container .content .divider .light-side, .light-dark .container .content .divider .dark-side {
-  height: 100%;
-  width: 100%;
 }
 .light-dark .container .content .image img {
   position: absolute;
@@ -996,6 +977,7 @@ footer .container .social-media {
 
 .manage-work {
   color: var(--color-gray-900);
+  background: var(--color-000);
   margin: 2rem 0;
 }
 .manage-work .container {
@@ -1469,6 +1451,7 @@ footer .container .social-media {
   }
 }
 .news-letter .container .content form .input-container {
+  margin-top: 1rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1477,13 +1460,14 @@ footer .container .social-media {
 }
 @media (min-width: 768px) {
   .news-letter .container .content form .input-container {
+    margin-top: 0;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: 1rem;
   }
 }
-.news-letter .container .content form .input-container i {
+.news-letter .container .content form .input-container .fa-envelope {
   position: absolute;
   top: 1.87rem;
   left: 0.8rem;
@@ -1497,11 +1481,22 @@ footer .container .social-media {
   padding: 0.5rem;
   margin-bottom: 1rem;
   padding-left: 2.3rem;
-  color: var(--color-gray-400);
+  color: var(--color-gray-600);
   background: var(--color-gray-100);
 }
 .news-letter .container .content form .input-container input::placeholder {
   color: var(--color-gray-500);
+}
+.news-letter .container .content form .input-container .error {
+  position: absolute;
+  top: -5%;
+  /*color: red;*/
+}
+@media (min-width: 768px) {
+  .news-letter .container .content form .input-container .error {
+    margin-right: 22%;
+    top: -15%;
+  }
 }
 .news-letter .container .content form .input-container .btn-theme {
   width: 100%;
@@ -1528,10 +1523,23 @@ footer .container .social-media {
   text-decoration: underline;
 }
 
+.error-page {
+  color: var(--color-gray-900);
+}
+.error-page .container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+  align-items: center;
+}
+.error-page .container nav a {
+  margin-bottom: 5rem;
+}
+
 .courses {
   color: var(--color-gray-900);
   display: flex;
-  /*color: var(--color-gray-900);*/
 }
 .courses .container {
   /*.box-content {
@@ -1914,6 +1922,7 @@ footer .container .social-media {
   padding: 0.3rem;
   padding-left: 2rem;
   border: solid 1px var(--color-gray-400);
+  background: var(--color-gray-000);
 }
 .courses .container .heading .tool-and-search-container form .input-search input::placeholder {
   color: var(--color-gray-500);
@@ -2068,6 +2077,7 @@ footer .container .social-media {
   }
 }
 .box .content .h5 {
+  padding: 0.2rem;
   color: var(--color-gray-900);
 }
 @media (min-width: 992px) {
@@ -2258,6 +2268,7 @@ footer .container .social-media {
   }
 }
 .box-content .boxes .box .content .h5 {
+  padding: 0.2rem;
   color: var(--color-gray-900);
 }
 @media (min-width: 992px) {
@@ -2361,7 +2372,6 @@ footer .container .social-media {
   color: var(--color-gray-900);
   position: relative;
   display: grid;
-  color: var(--color-gray-900);
   z-index: 1;
 }
 .course-details .courses-showcase-img {
@@ -2374,7 +2384,6 @@ footer .container .social-media {
     object-fit: cover;
     width: 100%;
     height: 15%;
-    /*top: 0;*/
     z-index: -1;
     filter: brightness(30%);
   }
@@ -2396,13 +2405,13 @@ footer .container .social-media {
 }
 .course-details .container .mini-menu {
   display: none;
+  color: var(--color-gray-500);
 }
 @media (min-width: 768px) {
   .course-details .container .mini-menu {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
-    /*color: var(--color-gray-000);*/
   }
 }
 @media (min-width: 992px) {
@@ -2417,22 +2426,13 @@ footer .container .social-media {
   }
 }
 .course-details .container .mini-menu .arrow {
-  color: var(--color-gray-000);
   font-size: 0.5rem;
-}
-.course-details .container .mini-menu .home {
-  color: var(--color-gray-000);
-}
-@media (min-width: 768px) {
-  .course-details .container .mini-menu .home {
-    margin-right: 0.5rem;
-  }
 }
 .course-details .container .mini-menu .home i {
   margin-right: 0.2rem;
 }
 .course-details .container .mini-menu a {
-  color: var(--color-gray-000);
+  color: var(--color-gray-400);
 }
 .course-details .container .course-showcase-text .best-seller-digital {
   display: flex;
@@ -2440,30 +2440,18 @@ footer .container .social-media {
 }
 .course-details .container .course-showcase-text .best-seller-digital .best-seller {
   background-color: #22C55E;
-  color: var(--color-gray-100);
+  color: var(--color-white);
   padding: 0 0.8rem;
   border-radius: 0.3rem;
 }
 .course-details .container .course-showcase-text .best-seller-digital .digital {
   background-color: var(--color-gray-400);
-  color: var(--color-gray-900);
+  color: var(--color-black);
   border-radius: 0.3rem;
   padding: 0 0.8rem;
 }
 .course-details .container .course-showcase-text h3 {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--gray-700);
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  color: var(--gray-900);
-  font-size: 24px !important;
-  color: var(--color-gray-100) !important;
-}
-@media (min-width: 768px) {
-  .course-details .container .course-showcase-text h3 {
-    /*color: var(--color-gray-900);*/
-  }
+  color: var(--color-white);
 }
 @media (min-width: 992px) {
   .course-details .container .course-showcase-text h3 {
@@ -2474,16 +2462,11 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--gray-900);
     font-size: 32px !important;
-    /*color: var(--color-gray-900);*/
+    color: var(--color-white);
   }
 }
 .course-details .container .course-showcase-text p {
   color: var(--color-gray-500);
-}
-@media (min-width: 768px) {
-  .course-details .container .course-showcase-text p {
-    /*color: var(--gray-400);*/
-  }
 }
 @media (min-width: 992px) {
   .course-details .container .course-showcase-text p {
@@ -2582,7 +2565,7 @@ footer .container .social-media {
 }
 @media (min-width: 768px) {
   .course-details .container .course-author {
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
 }
 @media (min-width: 992px) {
@@ -2615,13 +2598,6 @@ footer .container .social-media {
 .course-details .container .course-author .created-by {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-}
-@media (min-width: 768px) {
-  .course-details .container .course-author .created-by p {
-    margin-bottom: 1.5rem;
-    color: var(--color-gray-000);
-  }
 }
 @media (min-width: 992px) {
   .course-details .container .course-author .created-by p {
@@ -2630,7 +2606,7 @@ footer .container .social-media {
     color: var(--gray-700);
     font-family: "Manrope", sans-serif;
     font-size: 12px !important;
-    color: var(--color-white);
+    /*color: var(--color-white);*/
     margin: 0;
   }
 }
@@ -2736,6 +2712,7 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--gray-900);
     font-size: 24px !important;
+    /*color: var(--color-danger-dark);*/
   }
 }
 .course-details .container .content .price span {
@@ -2751,6 +2728,9 @@ footer .container .social-media {
     font-size: 20px !important;
     color: var(--color-gray-500);
   }
+}
+.course-details .container .content .price .discounted-price {
+  color: var(--color-danger-dark);
 }
 .course-details .container .content a {
   text-decoration: none;
@@ -2822,6 +2802,8 @@ footer .container .social-media {
   display: flex;
   flex-direction: column;
   display: relative;
+  /*border: none;*/
+  margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
   .course-details .container .program-details .numbers .box {
@@ -2830,6 +2812,7 @@ footer .container .social-media {
     align-items: start;
     gap: 2rem;
     margin-bottom: 1rem;
+    border: none;
   }
 }
 @media (min-width: 992px) {
@@ -2844,14 +2827,13 @@ footer .container .social-media {
   }
 }
 .course-details .container .program-details .numbers .box .numbers-img {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  width: 15%;
-  margin-top: 1.5rem;
+  display: none;
 }
 @media (min-width: 768px) {
   .course-details .container .program-details .numbers .box .numbers-img {
+    display: flex;
+    width: 15%;
+    margin-top: 1.5rem;
     justify-content: start;
     align-items: start;
     margin: 0;
@@ -2870,11 +2852,17 @@ footer .container .social-media {
     margin-bottom: 1.5rem;
   }
 }
+.course-details .container .program-details .author {
+  border-radius: 0.3rem;
+  border: solid var(--color-gray-200) 1px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
 @media (min-width: 768px) {
   .course-details .container .program-details .author {
+    text-align: start;
     position: relative;
     background: var(--color-gray-900);
-    border: solid var(--color-gray-400) 1px;
   }
 }
 @media (min-width: 992px) {
@@ -2884,6 +2872,8 @@ footer .container .social-media {
 }
 .course-details .container .program-details .author .background-pattern {
   display: none;
+  border-radius: 0.3rem;
+  margin-bottom: 5rem;
 }
 @media (min-width: 768px) {
   .course-details .container .program-details .author .background-pattern {
@@ -2892,6 +2882,7 @@ footer .container .social-media {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    background: var(--color-black);
   }
 }
 @media (min-width: 768px) {
@@ -2934,7 +2925,8 @@ footer .container .social-media {
 }
 @media (min-width: 768px) {
   .course-details .container .program-details .author .author-info .author-content p, .course-details .container .program-details .author .author-info .author-content h2 {
-    color: var(--color-gray-000);
+    color: var(--color-white);
+    z-index: 5;
     margin-top: 1rem;
   }
 }
@@ -2945,13 +2937,14 @@ footer .container .social-media {
 }
 .course-details .container .program-details .author .author-info .buttons {
   display: flex;
-  /*flex-direction: column;*/
   gap: 1rem;
   padding: 0.5rem;
   z-index: 1;
+  justify-content: center;
 }
 @media (min-width: 768px) {
   .course-details .container .program-details .author .author-info .buttons {
+    justify-content: flex-start;
     flex-direction: row;
     gap: 3rem;
     padding: 1rem;
@@ -2979,13 +2972,15 @@ footer .container .social-media {
   }
 }
 .course-details .container .program-details .author .author-info .buttons .youtube-btn {
-  background-color: red;
+  background-color: var(--color-danger-dark);
+  color: var(--color-white);
 }
 .course-details .container .program-details .author .author-info .buttons .youtube-btn i {
   margin-right: 0.5rem;
 }
 .course-details .container .program-details .author .author-info .buttons .facebook-btn {
   background-color: #4C82F7;
+  color: var(--color-white);
 }
 .course-details .container .program-details .author .author-info .buttons .facebook-btn i {
   margin-right: 0.5rem;
@@ -3026,7 +3021,7 @@ footer .container .social-media {
 
 .contact-us {
   color: var(--color-gray-900);
-  background: var(--color-gray-200);
+  background: var(--color-gray-100);
 }
 .contact-us .container {
   padding: 1rem;
@@ -3172,12 +3167,21 @@ footer .container .social-media {
     padding: 3rem;
   }
 }
-.contact-us .container .form-container h5 {
+.contact-us .container .form-container h2 {
   margin-left: 0.5rem;
   color: var(--color-gray-800);
 }
 .contact-us .container .form-container .alert-success {
   background: var(--color-success);
+}
+.contact-us .container .form-container #contact-form {
+  /*
+  .arrow {
+      display: absolute;
+      top: 19.5rem;
+      right: -1.5rem;
+      color: hotpink;
+  }*/
 }
 .contact-us .container .form-container #contact-form .form-name, .contact-us .container .form-container #contact-form .form-email, .contact-us .container .form-container #contact-form .drop-down, .contact-us .container .form-container #contact-form .form-message-us {
   display: flex;
@@ -3187,12 +3191,14 @@ footer .container .social-media {
 .contact-us .container .form-container #contact-form .form-name input, .contact-us .container .form-container #contact-form .form-name textarea, .contact-us .container .form-container #contact-form .form-name select, .contact-us .container .form-container #contact-form .form-name option, .contact-us .container .form-container #contact-form .form-email input, .contact-us .container .form-container #contact-form .form-email textarea, .contact-us .container .form-container #contact-form .form-email select, .contact-us .container .form-container #contact-form .form-email option, .contact-us .container .form-container #contact-form .drop-down input, .contact-us .container .form-container #contact-form .drop-down textarea, .contact-us .container .form-container #contact-form .drop-down select, .contact-us .container .form-container #contact-form .drop-down option, .contact-us .container .form-container #contact-form .form-message-us input, .contact-us .container .form-container #contact-form .form-message-us textarea, .contact-us .container .form-container #contact-form .form-message-us select, .contact-us .container .form-container #contact-form .form-message-us option {
   /*padding: .3rem;*/
   border-radius: 0.5rem;
-  border: solid var(--color-gray-500) 1px;
+  border: solid var(--color-gray-300) 1px;
   padding-left: 1rem;
   padding: 0.5rem;
+  background: var(--color-gray-000);
+  color: var(--color-gray-900);
 }
 .contact-us .container .form-container #contact-form .form-name input::placeholder, .contact-us .container .form-container #contact-form .form-name textarea::placeholder, .contact-us .container .form-container #contact-form .form-name select::placeholder, .contact-us .container .form-container #contact-form .form-name option::placeholder, .contact-us .container .form-container #contact-form .form-email input::placeholder, .contact-us .container .form-container #contact-form .form-email textarea::placeholder, .contact-us .container .form-container #contact-form .form-email select::placeholder, .contact-us .container .form-container #contact-form .form-email option::placeholder, .contact-us .container .form-container #contact-form .drop-down input::placeholder, .contact-us .container .form-container #contact-form .drop-down textarea::placeholder, .contact-us .container .form-container #contact-form .drop-down select::placeholder, .contact-us .container .form-container #contact-form .drop-down option::placeholder, .contact-us .container .form-container #contact-form .form-message-us input::placeholder, .contact-us .container .form-container #contact-form .form-message-us textarea::placeholder, .contact-us .container .form-container #contact-form .form-message-us select::placeholder, .contact-us .container .form-container #contact-form .form-message-us option::placeholder {
-  color: var(--color-gray-500);
+  color: var(--color-gray-300);
   /*padding-left: 1rem;*/
 }
 .contact-us .container .form-container #contact-form .form-name span, .contact-us .container .form-container #contact-form .form-email span, .contact-us .container .form-container #contact-form .drop-down span, .contact-us .container .form-container #contact-form .form-message-us span {
@@ -3211,7 +3217,6 @@ footer .container .social-media {
   top: 12%;
   right: 3%;
   color: var(--color-danger-dark);
-  /*background-color: var(--color-danger-dark);*/
   padding: 0.2rem;
   border-radius: 0.3rem;
 }
@@ -3221,25 +3226,24 @@ footer .container .social-media {
   margin-bottom: -0.8rem;
 }
 .contact-us .container .form-container #contact-form .drop-down label .optional {
-  color: var(--color-gray-500);
+  color: var(--color-gray-300);
 }
 .contact-us .container .form-container #contact-form .drop-down .select-wrapper {
   position: relative;
 }
 .contact-us .container .form-container #contact-form .drop-down .select-wrapper select {
-  color: var(--color-gray-500);
+  color: var(--color-gray-300);
 }
 .contact-us .container .form-container #contact-form .drop-down .select-wrapper .arrow {
   display: none;
 }
-@media (min-width: 768px) {
+@media (min-width: 450px) {
   .contact-us .container .form-container #contact-form .drop-down .select-wrapper .arrow {
-    color: var(--color-gray-900);
+    display: block;
     position: absolute;
+    top: 10px;
     right: 10px;
-    top: 50%;
-    font-size: 30rem;
-    transform: translateY(-50%);
+    color: var(--color-gray-900);
   }
 }
 .contact-us .container .form-container #contact-form .form-message-us {
@@ -3278,11 +3282,6 @@ footer .container .social-media {
   .contact-us .container .form-container #contact-form button {
     width: 45%;
   }
-}
-.contact-us .container .form-container #contact-form .arrow {
-  display: absolute;
-  top: 19.5rem;
-  right: -1.5rem;
 }
 .contact-us .google-maps {
   display: relative;
@@ -3342,6 +3341,7 @@ footer .container .social-media {
   border: solid var(--color-gray-300) 1px;
   padding: 0.5rem 1rem;
   background: var(--color-gray-000);
+  color: var(--color-gray-900);
 }
 #sign-up .container .sign-up-form form .form-input::placeholder {
   color: var(--color-gray-500);
@@ -3727,6 +3727,9 @@ footer .container .social-media {
 #sign-in .container .sign-in-form .sign-in .btn-theme {
   width: 100%;
 }
+#sign-in .container .sign-in-form .sign-in .btn-theme:hover {
+  transition: ease-in-out 0.2s;
+}
 #sign-in .container .sign-in-form .sign-in a {
   color: var(--color-theme);
   font-weight: 600;
@@ -3776,6 +3779,9 @@ footer .container .social-media {
 }
 #sign-in .container .sign-in-form .sign-in .external-login a {
   color: var(--color-gray-800);
+}
+#sign-in .container .sign-in-form .sign-in .external-login a:hover {
+  background: var(--color-gray-400);
 }
 @media (min-width: 768px) {
   #sign-in .container .sign-in-form .sign-in .external-login a {
@@ -3906,6 +3912,7 @@ footer .container .social-media {
   padding-left: 0.5rem;
   border: solid var(--color-gray-400) 1px;
   color: var(--color-gray-700);
+  background: var(--color-gray-000);
 }
 .account-details-section .container .account-details .basic-info form input::placeholder, .account-details-section .container .account-details .basic-info form textarea::placeholder {
   color: var(--color-gray-500);
@@ -3962,7 +3969,7 @@ footer .container .social-media {
   color: var(--gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
-  color: var(--color-danger);
+  color: var(--color-danger-dark);
   /*border: solid red 1px;*/
 }
 @media (min-width: 768px) {
@@ -3972,7 +3979,7 @@ footer .container .social-media {
     color: var(--gray-700);
     font-family: "Manrope", sans-serif;
     font-size: 14px !important;
-    color: var(--color-danger);
+    color: var(--color-danger-dark);
   }
 }
 .account-details-section .container .account-details .basic-info form .content #form-firstname {
@@ -4058,6 +4065,7 @@ footer .container .social-media {
   padding-left: 0.5rem;
   border: solid var(--color-gray-400) 1px;
   color: var(--color-gray-700);
+  background: var(--color-gray-000);
 }
 .account-details-section .container .account-details .address-info form input::placeholder {
   color: var(--color-gray-500);
@@ -4107,7 +4115,7 @@ footer .container .social-media {
   color: var(--gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
-  color: var(--color-danger);
+  color: var(--color-danger-dark);
   /*border: solid red 1px;*/
 }
 @media (min-width: 768px) {
@@ -4117,7 +4125,7 @@ footer .container .social-media {
     color: var(--gray-700);
     font-family: "Manrope", sans-serif;
     font-size: 14px !important;
-    color: var(--color-danger);
+    color: var(--color-danger-dark);
   }
 }
 @media (min-width: 992px) {
@@ -4270,6 +4278,11 @@ aside .profile-info nav .btn-transparent i {
   justify-content: space-between;
   margin-bottom: 2rem;
   margin-top: 4rem;
+}
+@media (min-width: 992px) {
+  .account-details-section .container .saved-courses-content .saved-courses .header {
+    gap: 5rem;
+  }
 }
 .account-details-section .container .saved-courses-content .saved-courses .header a {
   font-weight: 600;
@@ -4580,7 +4593,6 @@ aside .profile-info nav .btn-transparent i {
   color: var(--color-theme);
 }
 .account-security-section .container .security-content .form-content .change-password-form .change-password-form-content {
-  /*border: solid red 1px;*/
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
@@ -4603,6 +4615,8 @@ aside .profile-info nav .btn-transparent i {
   border-radius: 0.5rem;
   border: solid var(--color-gray-300);
   padding-left: 0.8rem;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
 }
 .account-security-section .container .security-content .form-content .change-password-form .change-password-form-content #current-password {
   width: 48%;
@@ -4633,30 +4647,40 @@ aside .profile-info nav .btn-transparent i {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
 }
+.account-security-section .container .security-content .delete-account .delete-account-form {
+  /*border: solid red 1px;*/
+  position: relative;
+}
 .account-security-section .container .security-content .delete-account .delete-account-form .checkbox {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+.account-security-section .container .security-content .delete-account .delete-account-form .checkbox span {
+  position: absolute;
+  /*display: none;*/
+}
 .account-security-section .container .security-content .delete-account .delete-account-form .checkbox p {
   margin: 0;
 }
-.account-security-section .container .security-content .delete-account .delete-account-form .alert-danger {
+.account-security-section .container .security-content .delete-account .delete-account-form .delete-btn {
   margin-top: 1rem;
   border: solid var(--color-danger-dark) 1px;
   width: 20%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
   background: var(--color-danger-dark);
   color: var(--color-gray-000);
   margin-bottom: 2rem;
 }
-.account-security-section .container .security-content .delete-account .delete-account-form .alert-danger:hover {
+.account-security-section .container .security-content .delete-account .delete-account-form .delete-btn:hover {
   transition: ease-in-out 0.3s;
   background-color: var(--color-gray-400);
   border: solid var(--color-gray-400) 1px;
   color: var(--color-gray-900);
 }
 @media (min-width: 992px) {
-  .account-security-section .container .security-content .delete-account .delete-account-form .alert-danger {
+  .account-security-section .container .security-content .delete-account .delete-account-form .delete-btn {
     width: 13%;
   }
 }

@@ -1,0 +1,16 @@
+.error-page {
+    color: var(--color-gray-900);
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        align-items: center;
+        nav {
+            a {
+                margin-bottom:5rem;
+            }
+        }
+    }
+}

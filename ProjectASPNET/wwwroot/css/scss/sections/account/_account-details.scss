@@ -6,9 +6,7 @@
             display: flex;
             justify-content: space-around;
         }
-
         /*@import "_account-details-aside.scss";*/
-
         /*aside {
             @include lg {
             border-right: solid var(--color-gray-300) 1px;
@@ -59,8 +57,8 @@
                 }
 
                 p {*/
-                    /*@include text-s;*/
-                /*}
+        /*@include text-s;*/
+        /*}
 
                 nav {
                     display: flex;
@@ -125,6 +123,7 @@
                         padding-left: .5rem;
                         border: solid var(--color-gray-400) 1px;
                         color: var(--color-gray-700);
+                        background: var(--color-gray-000);
 
                         &::placeholder {
                             color: var(--color-gray-500);
@@ -178,12 +177,12 @@
                                 top: 0;
                                 /*padding: 1rem;*/
                                 @include text-xs;
-                                color: var(--color-danger);
+                                color: var(--color-danger-dark);
                                 /*border: solid red 1px;*/
 
                                 @include md {
                                     @include text-s;
-                                    color: var(--color-danger);
+                                    color: var(--color-danger-dark);
                                 }
                             }
                         }
@@ -293,6 +292,8 @@
                         padding-left: .5rem;
                         border: solid var(--color-gray-400) 1px;
                         color: var(--color-gray-700);
+                        background: var(--color-gray-000);
+
 
                         &::placeholder {
                             color: var(--color-gray-500);
@@ -339,12 +340,12 @@
                                 top: 0;
                                 /*padding: 1rem;*/
                                 @include text-xs;
-                                color: var(--color-danger);
+                                color: var(--color-danger-dark);
                                 /*border: solid red 1px;*/
 
                                 @include md {
                                     @include text-s;
-                                    color: var(--color-danger);
+                                    color: var(--color-danger-dark);
                                 }
                             }
                         }

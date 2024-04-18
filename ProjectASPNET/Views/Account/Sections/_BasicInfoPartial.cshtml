@@ -1,0 +1,68 @@
+﻿@model AccountDetailsViewModel
+
+
+<section class="basic-info">
+    <form method="POST" asp-controller="Account" asp-action="Details" novalidate>
+        <h2>Account Details</h2>
+        <h5 class="theme">Basic info</h5>
+
+        <div class="content">
+            <div id="form-firstname">
+                <label asp-for="BasicInfo!.FirstName"></label>
+
+                @if (Model.IsExternalAccount)
+                {
+                    <input asp-for="BasicInfo!.FirstName" disabled />
+                }
+                else
+                {
+                    <input asp-for="BasicInfo!.FirstName" />
+                    <span asp-validation-for="BasicInfo!.FirstName"></span>
+                }
+
+            </div>
+
+            <div id="form-lastname">
+                <label asp-for="BasicInfo!.LastName"></label>
+                @if (Model.IsExternalAccount)
+                {
+                    <input asp-for="BasicInfo!.LastName" disabled />
+                }
+                else
+                {
+                    <input asp-for="BasicInfo!.LastName" />
+                    <span asp-validation-for="BasicInfo!.LastName"></span>
+                }
+            </div>
+
+            <div id="form-email">
+                <label asp-for="BasicInfo!.Email"></label>
+                @if (Model.IsExternalAccount)
+                {
+                    <input asp-for="BasicInfo!.Email" disabled />
+                }
+                else
+                {
+                    <input asp-for="BasicInfo!.Email" />
+                    <span asp-validation-for="BasicInfo!.Email"></span>
+                }
+            </div>
+
+            <div id="form-phone">
+                <label asp-for="BasicInfo!.PhoneNumber">Phone Number <p class="optional">(optional)</p></label>
+                <span asp-validation-for="BasicInfo!.PhoneNumber"></span>
+                <input asp-for="BasicInfo!.PhoneNumber" />
+            </div>
+
+            <div id="form-bio">
+                <label asp-for="BasicInfo!.Biography">Bio <p class="optional">(optional)</p></label>
+                <textarea asp-for="BasicInfo!.Biography"></textarea>
+            </div>
+
+            <div class="form-buttons">
+                <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
+                <button class="btn-theme" type="submit">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</section>

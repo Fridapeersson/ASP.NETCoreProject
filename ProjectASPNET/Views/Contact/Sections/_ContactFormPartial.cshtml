@@ -1,19 +1,21 @@
 ﻿@model ContactFormViewModel
 
-
-@{
-    // ViewData["Title"] = Model.Title;
-}
-
-@* <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span> *@
 <div class="form-container">
-    <h5>Get In Contact With Us</h5>
+    <h2>Get In Contact With Us</h2>
     @if (TempData["Status"] != null && TempData["Status"]?.ToString() == "Success")
     {
-        <div class="alert alert-success">
+        <div class="alerts alert-success">
             Thank you! Your message has been sent successfully.
         </div>
     }
+
+    @if (TempData["Status"] != null && TempData["Status"]?.ToString() == "Error")
+    {
+        <div class="alerts alert-danger">
+            Incorrect values
+        </div>
+    }
+
     <form id="contact-form" asp-controller="Contact" asp-action="Index" novalidate>
 
         <div class="form-name">
@@ -34,14 +36,15 @@
             <label asp-for="@Model.Contact.SelectedService">Services <p class="optional">(optional)</p></label>
             <div class="select-wrapper">
                 <select asp-for="@Model.Contact.SelectedService" class="form-control">
-                    <option><p>Choose the service you are interested in</p> <p><i class="fa-solid fa-chevron-down"></i></p></option>
+                    <option value="">Choose the service you are interested in</option>
                     @foreach (var service in Model.Contact.Services)
                     {
                         <option value="@service">@service</option>
                     }
                 </select>
-           @*      <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>  *@
+                <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
             </div>
+            @* <span asp-validation-for="@Model.Contact.SelectedService" class="error"></span> *@
         </div>
 
         <div class="form-message-us">
@@ -53,7 +56,6 @@
 
         <button type="submit" class="btn-theme" >Send Contact Request</button>
     </form>
-    <p>@Model.ErrorMessage</p>
 </div>
 
 @await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

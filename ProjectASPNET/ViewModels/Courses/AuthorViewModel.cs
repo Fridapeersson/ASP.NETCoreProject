@@ -8,5 +8,5 @@ public class AuthorViewModel
     public string? AuthorTitle { get; set; }
     public decimal YoutubeSubs { get; set; }
     public decimal FacebookSubs { get; set; }
-    public string? AuthorDescritpion { get; set; }
+    public string? AuthorDescription { get; set; }
 }

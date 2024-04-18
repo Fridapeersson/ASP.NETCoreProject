@@ -1,5 +1,5 @@
 .light-dark {
-    background: linear-gradient(to right, var(--color-gray-900) 50%, var(--color-gray-000) 50%);
+    background: linear-gradient(to right, var(--color-black) 50%, var(--color-white) 50%);
 
     .container {
         position: relative;
@@ -8,7 +8,7 @@
             h3 {
                 margin-left: 1rem;
                 @include h3;
-                color: var(--color-gray-000);
+                color: var(--color-white);
                 text-align: center;
                 padding-top: 2rem;
                 margin-bottom: 2rem;
@@ -16,7 +16,7 @@
 
                 @include md {
                     @include h2;
-                    color: var(--color-gray-000);
+                    color: var(--color-white);
                     margin-left: 1.5rem;
                     padding-top: 2rem;
                     margin-bottom: 0;
@@ -24,16 +24,13 @@
 
                 span {
                     margin-left: 1rem;
-                    color: var(--color-gray-900);
-
-                    @include md {
-                        /*color: var(--color-gray-900);*/
-                    }
+                    color: var(--color-black);
                 }
             }
 
             .divider {
-                display: flex;
+                display: grid;
+                grid-template-columns: auto auto;
                 height: 500px;
 
                 @include md {
@@ -46,15 +43,6 @@
 
                 @include xl {
                     height: 750px;
-                }
-
-                .dark-side {
-                    background-color: var(--color-gray-900);
-                }
-
-                .light-side, .dark-side {
-                    height: 100%;
-                    width: 100%;
                 }
             }
 

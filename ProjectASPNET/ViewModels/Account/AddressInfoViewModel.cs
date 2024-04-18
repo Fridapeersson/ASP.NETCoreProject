@@ -17,7 +17,7 @@ public class AddressInfoViewModel
 
     [Required(ErrorMessage = "Invalid postal code")]
     [Display(Name = "Postal code", Prompt = "Enter your postal code")]
-    [DataType(DataType.Text)]
+    [DataType(DataType.PostalCode)]
     public string PostalCode { get; set; } = null!;
 
 

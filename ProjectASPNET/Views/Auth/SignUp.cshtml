@@ -10,7 +10,7 @@
 
                 @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
                 {
-                    <div class="alerts">
+                    <div class="alerts alert-danger">
                         @ViewData["ErrorMessage"]
                     </div>
                 }

@@ -46,6 +46,7 @@ header {
         }
 
         #account-buttons {
+            margin: 0 auto;
             @include lg {
                 display: flex;
                 gap: 1rem;
@@ -57,7 +58,7 @@ header {
                 margin: 0;
                 padding: 0;
                 text-align: center;
-                border: solid var(--gray-500) 1px;
+                border: solid var(--color-gray-500) 1px;
                 border-radius: 50%;
             }
         }

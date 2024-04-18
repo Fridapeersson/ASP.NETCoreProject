@@ -59,9 +59,7 @@
                 }
 
                 .change-password-form {
-
                     .change-password-form-content {
-                        /*border: solid red 1px;*/
                         display: grid;
                         gap: 1rem;
                         grid-template-columns: 1fr 1fr;
@@ -71,8 +69,6 @@
                             display: grid;
                             position: relative;
 
-
-
                             label {
                                 font-weight: 800;
                             }
@@ -81,7 +77,6 @@
                                 position: absolute;
                                 top: 0;
                                 right: 0;
-
                             }
 
                             input {
@@ -89,6 +84,8 @@
                                 border-radius: .5rem;
                                 border: solid var(--color-gray-300);
                                 padding-left: .8rem;
+                                background-color: var(--color-gray-000);
+                                color: var(--color-gray-900);
 
 
                                 &::placeholder {
@@ -160,6 +157,9 @@
                 }
 
                 .delete-account-form {
+                    /*border: solid red 1px;*/
+                    position: relative;
+
                     .checkbox {
                         display: flex;
                         align-items: center;
@@ -168,15 +168,22 @@
                         input {
                         }
 
+                        span {
+                            position: absolute;
+                            /*display: none;*/
+                        }
+
                         p {
                             margin: 0;
                         }
                     }
 
-                    .alert-danger {
+                    .delete-btn {
                         margin-top: 1rem;
                         border: solid var(--color-danger-dark) 1px;
                         width: 20%;
+                        padding: .7rem;
+                        border-radius: .5rem;
                         background: var(--color-danger-dark);
                         color: var(--color-gray-000);
                         margin-bottom: 2rem;

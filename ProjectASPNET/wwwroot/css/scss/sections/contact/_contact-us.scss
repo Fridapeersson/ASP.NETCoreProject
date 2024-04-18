@@ -1,7 +1,6 @@
 .contact-us {
     color: var(--color-gray-900);
-
-    background: var(--color-gray-200);
+    background: var(--color-gray-100);
 
 
     .container {
@@ -159,13 +158,9 @@
                 }
             }
 
-
-            h5 {
+            h2 {
                 margin-left: .5rem;
                 color: var(--color-gray-800);
-
-                @include lg {
-                }
             }
 
             .alert-success {
@@ -173,24 +168,23 @@
             }
 
             #contact-form {
-
                 .form-name, .form-email, .drop-down, .form-message-us {
                     display: flex;
                     flex-direction: column;
                     padding: .7rem;
 
-
-
                     input, textarea, select, option {
                         /*padding: .3rem;*/
                         border-radius: .5rem;
-                        border: solid var(--color-gray-500) 1px;
+                        border: solid var(--color-gray-300) 1px;
                         padding-left: 1rem;
                         padding: .5rem;
+                        background: var(--color-gray-000);
+                        color: var(--color-gray-900);
 
 
                         &::placeholder {
-                            color: var(--color-gray-500);
+                            color: var(--color-gray-300);
                             /*padding-left: 1rem;*/
                         }
                     }
@@ -214,7 +208,6 @@
                         top: 12%;
                         right: 3%;
                         color: var(--color-danger-dark);
-                        /*background-color: var(--color-danger-dark);*/
                         padding: .2rem;
                         border-radius: .3rem;
                     }
@@ -227,7 +220,7 @@
                         margin-bottom: -.8rem;
 
                         .optional {
-                            color: var(--color-gray-500);
+                            color: var(--color-gray-300);
                         }
                     }
 
@@ -235,19 +228,18 @@
                         position: relative;
 
                         select {
-                            color: var(--color-gray-500);
+                            color: var(--color-gray-300);
                         }
 
                         .arrow {
                             display: none;
 
-                            @include md {
-                                color: var(--color-gray-900);
+                            @media(min-width:450px) {
+                                display: block;
                                 position: absolute;
+                                top: 10px;
                                 right: 10px;
-                                top: 50%;
-                                font-size: 30rem;
-                                transform: translateY(-50%);
+                                color: var(--color-gray-900);
                             }
                         }
                     }
@@ -296,12 +288,13 @@
                         width: 45%;
                     }
                 }
-
+                /*
                 .arrow {
                     display: absolute;
                     top: 19.5rem;
                     right: -1.5rem;
-                }
+                    color: hotpink;
+                }*/
             }
         }
     }

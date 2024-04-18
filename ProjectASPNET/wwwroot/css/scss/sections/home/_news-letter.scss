@@ -126,6 +126,7 @@
                 }
 
                 .input-container {
+                    margin-top: 1rem;
                     position: relative;
                     display: flex;
                     flex-direction: column;
@@ -133,13 +134,14 @@
                     align-items: center;
 
                     @include md {
+                        margin-top: 0;
                         display: grid;
                         grid-template-columns: 1fr auto;
                         align-items: center;
                         gap: 1rem;
                     }
 
-                    i {
+                    .fa-envelope {
                         position: absolute;
                         top: 1.87rem;
                         left: .8rem;
@@ -154,12 +156,21 @@
                         padding: .5rem;
                         margin-bottom: 1rem;
                         padding-left: 2.3rem;
-                        color: var(--color-gray-400);
+                        color: var(--color-gray-600);
                         background: var(--color-gray-100);
-
 
                         &::placeholder {
                             color: var(--color-gray-500);
+                        }
+                    }
+
+                    .error {
+                        position: absolute;
+                        top: -5%;
+                        /*color: red;*/
+                        @include md {
+                            margin-right: 22%;
+                            top: -15%;
                         }
                     }
 

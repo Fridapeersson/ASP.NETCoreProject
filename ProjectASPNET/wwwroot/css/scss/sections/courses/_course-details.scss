@@ -2,7 +2,6 @@
     color: var(--color-gray-900);
     position: relative;
     display: grid;
-    color: var(--color-gray-900);
     z-index: 1;
 
     .courses-showcase-img {
@@ -14,7 +13,6 @@
             object-fit: cover;
             width: 100%;
             height: 15%;
-            /*top: 0;*/
             z-index: -1;
             filter: brightness(30%);
         }
@@ -35,12 +33,11 @@
     .container {
         .mini-menu {
             display: none;
-
+            color: var(--color-gray-500);
             @include md {
                 display: flex;
-                gap: 1rem;
+                gap: .5rem;
                 align-items: center;
-                /*color: var(--color-gray-000);*/
             }
 
             @include lg {
@@ -53,24 +50,17 @@
             }
 
             .arrow {
-                color: var(--color-gray-000);
                 font-size: .5rem;
             }
 
             .home {
-                color: var(--color-gray-000);
-
-                @include md {
-                    margin-right: .5rem;
-                }
-
                 i {
                     margin-right: .2rem;
                 }
             }
 
             a {
-                color: var(--color-gray-000);
+                color: var(--color-gray-400);
             }
         }
 
@@ -81,39 +71,30 @@
 
                 .best-seller {
                     background-color: #22C55E;
-                    color: var(--color-gray-100);
+                    color: var(--color-white);
                     padding: 0 .8rem;
                     border-radius: .3rem;
                 }
 
                 .digital {
                     background-color: var(--color-gray-400);
-                    color: var(--color-gray-900);
+                    color: var(--color-black);
                     border-radius: .3rem;
                     padding: 0 .8rem;
                 }
             }
 
             h3 {
-                @include h4;
-                color: var(--color-gray-100) !important;
-
-                @include md {
-                    /*color: var(--color-gray-900);*/
-                }
+                color: var(--color-white);
 
                 @include lg {
                     @include h2;
-                    /*color: var(--color-gray-900);*/
+                    color: var(--color-white);
                 }
             }
 
             p {
                 color: var(--color-gray-500);
-
-                @include md {
-                    /*color: var(--gray-400);*/
-                }
 
                 @include lg {
                     margin-bottom: 1rem;
@@ -218,7 +199,7 @@
             align-items: center;
 
             @include md {
-                margin: 2rem 0;
+                margin: 1rem 0;
             }
 
             @include lg {
@@ -248,17 +229,11 @@
             .created-by {
                 display: flex;
                 flex-direction: column;
-                gap: .3rem;
 
                 p {
-                    @include md {
-                        margin-bottom: 1.5rem;
-                        color: var(--color-gray-000);
-                    }
-
                     @include lg {
                         @include text-xs;
-                        color: var(--color-white);
+                        /*color: var(--color-white);*/
                         margin: 0;
                     }
                 }
@@ -352,6 +327,7 @@
                 h5 {
                     @include lg {
                         @include h4;
+                        /*color: var(--color-danger-dark);*/
                     }
                 }
 
@@ -363,6 +339,10 @@
                         @include text-xl;
                         color: var(--color-gray-500);
                     }
+                }
+
+                .discounted-price {
+                    color: var(--color-danger-dark);
                 }
             }
 
@@ -432,6 +412,8 @@
                     display: flex;
                     flex-direction: column;
                     display: relative;
+                    /*border: none;*/
+                    margin-bottom: 1rem;
 
                     @include md {
                         flex-direction: row;
@@ -439,6 +421,7 @@
                         align-items: start;
                         gap: 2rem;
                         margin-bottom: 1rem;
+                        border: none;
                     }
 
                     @include lg {
@@ -451,13 +434,12 @@
                     }
 
                     .numbers-img {
-                        display: flex;
-                        margin: 0;
-                        padding: 0;
-                        width: 15%;
-                        margin-top: 1.5rem;
+                        display: none;
 
                         @include md {
+                            display: flex;
+                            width: 15%;
+                            margin-top: 1.5rem;
                             justify-content: start;
                             align-items: start;
                             margin: 0;
@@ -482,10 +464,14 @@
             }
 
             .author {
+                border-radius: .3rem;
+                border: solid var(--color-gray-200) 1px;
+                text-align: center;
+                margin-bottom: 3rem;
                 @include md {
+                    text-align: start;
                     position: relative;
-                    background: var(--color-gray-900) /*hotpink*/;
-                    border: solid var(--color-gray-400) 1px;
+                    background: var(--color-gray-900);
                 }
 
                 @include lg {
@@ -494,6 +480,8 @@
 
                 .background-pattern {
                     display: none;
+                    border-radius: .3rem;
+                    margin-bottom: 5rem;
 
                     @include md {
                         display: block;
@@ -501,6 +489,7 @@
                         object-fit: cover;
                         width: 100%;
                         height: 100%;
+                        background: var(--color-black);
                     }
                 }
 
@@ -539,9 +528,12 @@
                             padding: 4.7rem;
                         }
 
+
+
                         p, h2 {
                             @include md {
-                                color: var(--color-gray-000);
+                                color: var(--color-white);
+                                z-index: 5;
                                 margin-top: 1rem;
                             }
 
@@ -553,12 +545,13 @@
 
                     .buttons {
                         display: flex;
-                        /*flex-direction: column;*/
                         gap: 1rem;
                         padding: .5rem;
                         z-index: 1;
+                        justify-content: center;
 
                         @include md {
+                            justify-content: flex-start;
                             flex-direction: row;
                             gap: 3rem;
                             padding: 1rem;
@@ -586,7 +579,8 @@
                         }
 
                         .youtube-btn {
-                            background-color: red;
+                            background-color: var(--color-danger-dark);
+                            color: var(--color-white);
 
                             i {
                                 margin-right: .5rem;
@@ -595,6 +589,8 @@
 
                         .facebook-btn {
                             background-color: #4C82F7;
+                            color: var(--color-white);
+
 
                             i {
                                 margin-right: .5rem;

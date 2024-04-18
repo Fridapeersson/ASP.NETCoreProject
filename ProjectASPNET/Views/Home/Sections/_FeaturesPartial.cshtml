@@ -1,5 +1,9 @@
 ﻿@model FeaturesViewModel;
 
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+}
+
 <section id="@Model.Id" class="features">
     <div class="container">
         <h1>@Model.Title</h1>
@@ -10,8 +14,11 @@
             {
                 foreach (var boxModel in Model.FeaturesBox)
                 {
+                    //ändrar bildernas färg när temat ändras
+                    var imagePath = themeMode == "dark" ? boxModel.FeaturesImg.ImageUrl.Replace(".svg", "_dark.svg") : boxModel.FeaturesImg.ImageUrl;
+
                     <div class="box">
-                        <img src=@boxModel.FeaturesImg.ImageUrl alt=@boxModel.FeaturesImg.AltText = "@boxModel.FeaturesImg.AltText" class="features-icon"/>
+                        <img src=@imagePath alt=@boxModel.FeaturesImg.AltText ="@boxModel.FeaturesImg.AltText" class="features-icon" />
                         <h5>@boxModel.FeaturesTitle</h5>
                         <p>@boxModel.FeaturesDescription</p>
                     </div>

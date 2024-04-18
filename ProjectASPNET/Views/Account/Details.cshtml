@@ -16,16 +16,20 @@
 
         @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
         {
-            <div class="alerts">
+            <div class="alerts alert-danger-dark">
                 @ViewData["ErrorMessage"]
             </div>
         }
 
 
         <div class="account-details">
-            <section class="basic-info">
+            @await Html.PartialAsync("~/Views/Account/Sections/_BasicInfoPartial.cshtml")
 
-                <form method="POST" asp-controller="Account" asp-action="Details" novalidate>
+
+            @* <section class="basic-info"> *@
+
+
+                @* <form method="POST" asp-controller="Account" asp-action="Details">
                     <h2>Account Details</h2>
                     <h5 class="theme">Basic info</h5>
 
@@ -83,17 +87,18 @@
                         </div>
 
                         <div class="form-buttons">
-                            <button class="btn-gray" type="reset">Cancel</button>
+                            <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
                             <button class="btn-theme" type="submit">Save Changes</button>
                         </div>
                     </div>
-                </form>
-            </section>
+                </form> *@
+            @* </section> *@
 
             <hr />
 
-            <section class="address-info">
-                <form method="POST" asp-controller="Account" asp-action="Details" novalidate>
+                @await Html.PartialAsync("~/Views/Account/Sections/_AddressInfoPartial.cshtml")
+            @* <section class="address-info"> *@
+                @* <form method="POST" asp-controller="Account" asp-action="Details" novalidate>
                     <h5 class="theme">Address info</h5>
 
                     <div class="content">
@@ -127,13 +132,15 @@
 
 
                         <div class="form-buttons">
-                            <button class="btn-gray" type="reset">Cancel</button>
+                            <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
                             <button class="btn-theme" type="submit">Save Changes</button>
                         </div>
                     </div>
-                </form>
-            </section>
+                </form> *@
+            @* </section> *@
 
         </div>
     </div>
 </div>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

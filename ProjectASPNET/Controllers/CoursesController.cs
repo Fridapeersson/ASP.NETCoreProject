@@ -104,7 +104,7 @@ public class CoursesController : Controller
 
 
     [Route("/courses")]
-    public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 3)
+    public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 9)
     {
         var courseApiUrl = $"https://localhost:7107/api/courses?key={_config["ApiKey:Secret"]}&category={HttpUtility.UrlEncode(category)}&searchQuery={HttpUtility.UrlEncode(searchQuery)}&pageNumber={pageNumber}&pageSize={pageSize}";
 
@@ -141,7 +141,7 @@ public class CoursesController : Controller
                         Id = x.Id,
                         AuthorTitle = x.Author.AuthorTitle,
                         AuthorName = x.Author.AuthorName,
-                        AuthorDescritpion = x.Author.AuthorDescription,
+                        AuthorDescription = x.Author.AuthorDescription,
                         AuthorImageUrl = x.Author.AuthorImageUrl,
                         FacebookSubs = x.Author.FacebookSubs,
                         YoutubeSubs = x.Author.YoutubeSubs,

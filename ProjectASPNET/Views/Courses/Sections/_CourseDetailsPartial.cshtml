@@ -11,7 +11,7 @@
             <i class="fa-light fa-chevrons-right arrow"></i>
             <a asp-action="Courses" asp-controller="Courses">Courses </a>
             <i class="fa-light fa-chevrons-right arrow"></i>
-            <a asp-action="CourseDetails" asp-controller="Courses">Fullstack Web Developer Course from Scratch</a>
+            <a asp-action="CourseDetails" asp-controller="Courses"> @Model.Title @* Fullstack Web Developer Course from Scratch *@</a>
         </div>
 
 
@@ -90,7 +90,7 @@
                     }
                     else
                     {
-                        <h5>$@Model.DiscountPrice</h5> <span>$@Model.Price</span>
+                        <h5 class="discounted-price"> $@Model.DiscountPrice</h5> <span>$@Model.Price</span>
                     }
                 </div>
                 <a href="#"><button class="btn-theme">Join course</button></a>
@@ -162,7 +162,7 @@
                     <div class="author-content">
                         <p>@Model.Author.AuthorTitle</p>
                         <h2>@Model.Author.AuthorName</h2>
-                        <p>@Model.Author.AuthorDescritpion</p>
+                        <p class="author-description">@Model.Author.AuthorDescription</p>
 
                         <div class="buttons">
 

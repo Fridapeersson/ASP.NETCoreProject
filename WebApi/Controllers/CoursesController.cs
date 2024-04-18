@@ -105,34 +105,29 @@ public class CoursesController : ControllerBase
     #endregion
 
 
-
-
     #region UPDATE COURSE
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCourse(int id, CourseDto courseDto)
     {
-        try
+        if(ModelState.IsValid)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-            }
 
-            var course = await _coursesService.UpdateCourseAsync(id, courseDto);
-            if (course)
-            {
-                return Ok("Course updated successfully.");
+                var course = await _coursesService.UpdateCourseAsync(id, courseDto);
+                if (course)
+                {
+                    return Ok("Course updated successfully.");
+                }
+                else
+                {
+                    return NotFound("Course not found.");
+                }
             }
-            else
-            {
-                return NotFound("Course not found.");
-            }
+            catch (Exception ex) { Debug.WriteLine(ex); }
+            return BadRequest(ModelState);
         }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex);
-            return Problem("An error occurred while updating the course. Please try again later.");
-        }
+        return Problem("An error occurred while updating the course. Please try again later.");
     }
     #endregion
 
@@ -163,37 +158,4 @@ public class CoursesController : ControllerBase
     }
     #endregion
 
-
-    //#region REMOVE ALL SAVED COURSES
-    //[HttpDelete("RemoveAllSavedCourses/{userId}")]
-    //public async Task<IActionResult> RemoveAllSavedCourses(string userId)
-    //{
-    //    try
-    //    {
-    //        if (ModelState.IsValid)
-    //        {
-    //            var result = await _coursesService.RemoveAllSavedCoursesAsync(userId);
-    //            if (result)
-    //            {
-    //                return Ok("All saved courses removed successfully");
-    //            }
-    //            else
-    //            {
-    //                return NotFound("No saved courses found for the specified user.");
-    //            }
-    //        }
-    //        return BadRequest("Invalid model state");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Debug.WriteLine(ex);
-    //        return Problem("An error occurred while removing saved courses. Please try again later.");
-    //    }
-    //}
-    //#endregion
 }
-//try
-//{
-
-//}
-//catch (Exception ex) { Debug.WriteLine(ex); }

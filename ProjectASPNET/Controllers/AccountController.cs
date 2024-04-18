@@ -1,4 +1,5 @@
-﻿using Infrastructure.Entities;
+﻿using Azure;
+using Infrastructure.Entities;
 using Infrastructure.Models.Account;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -40,20 +41,19 @@ public class AccountController : Controller
     [Route("/account/details")]
     public async Task<IActionResult> Details()
     {
-        //if (!_signInManager.IsSignedIn(User))
-        //{
-        //    return RedirectToAction("SignIn", "Auth");
-        //}
-        //{
-        //    //ProfileInfo = await PopulateProfileInfoAsync()
-        //};
-        //viewModel.BasicInfo ??= await PopulateBasicInfoAsync(); //om de är null hämtar från db
-        //viewModel.AddressInfo ??= await PopulateAddressInfoAsync(); //om de är null hämtar från db
-        var claims = HttpContext.User.Identities.FirstOrDefault();
-        ViewBag.ActiveMenu = "Details";
-        var viewModel = await PopulateAccountViewModel();
+        if(ModelState.IsValid)
+        {
+            try
+            {
+                var claims = HttpContext.User.Identities.FirstOrDefault();
+                ViewBag.ActiveMenu = "Details";
+                var viewModel = await PopulateAccountViewModel();
 
-        return View(viewModel);
+                return View(viewModel);
+            }
+            catch(Exception ex) { Debug.WriteLine(ex); }
+        }
+        return null!;
     }
     #endregion
 
@@ -63,17 +63,27 @@ public class AccountController : Controller
     [Route("/account/details")]
     public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
     {
-
-        if (viewModel.BasicInfo != null)
+        try
         {
-            await UpdateBasicInfoAsync(viewModel.BasicInfo);
-        }
-        if (viewModel.AddressInfo != null)
-        {
-            await UpdateAddressInfo(viewModel.AddressInfo);
-        }
+            var user = _userManager.GetUserAsync(User);
+            
+            if(ModelState.IsValid)
+            {
+                if (viewModel.BasicInfo != null)
+                {
+                    await UpdateBasicInfoAsync(viewModel.BasicInfo);
+                }
+                if (viewModel.AddressInfo != null)
+                {
+                    await UpdateAddressInfo(viewModel.AddressInfo);
+                }
 
-        await PopulateAccountViewModel();
+                await PopulateAccountViewModel();
+            }
+        }
+        catch(Exception ex) { Debug.WriteLine(ex); }
+
+
 
 
         viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
@@ -91,67 +101,62 @@ public class AccountController : Controller
     [Route("/account/savedCourses")]
     public async Task<IActionResult> SavedCourses()
     {
-        try
+        if(ModelState.IsValid)
         {
-            ViewBag.ActiveMenu = "SavedCourses";
-
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var profileInfo = await PopulateProfileInfoAsync();
-
-            var allCourses = await _coursesService.GetAllAsync();
-            var savedCourses = await _coursesService.GetAllSavedCourses(User);
-            var savedCourseIds = savedCourses.Select(x => x.CourseId);
-            var savedCoursesViewModels = new List<CourseViewModel>();
-
-            //loopa igenom kurserna och skapa objekt för de sparade kurserna
-            foreach (var course in allCourses)
+            try
             {
-                if (savedCourseIds.Contains(course.Id))
+                ViewBag.ActiveMenu = "SavedCourses";
+
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var profileInfo = await PopulateProfileInfoAsync();
+
+                var allCourses = await _coursesService.GetAllAsync();
+                var savedCourses = await _coursesService.GetAllSavedCourses(User);
+                var savedCourseIds = savedCourses.Select(x => x.CourseId);
+                var savedCoursesViewModels = new List<CourseViewModel>();
+
+                //loopa igenom kurserna och skapa objekt för de sparade kurserna
+                foreach (var course in allCourses)
                 {
-                    // Skapa kursvyobjekt
-                    var courseViewModel = new CourseViewModel
+                    if (savedCourseIds.Contains(course.Id))
                     {
-                        Id = course.Id,
-                        Title = course.Title,
-                        Price = course.Price,
-                        DiscountPrice = course.DiscountPrice,
-                        HoursToComplete = course.HoursToComplete,
-                        LikesInNumbers = course.LikesInNumbers,
-                        LikesInPercent = course.LikesinPercent,
-                        IsBestSeller = course.IsBestSeller,
-                        BackgroundImageName = course.BackgroundImageName!,
-                        Author = new AuthorViewModel
+                        var courseViewModel = new CourseViewModel
                         {
-                            Id = course.Author.Id,
-                            AuthorTitle = course.Author.AuthorTitle,
-                            AuthorName = course.Author.AuthorName,
-                            AuthorDescritpion = course.Author.AuthorDescription,
-                            AuthorImageUrl = course.Author.AuthorImageUrl,
-                            FacebookSubs = course.Author.FacebookSubs,
-                            YoutubeSubs = course.Author.YoutubeSubs
-                        }
-                    };
+                            Id = course.Id,
+                            Title = course.Title,
+                            Price = course.Price,
+                            DiscountPrice = course.DiscountPrice,
+                            HoursToComplete = course.HoursToComplete,
+                            LikesInNumbers = course.LikesInNumbers,
+                            LikesInPercent = course.LikesinPercent,
+                            IsBestSeller = course.IsBestSeller,
+                            BackgroundImageName = course.BackgroundImageName!,
+                            Author = new AuthorViewModel
+                            {
+                                Id = course.Author.Id,
+                                AuthorTitle = course.Author.AuthorTitle,
+                                AuthorName = course.Author.AuthorName,
+                                AuthorDescription = course.Author.AuthorDescription,
+                                AuthorImageUrl = course.Author.AuthorImageUrl,
+                                FacebookSubs = course.Author.FacebookSubs,
+                                YoutubeSubs = course.Author.YoutubeSubs
+                            }
+                        };
+                        // ändrar så kursen är true
+                        courseViewModel.IsSaved = true;
 
-                    // ändrar så kursen är true
-                    courseViewModel.IsSaved = true;
-
-                    savedCoursesViewModels.Add(courseViewModel);
+                        savedCoursesViewModels.Add(courseViewModel);
+                    }
                 }
+                var viewModel = new AccountDetailsViewModel
+                {
+                    ProfileInfo = profileInfo,
+                    SavedCourses = savedCoursesViewModels
+                };
+                return View(viewModel);
             }
-            var viewModel = new AccountDetailsViewModel
-            {
-                ProfileInfo = profileInfo,
-                SavedCourses = savedCoursesViewModels
-            };
-
-            return View(viewModel);
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex);
-            // Hantera fel här
-        }
-
         return View();
     }
     #endregion
@@ -160,16 +165,24 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> SaveCourseToProfile(int courseId)
     {
-        //hämtar användarens id
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
-        if(userId != null)
+        if(ModelState.IsValid)
         {
-            var result = await _coursesService.SaveCourseToProfile(userId, courseId);
-
-            if (result)
+            try
             {
-                return RedirectToAction("Courses", "Courses");
+                //hämtar användarens id
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (userId != null)
+                {
+                    var result = await _coursesService.SaveCourseToProfile(userId, courseId);
+
+                    if (result)
+                    {
+                        return RedirectToAction("Courses", "Courses");
+                    }
+                }
             }
+            catch (Exception ex) { Debug.WriteLine(ex); }
+
         }
          return RedirectToAction("SavedCourses", "Account"); 
     }
@@ -177,85 +190,82 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> RemoveCourseFromProfile(int courseId)
     {
-        //hämtar användarens id
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (userId != null)
+        if(ModelState.IsValid)
         {
-            var result = await _coursesService.RemoveCourseFromProfileAsync(userId, courseId);
-
-            if (result)
+            try
             {
-                return RedirectToAction("SavedCourses", "Account");
+                //hämtar användarens id
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (userId != null)
+                {
+                    var result = await _coursesService.RemoveCourseFromProfileAsync(userId, courseId);
+
+                    if (result)
+                    {
+                        return RedirectToAction("SavedCourses", "Account");
+                    }
+                }
             }
+            catch(Exception ex) { Debug.WriteLine(ex); }
         }
+
         return RedirectToAction("SavedCourses", "Account");
     }
 
-    //RemoveAllSavedCourses
     public async Task<IActionResult> RemoveAllSavedCourses()
     {
-        try
+        if(ModelState.IsValid)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if(userId != null) 
+            try
             {
-                var result = await _coursesService.RemoveAllSavedCoursesAsync(userId);
-                if(result)
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (userId != null)
                 {
-                    return RedirectToAction("SavedCourses", "Account");
-
+                    var result = await _coursesService.RemoveAllSavedCoursesAsync(userId);
+                    if (result)
+                    {
+                        return RedirectToAction("SavedCourses", "Account");
+                    }
+                    else
+                    {
+                        return RedirectToAction("SavedCourses", "Account");
+                    }
                 }
             }
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
-        catch(Exception ex) { Debug.WriteLine(ex);}
+        
         return null!;
     }
 
-    #region
+    #region GET - Security
     [HttpGet]
     [Route("/account/security")]
     public async Task<IActionResult> Security()
     {
-        try
+        if(ModelState.IsValid)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var profileInfo = await PopulateProfileInfoAsync();
-            if(profileInfo != null)
+            try
             {
-                var viewModel = new SecurityViewModel
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var profileInfo = await PopulateProfileInfoAsync();
+                if (profileInfo != null)
                 {
-                    ProfileInfo = profileInfo,
-                };
-                ViewBag.ActiveMenu = "Security";
-                return View(viewModel);
-            }
+                    var viewModel = new SecurityViewModel
+                    {
+                        ProfileInfo = profileInfo,
+                    };
+                    ViewBag.ActiveMenu = "Security";
+                    return View(viewModel);
+                }
 
+            }
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
-        catch(Exception ex) { Debug.WriteLine(ex); }
+        
         return View(new SecurityViewModel());
     }
     #endregion
-//    ViewBag.ActiveMenu = "SavedCourses";
-
-//            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//    var profileInfo = await PopulateProfileInfoAsync();
-//    //var courses = await _coursesService.GetAllPagedAsync();
-//    var savedCourses = await _coursesService.GetAllSavedCourses(User);
-
-//    var viewModel = new SavedCoursesViewModel
-//    {
-//        ProfileInfo = profileInfo,
-//        CourseDto = savedCourses.ToList(),
-//    };
-//            if(viewModel != null)
-//            {
-//                return View(viewModel);
-//}
-//            return View();
-//        }
-//        catch(Exception ex) { Debug.WriteLine(ex); }
-
-//        return View();
 
 #region
 [HttpPost]
@@ -265,28 +275,25 @@ public class AccountController : Controller
         {
             if(ModelState.IsValid)
             {
-
                 var user = await _userManager.GetUserAsync(User);
                 if(user != null)
                 {
-                    var checkPassword = await _userManager.CheckPasswordAsync(user, viewModel.Form.CurrentPassword!);
+                    viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+                    var checkPassword = await _userManager.CheckPasswordAsync(user, viewModel.Form!.CurrentPassword!);
                     if(!string.IsNullOrWhiteSpace(viewModel.Form.CurrentPassword))
                     {
                         var result = await _userManager.ChangePasswordAsync(user, viewModel.Form.CurrentPassword, viewModel.Form.NewPassword!);
                         if(result.Succeeded)
                         {
+                            //await PopulateProfileInfoAsync();
+                            ViewBag.ActiveMenu = "Security";
+                            ViewData["Message"] = "Password changed successfully.";
                             return View(viewModel);
                         }
-                    }
-                }
-
-
-                if(viewModel.DeleteAccount.ConfirmDeleteAccount != null && viewModel.DeleteAccount.ConfirmDeleteAccount)
-                {
-                    var result = await _userManager.DeleteAsync(user!);
-                    if(result.Succeeded)
-                    {
-                        return RedirectToAction("Index", "Home");
+                        else
+                        {
+                            ViewData["ErrorMessage"] = "Something went wrong";
+                        }
                     }
                 }
             }
@@ -307,11 +314,11 @@ public class AccountController : Controller
         }
         catch (Exception ex) { Debug.WriteLine(ex); }
         ViewBag.ActiveMenu = "Security";
-        return View(new SecurityViewModel());
-
+        return View(viewModel);
     }
     #endregion
 
+    [HttpPost]
     public async Task<IActionResult> DeleteAccount(SecurityViewModel viewModel)
     {
         try
@@ -328,7 +335,19 @@ public class AccountController : Controller
                     {
                         return RedirectToAction("Index", "Home");
                     }
+                    else
+                    {
+                        ViewData["Error"] = "Something went wrong";
+                    }
                 }
+            }
+            else
+            {
+                viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+                ViewData["Error"] = "You must check the box if you want to delete your account.";
+                ViewBag.ActiveMenu = "Security";
+                return View("Security", viewModel);
+
             }
             return RedirectToAction("Security", "Account");
  
@@ -355,7 +374,8 @@ public class AccountController : Controller
                 return viewModel;
             }
         }
-        catch(Exception ex) { Debug.WriteLine(ex); }
+        catch (Exception ex) { Debug.WriteLine(ex); }
+
         return new AccountDetailsViewModel
         {
             BasicInfo = new BasicInfoViewModel { },
@@ -407,7 +427,7 @@ public class AccountController : Controller
             //}
             var basicInfoViewModel = new BasicInfoViewModel
             {
-                UserId = user!.Id,
+                //UserId = user!.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email!,

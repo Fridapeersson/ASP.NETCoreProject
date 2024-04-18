@@ -64,7 +64,7 @@ public class ContactController : Controller
             }
             else
             {
-                TempData["Status"] = "Invalid";
+                TempData["Status"] = "Error";
             }
         }
         catch 

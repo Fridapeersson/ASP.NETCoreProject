@@ -23,14 +23,14 @@ public class ContactController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateContactRequest(ContactUsEntity contact)
+    public async Task<IActionResult> CreateContactRequest(ContactDto contactDto)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var result = await _contactRepository.CreateOneAsync(contact);
-                if (result != null)
+                var result = await _contactService.CreateContactUsAsync(contactDto);
+                if (result)
                 {
                     return Created("", null);
                 }

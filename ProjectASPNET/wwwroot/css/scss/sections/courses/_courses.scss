@@ -1,8 +1,6 @@
 .courses {
     color: var(--color-gray-900);
     display: flex;
-    /*color: var(--color-gray-900);*/
-
 
     .container {
         .bread-crum {
@@ -148,6 +146,7 @@
                         position: relative;
                         border: none;
 
+
                         @include lg {
                             margin: 0;
                             justify-content: end;
@@ -158,6 +157,7 @@
                             padding: .3rem;
                             padding-left: 2rem;
                             border: solid 1px var(--color-gray-400);
+                            background: var(--color-gray-000);
 
                             &::placeholder {
                                 color: var(--color-gray-500);
