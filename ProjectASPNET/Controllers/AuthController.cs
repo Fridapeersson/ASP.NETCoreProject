@@ -3,11 +3,9 @@ using Infrastructure.Models.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using ProjectASPNET.ViewModels.Auth;
 using System.Diagnostics;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
@@ -151,7 +149,6 @@ namespace ProjectASPNET.Controllers
 
 
         #region External Account - Facebook
-
         [HttpGet]
         public IActionResult Facebook()
         {
@@ -189,7 +186,7 @@ namespace ProjectASPNET.Controllers
                         var result = await _userManager.CreateAsync(userEntity);
                         if (result.Succeeded)
                         {
-                            user = await _userManager.FindByEmailAsync(userEntity.Email);
+                            user = await _userManager.FindByEmailAsync(userEntity!.Email);
                         }
                     }
 
@@ -208,7 +205,7 @@ namespace ProjectASPNET.Controllers
 
                         await _signInManager.SignInAsync(user, isPersistent: false);
 
-                        if(HttpContext.User != null)
+                        if(!HttpContext.User.Identity!.IsAuthenticated)
                         {
                             ModelState.AddModelError("InvalidFacebookAuthentication", "Failed to authenticate with facebook");
                             ViewData["ErrorMessage"] = "Failed to authenticate with facebook";
@@ -280,7 +277,7 @@ namespace ProjectASPNET.Controllers
 
                         await _signInManager.SignInAsync(user, isPersistent: false);
 
-                        if (HttpContext.User != null)
+                        if (!HttpContext.User.Identity!.IsAuthenticated)
                         {
                             ModelState.AddModelError("InvalidGoogleAuthentication", "Failed to authenticate with google");
                             ViewData["ErrorMessage"] = "Failed to authenticate with google";

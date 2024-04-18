@@ -50,18 +50,45 @@
 
             <div id="form-phone">
                 <label asp-for="BasicInfo!.PhoneNumber">Phone Number <p class="optional">(optional)</p></label>
-                <span asp-validation-for="BasicInfo!.PhoneNumber"></span>
-                <input asp-for="BasicInfo!.PhoneNumber" />
+
+                @if(Model.IsExternalAccount)
+                {
+                    <input asp-for="BasicInfo!.PhoneNumber" disabled />
+                }
+                else
+                {
+                    <span asp-validation-for="BasicInfo!.PhoneNumber"></span>
+                    <input asp-for="BasicInfo!.PhoneNumber" />
+                }
+
             </div>
 
             <div id="form-bio">
                 <label asp-for="BasicInfo!.Biography">Bio <p class="optional">(optional)</p></label>
-                <textarea asp-for="BasicInfo!.Biography"></textarea>
+
+                @if(Model.IsExternalAccount)
+                {
+                    <textarea asp-for="BasicInfo!.Biography" disabled></textarea>
+                }
+                else
+                {
+                    <textarea asp-for="BasicInfo!.Biography"></textarea>
+
+                }
+
             </div>
 
             <div class="form-buttons">
-                <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
-                <button class="btn-theme" type="submit">Save Changes</button>
+                @if (Model.IsExternalAccount)
+                {
+                    <button class="btn-disabled" disabled>Cancel</button>
+                    <button class="btn-disabled" disabled>Save Changes</button>
+                }
+                else
+                {
+                    <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
+                    <button class="btn-theme" type="submit">Save Changes</button>
+                }
             </div>
         </div>
     </form>

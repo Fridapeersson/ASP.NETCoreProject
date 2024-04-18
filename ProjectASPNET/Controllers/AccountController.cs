@@ -35,7 +35,6 @@ public class AccountController : Controller
     }
 
 
-
     #region [HttpGET] Details
     [HttpGet]
     [Route("/account/details")]
@@ -65,10 +64,10 @@ public class AccountController : Controller
     {
         try
         {
-            var user = _userManager.GetUserAsync(User);
             
             if(ModelState.IsValid)
             {
+                var user = _userManager.GetUserAsync(User);
                 if (viewModel.BasicInfo != null)
                 {
                     await UpdateBasicInfoAsync(viewModel.BasicInfo);
@@ -243,26 +242,32 @@ public class AccountController : Controller
     [Route("/account/security")]
     public async Task<IActionResult> Security()
     {
-        if(ModelState.IsValid)
-        {
-            try
-            {
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var profileInfo = await PopulateProfileInfoAsync();
-                if (profileInfo != null)
-                {
-                    var viewModel = new SecurityViewModel
-                    {
-                        ProfileInfo = profileInfo,
-                    };
-                    ViewBag.ActiveMenu = "Security";
-                    return View(viewModel);
-                }
 
+        try
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var user = await _userManager.FindByIdAsync(userId!);
+            if (user != null)
+            {
+                var profileInfo = new ProfileInfoViewModel
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    IsExternalAccount = user.IsExternalAccount,
+                };
+                var viewModel = new SecurityViewModel
+                {
+                    ProfileInfo = profileInfo,
+                };
+                ViewBag.ActiveMenu = "Security";
+                return View(viewModel);
             }
-            catch (Exception ex) { Debug.WriteLine(ex); }
         }
-        
+        catch (Exception ex) { Debug.WriteLine(ex); }
+
+
         return View(new SecurityViewModel());
     }
     #endregion
@@ -285,7 +290,6 @@ public class AccountController : Controller
                         var result = await _userManager.ChangePasswordAsync(user, viewModel.Form.CurrentPassword, viewModel.Form.NewPassword!);
                         if(result.Succeeded)
                         {
-                            //await PopulateProfileInfoAsync();
                             ViewBag.ActiveMenu = "Security";
                             ViewData["Message"] = "Password changed successfully.";
                             return View(viewModel);

@@ -13,7 +13,6 @@ namespace WebApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [UseApiKey]
-[Authorize]
 public class CoursesController : ControllerBase
 {
     private readonly CoursesService _coursesService;
@@ -30,6 +29,7 @@ public class CoursesController : ControllerBase
 
     #region CREATE COURSE
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> CreateCourse(CourseDto courseDto)
     {
         try
@@ -107,13 +107,13 @@ public class CoursesController : ControllerBase
 
     #region UPDATE COURSE
     [HttpPut("{id}")]
+    [Authorize]
     public async Task<IActionResult> UpdateCourse(int id, CourseDto courseDto)
     {
         if(ModelState.IsValid)
         {
             try
             {
-
                 var course = await _coursesService.UpdateCourseAsync(id, courseDto);
                 if (course)
                 {
@@ -133,6 +133,7 @@ public class CoursesController : ControllerBase
 
     #region DELETE COURSE
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<IActionResult> DeleteCourse(int id)
     {
         try
@@ -157,5 +158,4 @@ public class CoursesController : ControllerBase
         return Problem();
     }
     #endregion
-
 }

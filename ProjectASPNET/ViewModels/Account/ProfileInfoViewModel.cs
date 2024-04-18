@@ -11,5 +11,5 @@ public class ProfileInfoViewModel
 
     public string? Email { get; set; } = null!;
 
-    public bool IsExternalAccount { get; set; } 
+    public bool IsExternalAccount { get; set; }
 }

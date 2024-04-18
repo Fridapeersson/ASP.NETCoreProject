@@ -135,3 +135,10 @@
         color: var(--color-white);
     } 
 }
+
+.btn-disabled {
+    @include button;
+    background: var(--color-gray-500);
+    color: var(--color-black);
+    border: none;
+}

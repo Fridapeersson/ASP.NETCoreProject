@@ -432,6 +432,20 @@ a:hover {
   color: var(--color-white);
 }
 
+.btn-disabled {
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-gray-500);
+  color: var(--color-black);
+  border: none;
+}
+
 form {
   width: 100%;
   display: grid;

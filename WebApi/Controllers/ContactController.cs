@@ -43,6 +43,5 @@ public class ContactController : ControllerBase
 
         };
             return BadRequest("Something went wrong");
-        //return Problem();
     }
 }

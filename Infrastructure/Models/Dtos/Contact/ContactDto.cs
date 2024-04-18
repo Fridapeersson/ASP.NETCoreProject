@@ -42,5 +42,5 @@ public class ContactDto
 
     [Display(Name = "Services", Prompt = "Choose the service you are interested in")]
     [DataType(DataType.Text)]
-    public string SelectedService { get; set; } = null!;
+    public string? SelectedService { get; set; }
 }
