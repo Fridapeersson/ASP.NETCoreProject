@@ -446,6 +446,11 @@ a:hover {
   border: none;
 }
 
+.btn-circle {
+  background: white;
+  border-radius: 50%;
+}
+
 form {
   width: 100%;
   display: grid;
@@ -585,7 +590,7 @@ header .container #account-buttons {
     gap: 1rem;
   }
 }
-header .container #account-buttons .no-profile-img {
+header .container #account-buttons img {
   width: 50px;
   height: 50px;
   margin: 0;
@@ -4201,13 +4206,40 @@ aside .profile-info {
 }
 aside .profile-info .img-container {
   position: relative;
+  /*border: solid red 1px;*/
+  /*            .profile-img {
+                  width: 120px;
+                  height: 120px;
+                  border-radius: 50%;
+                  object-fit: cover;
+              }*/
 }
-aside .profile-info .img-container .no-profile-img {
-  width: 120px;
-  height: 120px;
+aside .profile-info .img-container form {
+  display: flex;
+}
+aside .profile-info .img-container form label {
+  display: flex;
+  position: absolute;
+  border: solid var(--color-gray-500) 1px;
+  padding: 0.5rem;
+  right: 15%;
+  bottom: 5%;
+  cursor: pointer;
+}
+@media (min-width: 992px) {
+  aside .profile-info .img-container form label {
+    right: 25%;
+  }
+}
+aside .profile-info .img-container form label:hover {
+  background: var(--color-theme);
+}
+aside .profile-info .img-container .no-profile-img, aside .profile-info .img-container .profile-img {
+  width: 150px;
+  height: 150px;
   margin: 0;
   padding: 0;
-  border: solid var(--color-gray-500) 1px;
+  /*border: solid var(--color-gray-500) 1px;*/
   border-radius: 50%;
 }
 aside .profile-info .img-container .img-icon {
@@ -4274,6 +4306,59 @@ aside .profile-info nav .btn-transparent i {
 
 .account-details-section {
   color: var(--color-gray-900);
+}
+.account-details-section .container aside .img-container {
+  position: relative;
+  /*border: solid red 1px;*/
+  /*            .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+  }*/
+}
+.account-details-section .container aside .img-container form {
+  display: flex;
+}
+.account-details-section .container aside .img-container form label {
+  display: flex;
+  position: absolute;
+  border: solid var(--color-gray-500) 1px;
+  padding: 0.5rem;
+  /*right: 15%;*/
+  bottom: 0%;
+  cursor: pointer;
+}
+@media (min-width: 992px) {
+  .account-details-section .container aside .img-container form label {
+    right: 25%;
+  }
+}
+.account-details-section .container aside .img-container form label:hover {
+  background: var(--color-theme);
+}
+.account-details-section .container aside .img-container .no-profile-img, .account-details-section .container aside .img-container .profile-img {
+  width: 150px;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+  border: solid var(--color-gray-500) 1px;
+  border-radius: 50%;
+}
+.account-details-section .container aside .img-container .img-icon {
+  position: absolute;
+  top: 5.2rem;
+  left: 6.9rem;
+}
+@media (min-width: 1200px) {
+  .account-details-section .container aside .img-container .img-icon {
+    left: 8.8rem;
+  }
+}
+@media (min-width: 1400px) {
+  .account-details-section .container aside .img-container .img-icon {
+    left: 9.5rem;
+  }
 }
 @media (min-width: 992px) {
   .account-details-section .container .saved-courses-content {
@@ -4489,109 +4574,39 @@ aside .profile-info nav .btn-transparent i {
 .account-security-section {
   color: var(--color-gray-900);
 }
-.account-security-section .container .security-content aside {
-  color: var(--color-gray-900);
-}
-@media (min-width: 992px) {
-  .account-security-section .container .security-content aside {
-    border-right: solid var(--color-gray-300) 1px;
-    padding: 1rem;
-  }
-}
-.account-security-section .container .security-content aside .profile-info {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
-  text-align: center;
-  margin-top: 2rem;
+.account-security-section .container .security-content {
+  /*@import "_account-details-aside.scss";*/
 }
 .account-security-section .container .security-content aside .profile-info .img-container {
+  /*border: solid red 1px;*/
   position: relative;
 }
-.account-security-section .container .security-content aside .profile-info .img-container .no-profile-img {
-  width: 120px;
-  height: 120px;
+.account-security-section .container .security-content aside .profile-info .img-container .no-profile-img, .account-security-section .container .security-content aside .profile-info .img-container .profile-img {
+  width: 150px;
+  height: 150px;
   margin: 0;
   padding: 0;
   border: solid var(--color-gray-500) 1px;
   border-radius: 50%;
 }
-.account-security-section .container .security-content aside .profile-info .img-container .img-icon {
+.account-security-section .container .security-content aside .profile-info .img-container label {
   position: absolute;
-  top: 5.2rem;
-  left: 6.9rem;
-}
-@media (min-width: 1200px) {
-  .account-security-section .container .security-content aside .profile-info .img-container .img-icon {
-    left: 8.8rem;
-  }
-}
-@media (min-width: 1400px) {
-  .account-security-section .container .security-content aside .profile-info .img-container .img-icon {
-    left: 9.5rem;
-  }
-}
-.account-security-section .container .security-content aside .profile-info h5 {
-  margin-top: 1rem;
-}
-.account-security-section .container .security-content aside .profile-info p {
-  /*@include text-s;*/
-  margin-bottom: 3rem;
-}
-.account-security-section .container .security-content aside .profile-info nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  text-align: left;
+  right: 10%;
+  bottom: 0%;
 }
 @media (min-width: 992px) {
-  .account-security-section .container .security-content aside .profile-info nav .btn-theme-s {
-    padding-right: 5rem;
+  .account-security-section .container .security-content aside .profile-info .img-container label {
+    right: 15%;
   }
 }
 @media (min-width: 1200px) {
-  .account-security-section .container .security-content aside .profile-info nav .btn-theme-s {
-    padding-right: 6rem;
+  .account-security-section .container .security-content aside .profile-info .img-container label {
+    right: 18%;
   }
 }
 @media (min-width: 1400px) {
-  .account-security-section .container .security-content aside .profile-info nav .btn-theme-s {
-    padding-right: 7rem;
-    padding-left: 2rem;
-  }
-}
-.account-security-section .container .security-content aside .profile-info nav .btn-transparent {
-  color: var(--color-gray-800);
-  font-weight: 700;
-  margin-left: 1.3rem;
-}
-@media (min-width: 1400px) {
-  .account-security-section .container .security-content aside .profile-info nav .btn-transparent {
-    margin-left: 1.6rem;
-  }
-}
-.account-security-section .container .security-content aside .profile-info nav .btn-transparent .rotate {
-  transform: rotateY(180deg);
-}
-.account-security-section .container .security-content aside .profile-info nav .btn-transparent i {
-  color: var(--color-gray-600);
-  margin: 0 0.4rem;
-}
-.account-security-section .container .security-content aside {
-  /*border: solid red 1px;*/
-}
-@media (min-width: 1200px) {
-  .account-security-section .container .security-content aside .profile-info .img-container .img-icon {
-    position: absolute;
-    top: 5rem;
-    left: 7rem;
-  }
-}
-@media (min-width: 1400px) {
-  .account-security-section .container .security-content aside .profile-info .img-container .img-icon {
-    position: absolute;
-    top: 5rem;
-    left: 8rem;
+  .account-security-section .container .security-content aside .profile-info .img-container label {
+    right: 20%;
   }
 }
 @media (min-width: 992px) {

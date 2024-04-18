@@ -39,6 +39,9 @@ builder.Services.AddScoped<ContactService>();
 
 builder.Services.AddScoped<SavedCoursesRepository>();
 
+builder.Services.AddScoped<AccountService>();
+
+
 
 //builder.Services.AddScoped<ContactRepository>();
 //builder.Services.AddScoped<ContactService>();

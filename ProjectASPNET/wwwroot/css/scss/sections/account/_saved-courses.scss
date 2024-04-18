@@ -1,8 +1,72 @@
 
 .account-details-section {
     color: var(--color-gray-900);
-    
+
     .container {
+        aside {
+            .img-container {
+                position: relative;
+                /*border: solid red 1px;*/
+                /*            .profile-img {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                object-fit: cover;
+            }*/
+
+                form {
+                    display: flex;
+
+                    input {
+                    }
+
+                    label {
+                        display: flex;
+                        position: absolute;
+                        border: solid var(--color-gray-500) 1px;
+                        padding: .5rem;
+                        /*right: 15%;*/
+                        bottom: 0%;
+                        cursor: pointer;
+
+                        @include lg {
+                            right: 25%;
+                        }
+
+                        &:hover {
+                            background: var(--color-theme);
+                        }
+
+                        i {
+                        }
+                    }
+                }
+
+                .no-profile-img, .profile-img {
+                    width: 150px;
+                    height: 150px;
+                    margin: 0;
+                    padding: 0;
+                    border: solid var(--color-gray-500) 1px;
+                    border-radius: 50%;
+                }
+
+                .img-icon {
+                    position: absolute;
+                    top: 5.2rem;
+                    left: 6.9rem;
+
+                    @include xl {
+                        left: 8.8rem;
+                    }
+
+                    @include xxl {
+                        left: 9.5rem;
+                    }
+                }
+            }
+        }
+
         .saved-courses-content {
             @include lg {
                 display: grid;

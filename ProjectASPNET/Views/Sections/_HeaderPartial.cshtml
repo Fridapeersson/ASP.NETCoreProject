@@ -52,13 +52,13 @@
                 @if (user!.ProfileImgUrl != null)
                 {
                     <a asp-controller="Account" asp-action="Details">
-                        <img src="~/images/account/@user.ProfileImgUrl" class="profile-img" />
+                        <img src="~/uploads/@user.ProfileImgUrl" class="profile-img" />
                     </a>
                 }
                 else
                 {
                     <a asp-controller="Account" asp-action="Details">
-                        <img src="~/images/account/no-profile-img.png" alt="Default img" )´s profile picture" class="no-profile-img" />
+                        <img src="~/uploads/no-profile-img.png" alt="Default img" )´s profile picture" class="no-profile-img" />
                     </a>
                 }
                 

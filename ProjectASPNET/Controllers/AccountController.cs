@@ -21,17 +21,19 @@ public class AccountController : Controller
     private readonly SignInManager<UserEntity> _signInManager;
     private readonly AddressService _addressService;
     private readonly CoursesService _coursesService;
+    private readonly AccountService _accountService;
 
     private readonly HttpClient _http;
 
 
-    public AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressService addressService, CoursesService coursesService, HttpClient http)
+    public AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressService addressService, CoursesService coursesService, HttpClient http, AccountService accountService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _addressService = addressService;
         _coursesService = coursesService;
         _http = http;
+        _accountService = accountService;
     }
 
 
@@ -233,7 +235,6 @@ public class AccountController : Controller
             }
             catch (Exception ex) { Debug.WriteLine(ex); }
         }
-        
         return null!;
     }
 
@@ -255,6 +256,7 @@ public class AccountController : Controller
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Email = user.Email,
+                    ProfileImgUrl = user.ProfileImgUrl,
                     IsExternalAccount = user.IsExternalAccount,
                 };
                 var viewModel = new SecurityViewModel
@@ -555,5 +557,33 @@ public class AccountController : Controller
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex); };
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //IMG
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                var result = await _accountService.UploadUserProfileImageAsync(User, file);
+            }
+            catch (Exception ex) { Debug.WriteLine(ex); }
+        }
+
+
+        return RedirectToAction("Details", "Account");
     }
 }

@@ -182,3 +182,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 5000);
     }
 })
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    handleProfileImgUpload();
+})
+
+function handleProfileImgUpload() {
+    try {
+        const form = document.querySelector(".ho");
+        console.log(form);
+        let uploadFile = document.querySelector("#uploadFile");
+        if (uploadFile != undefined) {
+            uploadFile.addEventListener("change", function() {
+                if (this.files.length > 0) {
+                    this.form.submit()
+                }
+            });
+        }
+    }
+    catch {
+
+    }
+}

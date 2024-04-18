@@ -4,31 +4,38 @@
 
     .container {
         .security-content {
-            @import "_account-details-aside.scss";
+            /*@import "_account-details-aside.scss";*/
 
             aside {
-                /*border: solid red 1px;*/
                 .profile-info {
                     .img-container {
-                        .profile-img {
+                        /*border: solid red 1px;*/
+                        position: relative;
+
+                        .no-profile-img, .profile-img {
+                            width: 150px;
+                            height: 150px;
+                            margin: 0;
+                            padding: 0;
+                            border: solid var(--color-gray-500) 1px;
+                            border-radius: 50%;
                         }
 
-                        .no-profile-img {
-                        }
+                        label {
+                            position: absolute;
+                            right: 10%;
+                            bottom: 0%;
 
-                        @include xl {
-                            .img-icon {
-                                position: absolute;
-                                top: 5rem;
-                                left: 7rem;
+                            @include lg {
+                                right: 15%;
                             }
-                        }
 
-                        @include xxl {
-                            .img-icon {
-                                position: absolute;
-                                top: 5rem;
-                                left: 8rem;
+                            @include xl {
+                                right: 18%;
+                            }
+
+                            @include xxl {
+                                right: 20%;
                             }
                         }
                     }
