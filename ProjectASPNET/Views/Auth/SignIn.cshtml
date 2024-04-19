@@ -18,7 +18,6 @@
                     </div>
                 }
 
-
                 <div class="email">
                     <label asp-for="Form.Email"></label>
                     <span asp-validation-for="Form.Email"></span>
@@ -37,7 +36,7 @@
 
                 <div class="sign-in">
                     <button class="btn-theme" type="submit" novalidate>Sign in</button>
-                    <a class="text-s" asp-controller="Account" asp-action="Forgot">Forgot your password?</a>
+                    <a class="text-s" href="#">Forgot your password?</a>
                     <div class="line"></div>
                     <h6>Or sign in with your social account</h6>
                     <div class="external-login">
@@ -45,7 +44,6 @@
 
                         <a class="btn-gray" asp-controller="Auth" asp-action="Facebook"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
                     </div>
-
                 </div>
             </form>
         </div>

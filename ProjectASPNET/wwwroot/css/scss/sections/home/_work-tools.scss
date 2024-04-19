@@ -2,12 +2,6 @@
     color: var(--color-gray-900);
 
     .container {
-        /*text-align: center;*/
-
-        @include md {
-            /*text-align: left;*/
-        }
-
         @include xxl {
             width: 70%;
         }
@@ -36,10 +30,6 @@
                 margin-bottom: 2rem;
                 @include text-s;
                 color: var(--color-gray-600);
-                /*@include md {*/
-                /*   @include text-s;
-                    color: var(--color-gray-600);*/
-                /*}*/
 
                 @include lg {
                     margin-top: 1rem;
@@ -90,7 +80,6 @@
                 }
 
                 &:hover {
-                    // border: solid $gray-200 1px;
                     box-shadow: 0 0 .7rem var(--color-gray-300);
                     transition: .2s ease-in-out;
                 }

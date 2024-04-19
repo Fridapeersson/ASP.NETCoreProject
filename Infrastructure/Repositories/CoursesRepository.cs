@@ -43,37 +43,6 @@ public class CoursesRepository : BaseRepo<CoursesEntity>
                      .Include(i => i.Author)
                      .Include(i => i.Category)
                      .AsQueryable();
-            ////IQueryable<CoursesEntity> query = _context.Courses
-            ////                    .Include(i => i.Author)
-            ////                    .Include(i => i.Category)
-            ////                    .AsQueryable();
-
-            ////if (!string.IsNullOrEmpty(category) && category.ToLower() != "all")
-            ////{
-            ////    query = query.Where(x => x.Category!.CategoryName.ToLower() == category.ToLower());
-            ////}
-
-            ////if (!string.IsNullOrEmpty(searchQuery))
-            ////{
-            ////    //if(searchQuery.Equals("undefined"))
-            ////    //{
-            ////    //    searchQuery = "";
-            ////    //}
-            ////    query = query.Where(x => x.Title.Contains(searchQuery) || x.Author.AuthorName!.Contains(searchQuery));
-            ////}
-            ////int totalItems = await query.CountAsync();
-            ////List<CoursesEntity> courses = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-
-            ////int totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
-
-            ////return new CourseResult
-            ////{
-            ////    Courses = courses,
-            ////    TotalItems = totalItems,
-            ////    TotalPages = totalPages
-            ////};
-
-            //////return await query.ToListAsync();
         }
         catch (Exception ex)
         {
@@ -81,17 +50,6 @@ public class CoursesRepository : BaseRepo<CoursesEntity>
         }
         return null!;
     }
-
-    //public override async Task<IEnumerable<CoursesEntity>> GetAllPaginatedAsync(int page, int pageSize)
-    //{
-    //    try
-    //    {
-    //        var entities = await _context.Courses.Include(x => x.Author).OrderBy(x => x.Id).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-    //        return entities;
-    //    }
-    //    catch(Exception ex) { Debug.WriteLine(ex); }
-    //    return new List<CoursesEntity>();
-    //}
 
     public override async Task<CoursesEntity> GetOneAsync(Expression<Func<CoursesEntity, bool>> predicate)
     {
@@ -110,26 +68,4 @@ public class CoursesRepository : BaseRepo<CoursesEntity>
         catch (Exception ex) { Debug.WriteLine(ex); }
         return null!;
     }
-
-
-    //public async Task<IEnumerable<CoursesEntity>> GetAllFilteredASync(string category, string searchWord)
-    //{
-    //    try
-    //    {
-    //        var text = _context.Courses.AsQueryable();
-    //        if (!string.IsNullOrEmpty(searchWord))
-    //        {
-    //            text = text.Where(x => x.Title.Contains(searchWord));
-    //        }
-
-    //        if (!string.IsNullOrEmpty(category) && category != "All Categories")
-    //        {
-    //            text = text.Where(x => x.CategoryName == category);
-    //        }
-
-    //        return await text.Include(x => x.Author).ToListAsync();
-    //    }
-    //    catch (Exception ex) { Debug.WriteLine(ex); }
-    //    return null!;
-    //}
 }

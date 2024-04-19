@@ -34,9 +34,6 @@
                 p {
                     color: var(--color-gray-500);
                     font-size: .5rem;
-
-                    i {
-                    }
                 }
 
                 a {
@@ -108,9 +105,6 @@
                             margin-left: .5rem;
                             transform: rotate(90deg);
 
-                            @include md {
-                            }
-
                             @include lg {
                                 transform: rotate(0deg);
                             }
@@ -119,10 +113,6 @@
                 }
             }
         }
-
-
-
-
 
         .form-container {
             background: var(--color-gray-000);
@@ -174,7 +164,6 @@
                     padding: .7rem;
 
                     input, textarea, select, option {
-                        /*padding: .3rem;*/
                         border-radius: .5rem;
                         border: solid var(--color-gray-300) 1px;
                         padding-left: 1rem;
@@ -185,7 +174,6 @@
 
                         &::placeholder {
                             color: var(--color-gray-300);
-                            /*padding-left: 1rem;*/
                         }
                     }
 
@@ -248,9 +236,6 @@
                 .form-message-us {
                     position: relative;
 
-                    label {
-                    }
-
                     textarea {
                         @include md {
                             margin-bottom: 1rem;
@@ -288,13 +273,6 @@
                         width: 45%;
                     }
                 }
-                /*
-                .arrow {
-                    display: absolute;
-                    top: 19.5rem;
-                    right: -1.5rem;
-                    color: hotpink;
-                }*/
             }
         }
     }

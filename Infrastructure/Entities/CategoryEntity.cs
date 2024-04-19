@@ -8,5 +8,4 @@ public class CategoryEntity
     public int Id { get; set; }
     public string CategoryName { get; set; } = null!;
 
-    //public virtual ICollection<CoursesEntity> Courses { get; set; } = new List<CoursesEntity>();
 }

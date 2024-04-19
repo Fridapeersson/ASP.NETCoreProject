@@ -427,14 +427,9 @@ public class AccountController : Controller
         try
         {
             var user = await _userManager.GetUserAsync(User);
-            //if(user == null)
-            //{
-            //    return null!;
-            //}
             var basicInfoViewModel = new BasicInfoViewModel
             {
-                //UserId = user!.Id,
-                FirstName = user.FirstName,
+                FirstName = user!.FirstName,
                 LastName = user.LastName,
                 Email = user.Email!,
                 PhoneNumber = user.PhoneNumber,
@@ -473,7 +468,6 @@ public class AccountController : Controller
             }
         }
     }
-
 
     /// <summary>
     ///     Populates a AddressInfoViewModel with address information from database async
@@ -552,25 +546,13 @@ public class AccountController : Controller
                             ViewData["ErrorMessage"] = "Something went wrong, unable to update address information";
                         }
                     }
-
                 }
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex); };
     }
 
-
-
-
-
-
-
-
-
-
-
-
-    //IMG
+    //Profile image
     [HttpPost]
     public async Task<IActionResult> UploadImage(IFormFile file)
     {
@@ -582,8 +564,6 @@ public class AccountController : Controller
             }
             catch (Exception ex) { Debug.WriteLine(ex); }
         }
-
-
         return RedirectToAction("Details", "Account");
     }
 }

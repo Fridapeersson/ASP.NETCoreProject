@@ -105,7 +105,6 @@
 
                             @include md {
                                 margin-left: 1rem;
-                                /*@include text-s;*/
                             }
 
                             @include lg {
@@ -167,7 +166,6 @@
                     .error {
                         position: absolute;
                         top: -5%;
-                        /*color: red;*/
                         @include md {
                             margin-right: 22%;
                             top: -15%;

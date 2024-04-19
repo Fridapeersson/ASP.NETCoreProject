@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Entities;
-using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Models.Dtos;
 
@@ -13,7 +12,6 @@ public class CourseDto
     public decimal LikesInNumbers { get; set; }
     public bool IsBestSeller { get; set; }
     public string? BackgroundImageName { get; set; }
-    //public string? CategoryName { get; set; }
     public int AuthorId { get; set; }
     public int CategoryId { get; set; }
 
@@ -41,7 +39,7 @@ public class CourseDto
             Author = new AuthorsEntity
             {
                 AuthorName = courseDto.Author.AuthorName,
-                AuthorTitle = courseDto.Author.AuthorTitle,
+                AuthorTitle = courseDto.Author.AuthorTitle!,
                 AuthorDescription = courseDto.Author.AuthorDescritpion,
                 AuthorImageUrl = courseDto.Author.AuthorImageUrl,
                 FacebookSubs = courseDto.Author.FacebookSubs,
@@ -49,7 +47,7 @@ public class CourseDto
             },
             Category = new CategoryEntity
             {
-                CategoryName = courseDto.Category!.CategoryName
+                CategoryName = courseDto.Category.CategoryName!
             }
         };
     }

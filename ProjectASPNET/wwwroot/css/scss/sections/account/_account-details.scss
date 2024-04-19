@@ -6,101 +6,6 @@
             display: flex;
             justify-content: space-around;
         }
-        /*@import "_account-details-aside.scss";*/
-        /*aside {
-            @include lg {
-            border-right: solid var(--color-gray-300) 1px;
-            padding: 1rem;
-
-            }
-
-
-            .profile-info {
-                display: grid;
-                grid-template-columns: auto;
-                justify-content: center;
-                text-align: center;
-                margin-top: 2rem;
-
-                .img-container {
-                    position: relative;
-
-                    .profile-img {
-                    }
-
-                    .no-profile-img {
-                        width: 120px;
-                        height: 120px;
-                        margin: 0;
-                        padding: 0;
-                        border: solid var(--color-gray-500) 1px;
-                        border-radius: 50%;
-                    }
-
-                    .img-icon {
-                        position: absolute;
-                        top: 5.2rem;
-                        left: 6.9rem;
-
-                        @include xl {
-                            left: 8.8rem;
-                        }
-
-                        @include xxl {
-                            left: 9.5rem;
-                        }
-                    }
-                }
-
-                h5 {
-                    margin-top: 1rem;
-                }
-
-                p {*/
-        /*@include text-s;*/
-        /*}
-
-                nav {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                    text-align: left;
-
-                    .btn-theme-s {
-
-                        @include xl {
-                            padding-right: 6rem;
-                        }
-
-                        @include xxl {
-                            padding-right: 7rem;
-                            padding-left: 2rem;
-                        }
-                    }
-
-                    .btn-transparent {
-                        color: var(--color-gray-800);
-                        font-weight: 700;
-                        margin-left: 1.3rem;
-
-                        @include xxl {
-                            margin-left: 1.6rem;
-                        }
-
-                        .rotate {
-                            transform: rotateY(180deg);
-                        }
-
-                        i {
-                            color: var(--color-gray-600);
-                            margin: 0 .4rem;
-                        }
-                    }
-                }
-            }
-        }*/
-        /*}*/
-
 
         .account-details {
             width: 100%;
@@ -175,10 +80,8 @@
                                 position: absolute;
                                 right: 0;
                                 top: 0;
-                                /*padding: 1rem;*/
                                 @include text-xs;
                                 color: var(--color-danger-dark);
-                                /*border: solid red 1px;*/
 
                                 @include md {
                                     @include text-s;
@@ -187,31 +90,14 @@
                             }
                         }
 
-
-
                         #form-firstname {
                             @include lg {
                                 grid-area: firstname;
                             }
 
                             label {
-                                // margin: 0;
                                 font-weight: bold;
                             }
-                            /*                            span {
-                                position: absolute;
-                                right: 0;
-                                top: 0;
-                                padding: 1rem;
-                                @include text-xs;
-                                color: var(--danger;
-                                border: solid red 1px;
-
-                                @include md {
-                                    @include text-s;
-                                    color: var(--danger;
-                                }
-                            }*/
                         }
 
                         #form-lastname {
@@ -227,7 +113,6 @@
                         }
 
                         #form-phone {
-
                             @include lg {
                                 grid-area: phone;
                             }
@@ -270,12 +155,6 @@
                             @include lg {
                                 flex-direction: row;
                                 margin: 1.5rem 0;
-                            }
-
-                            .btn-gray {
-                            }
-
-                            .btn-theme {
                             }
                         }
                     }
@@ -338,10 +217,8 @@
                                 position: absolute;
                                 right: 0;
                                 top: 0;
-                                /*padding: 1rem;*/
                                 @include text-xs;
                                 color: var(--color-danger-dark);
-                                /*border: solid red 1px;*/
 
                                 @include md {
                                     @include text-s;

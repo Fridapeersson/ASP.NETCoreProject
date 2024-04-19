@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Entities;
-using Infrastructure.Models.Dtos;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -34,6 +33,5 @@ public class CategoryService
         }
         catch (Exception ex) { Debug.WriteLine(ex); }
         return null!;
-
     }
 }

@@ -29,7 +29,7 @@ public class UserSessionValidationMiddleware
                 }
             }
         }
-        await _next(context); //kör man inte next kommer middleware fastna här
+        await _next(context); 
     }
 
     //ajax - asyncronous javascript and xml

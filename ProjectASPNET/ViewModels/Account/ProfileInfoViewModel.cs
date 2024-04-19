@@ -2,7 +2,7 @@
 
 public class ProfileInfoViewModel
 {
-    public string? ProfileImgUrl { get; set; } /*= "./images/account/john-doe.svg";*/
+    public string? ProfileImgUrl { get; set; } 
 
 
     public string? FirstName { get; set; } = null!;

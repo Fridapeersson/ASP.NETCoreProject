@@ -43,13 +43,6 @@
                 color: var(--color-theme);
             }
         }
-        /*        .error-message {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            background: var(--danger;
-        }*/
 
         .sign-in-form {
             width: 100%;
@@ -58,11 +51,6 @@
                 border-radius: .5rem;
                 border: solid var(--color-gray-400) 1px;
                 padding: .5rem 1rem;
-
-
-      /*          &::placeholder {
-                    color: var(--color-gray-300);
-                }*/
 
                 &.input-validation-error {
                     position: relative;
@@ -96,7 +84,6 @@
                     position: relative;
 
                     input {
-                        /*border: solid var(--color-gray-400) 1px;*/
                         padding: .5rem;
                         border-radius: .5rem;
                         margin: 0;
@@ -196,9 +183,6 @@
                         }
                         @include md {
                             padding: .7rem 3rem;
-                        }
-
-                        i {
                         }
                     }
                 }

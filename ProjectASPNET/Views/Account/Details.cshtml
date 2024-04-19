@@ -5,14 +5,7 @@
 
 <div class="account-details-section">
     <div class="container">
-
-        @* @Html.PartialAsync("~/views/account/_AccountMenuPartial.cshtml") *@
-        @* @await Html.PartialAsync("~/views/account/_AccountMenuPartial.cshtml", Model) *@
-
-
         @await Html.PartialAsync("~/Views/Account/Sections/_ProfileInfoPartial.cshtml", Model.ProfileInfo)
-
-
 
         @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
         {
@@ -21,124 +14,12 @@
             </div>
         }
 
-
         <div class="account-details">
             @await Html.PartialAsync("~/Views/Account/Sections/_BasicInfoPartial.cshtml")
 
-
-            @* <section class="basic-info"> *@
-
-
-                @* <form method="POST" asp-controller="Account" asp-action="Details">
-                    <h2>Account Details</h2>
-                    <h5 class="theme">Basic info</h5>
-
-                    <div class="content">
-                        <div id="form-firstname">
-                            <label asp-for="BasicInfo!.FirstName"></label>
-
-                            @if(Model.IsExternalAccount)
-                            {
-                                <input asp-for="BasicInfo!.FirstName" disabled />
-                            }
-                            else
-                            {
-                                <input asp-for="BasicInfo!.FirstName" />
-                                <span asp-validation-for="BasicInfo!.FirstName"></span>
-                            }
-
-                        </div>
-
-                        <div id="form-lastname">
-                            <label asp-for="BasicInfo!.LastName"></label>
-                            @if (Model.IsExternalAccount)
-                            {
-                                <input asp-for="BasicInfo!.LastName" disabled />
-                            }
-                            else
-                            {
-                                <input asp-for="BasicInfo!.LastName" />
-                                <span asp-validation-for="BasicInfo!.LastName"></span>
-                            }
-                        </div>
-
-                        <div id="form-email">
-                            <label asp-for="BasicInfo!.Email"></label>
-                            @if (Model.IsExternalAccount)
-                            {
-                                <input asp-for="BasicInfo!.Email" disabled />
-                            }
-                            else
-                            {
-                                <input asp-for="BasicInfo!.Email" />
-                                <span asp-validation-for="BasicInfo!.Email"></span>
-                            }
-                        </div>
-
-                        <div id="form-phone">
-                            <label asp-for="BasicInfo!.PhoneNumber">Phone Number <p class="optional">(optional)</p></label>
-                            <span asp-validation-for="BasicInfo!.PhoneNumber"></span>
-                            <input asp-for="BasicInfo!.PhoneNumber" />
-                        </div>
-
-                        <div id="form-bio">
-                            <label asp-for="BasicInfo!.Biography">Bio <p class="optional">(optional)</p></label>
-                            <textarea asp-for="BasicInfo!.Biography"></textarea>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
-                            <button class="btn-theme" type="submit">Save Changes</button>
-                        </div>
-                    </div>
-                </form> *@
-            @* </section> *@
-
             <hr />
 
-                @await Html.PartialAsync("~/Views/Account/Sections/_AddressInfoPartial.cshtml")
-            @* <section class="address-info"> *@
-                @* <form method="POST" asp-controller="Account" asp-action="Details" novalidate>
-                    <h5 class="theme">Address info</h5>
-
-                    <div class="content">
-                        <div id="form-address-line_1">
-                            <label asp-for="AddressInfo!.AddressLine_1"></label>
-                            <span asp-validation-for="AddressInfo!.AddressLine_1"></span>
-                            <input asp-for="AddressInfo!.AddressLine_1" />
-                        </div>
-
-                        <div id="form-address-line_2">
-                            <label asp-for="AddressInfo!.AddressLine_2">
-                                Address line 2
-                                <p class="optional">(optional)</p>
-                            </label>
-                            <input asp-for="AddressInfo!.AddressLine_2" />
-
-                        </div>
-
-                        <div id="form-postal-code">
-                            <label asp-for="AddressInfo!.PostalCode"></label>
-                            <span asp-validation-for="AddressInfo!.PostalCode"></span>
-                            <input asp-for="AddressInfo!.PostalCode" />
-                        </div>
-
-                        <div id="form-city">
-                            <label asp-for="AddressInfo!.City"></label>
-                            <span asp-validation-for="AddressInfo!.City"></span>
-                            <input asp-for="AddressInfo!.City" />
-                        </div>
-
-
-
-                        <div class="form-buttons">
-                            <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
-                            <button class="btn-theme" type="submit">Save Changes</button>
-                        </div>
-                    </div>
-                </form> *@
-            @* </section> *@
-
+            @await Html.PartialAsync("~/Views/Account/Sections/_AddressInfoPartial.cshtml")
         </div>
     </div>
 </div>

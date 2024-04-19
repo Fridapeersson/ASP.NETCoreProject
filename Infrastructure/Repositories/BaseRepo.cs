@@ -32,7 +32,7 @@ public abstract class BaseRepo<TEntity> where TEntity : class
     }
 
     /// <summary>
-    ///     Get's one entity based on the predicate async
+    ///     Gets one entity based on the predicate async
     /// </summary>
     /// <param name="predicate">The predicate used to filter the entities </param>
     /// <returns>The entity that matches the predicarte, else null if not found</returns>
@@ -48,7 +48,7 @@ public abstract class BaseRepo<TEntity> where TEntity : class
     }
 
     /// <summary>
-    ///     Get's all entities from database async
+    ///     Gets all entities from database async
     /// </summary>
     /// <returns>A list of entities, or null </returns>
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync()

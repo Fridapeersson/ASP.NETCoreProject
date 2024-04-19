@@ -9,7 +9,6 @@
 
         <div class="content">
             <div class="content-box">
-                
                 <form asp-action="Subscribe" asp-controller="Home" asp-fragment="news-letter" novalidate>
                     <div class="header-checkbox">
                         <div class="sign-up">
@@ -53,10 +52,6 @@
                         <span class="error" asp-validation-for="@Model.SubscribeModel.Email"></span>
                         <button type="submit" class="btn-theme">Subscribe *</button>
                     </div>
-
-@*                     <label asp-for="Form.Password">Password</label>
-                    <span asp-validation-for="Form.Password"></span>
-                    <input asp-for="Form.Password" class="form-input" type="password" /> *@
                 </form>
             </div>
         </div>

@@ -34,34 +34,3 @@ public class SubscribeModel
     [Display(Name = "Podcasts")]
     public bool Podcasts { get; set; } = false;
 }
-
-
-
-
-
-
-//[Required(ErrorMessage = "You have to enter a name")]
-//[Display(Name = "Full name", Prompt = "Enter your full name")]
-//[DataType(DataType.Text)]
-//public string Name { get; set; } = null!;
-
-
-
-//[Required(ErrorMessage = "You have to enter a valid email")]
-//[Display(Name = "Full name", Prompt = "Enter your email address")]
-//[RegularExpression("^[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}$")]
-//[DataType(DataType.EmailAddress)]
-//public string Email { get; set; } = null!;
-
-
-
-//[Display(Name = "Services", Prompt = "Choose the service you are interested in")]
-//[DataType(DataType.Text)]
-//public string? Service { get; set; }
-
-
-
-//[Required(ErrorMessage = "You have to enter a message")]
-//[Display(Name = "Message", Prompt = "Enter your message here...")]
-//[DataType(DataType.MultilineText)]
-//public string Message { get; set; } = null!;

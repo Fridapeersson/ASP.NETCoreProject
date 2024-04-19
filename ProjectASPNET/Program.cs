@@ -2,7 +2,6 @@ using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ProjectASPNET.Helpers.Middlewares;
@@ -42,27 +41,6 @@ builder.Services.AddScoped<SavedCoursesRepository>();
 builder.Services.AddScoped<AccountService>();
 
 
-
-//builder.Services.AddScoped<ContactRepository>();
-//builder.Services.AddScoped<ContactService>();
-
-
-
-
-
-
-
-
-
-
-//man kan köra denna eller nedanstående (AddDefaultIdentity), så slipper man ha med ".AddRoles<IdentityRole>()" denna kommer påverka databasen men inte Default versionen
-//builder.Services.AddIdentity<UserEntity, IdentityRole>(x =>
-//{
-//    x.User.RequireUniqueEmail = true;
-//    x.SignIn.RequireConfirmedAccount = false;
-//    x.Password.RequiredLength = 8;
-
-//}).AddEntityFrameworkStores<DataContext>();
 builder.Services.AddDefaultIdentity<UserEntity>(x =>
 {
     x.User.RequireUniqueEmail = true;
@@ -74,20 +52,17 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
 
 
 
-
-
-
 builder.Services.ConfigureApplicationCookie(x =>
 {
-    x.Cookie.HttpOnly = true; //webbläsaen kan inte komma åt informationen, kan inte läsa ut cookie infon
-    x.LoginPath = "/signin"; //använder man authorize måste man skriva över standard omdirigeringen
+    x.Cookie.HttpOnly = true; 
+    x.LoginPath = "/signin";
     x.AccessDeniedPath = "/denied";
     x.LogoutPath = "/signout"; 
     x.AccessDeniedPath = "/denied";
 
-    x.Cookie.SecurePolicy = CookieSecurePolicy.Always; //alla requests man använder går via https, ska vara på alla sidor
-    x.ExpireTimeSpan = TimeSpan.FromMinutes(60); // kommer loggas ut efter 60 min inaktivitet
-    x.SlidingExpiration = true; // har användaren vart inaktiv i 10 min och sedan blir aktiv nollställs TimeSpanen
+    x.Cookie.SecurePolicy = CookieSecurePolicy.Always; 
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(60); 
+    x.SlidingExpiration = true; 
     
 });
 
@@ -108,7 +83,6 @@ builder.Services.AddAuthentication()
     {
         x.ClientId = "100787358579-jq7tgj796ge4d1t82ngmidk63s86hoqe.apps.googleusercontent.com";
         x.ClientSecret = "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";
-       
     })
     .AddFacebook(x =>
     {

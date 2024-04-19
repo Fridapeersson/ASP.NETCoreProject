@@ -1,44 +1,11 @@
 ﻿@model CoursesIndexViewModel
 
 <div class="box-content">
-
     <div class="boxes" id="boxes">
-
         @foreach (var course in Model.Courses)
         {
            @await Html.PartialAsync("~/Views/Courses/Components/_CourseCardPartial.cshtml", course)
         }
-
     </div>
     @await Html.PartialAsync("~/Views/Courses/Components/_PaginationPartial.cshtml")
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@* <div class="change-page">
-    <a href="#" class="change-page-arrow">
-        <i class="fa-light fa-chevron-left"></i>
-    </a>
-    <div class="numbers">
-        <a href="#">1</a>
-        <a href="#" class="gray">2</a>
-        <a href="#" class="purple">3</a>
-        <a href="#">4</a>
-    </div>
-    <a href="#" class="change-page-arrow">
-        <i class="fa-light fa-chevron-right"></i>
-    </a>
-</div> *@
-@* @await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml") *@

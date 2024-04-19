@@ -13,13 +13,4 @@ public class AuthorsEntity
     public string? AuthorDescription { get; set; }
     public decimal YoutubeSubs { get; set; }
     public decimal FacebookSubs { get; set; }
-
-    //lägga till/skapa ny db för review, ingress, coursedescription, includes, what you'll learn, programdetails
-    
-
-    //[InverseProperty("Author")]
-    //public virtual ICollection<CoursesEntity> Courses { get; set; } = [];
-
-
-
 }

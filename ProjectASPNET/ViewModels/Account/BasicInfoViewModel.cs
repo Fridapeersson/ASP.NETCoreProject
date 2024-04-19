@@ -4,20 +4,16 @@ namespace ProjectASPNET.ViewModels.Account;
 
 public class BasicInfoViewModel
 {
-    //public string UserId { get; set; } = null!;
-
     [Required(ErrorMessage = "Invalid first name")]
     [DataType(DataType.Text)]
     [Display(Name = "First name", Prompt = "Enter your first name")]
     public string FirstName { get; set; } = null!;
 
 
-
     [Required(ErrorMessage = "Invalid last name")]
     [DataType(DataType.Text)]
     [Display(Name = "Last name", Prompt = "Enter your last name")]
     public string LastName { get; set; } = null!;
-
 
 
     [Required(ErrorMessage = "Invalid email")]

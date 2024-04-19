@@ -31,7 +31,6 @@ builder.Services.AddScoped<CoursesService>();
 
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<AuthorRepository>();
-//builder.Services.AddScoped<AuthorService>();
 
 builder.Services.AddScoped<SavedCoursesRepository>();
 
@@ -40,14 +39,8 @@ builder.Services.AddScoped<ContactRepository>();
 builder.Services.AddScoped<ContactService>();
 
 
-
-
-
-
-
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -59,33 +52,11 @@ builder.Services.RegisterJwt(builder.Configuration);
 
 var app = builder.Build();
 
-//CORS : cross origin resource sharing, så vi kan begränsa vilka som har tillgång till api't genom vilken address man kommer från, man kna begränsa det baserat på headers, eller metoder. Behöver alltid göra
-//tillåter alla headers - kan va olika content-types, eller keys osv eller vad vi nu vill begränsa för headers
-//tillåt alla origin - alla, i detta fallet, får komma åt apiet oavset vilken address, portnummer man har
-//tillåt alla method - innebär att man tillåter (i detta fallet) alla crud-delar
 app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
-
-//kan göra egen cors
-//builder.Services.AddCors(x =>
-//{
-//    x.AddPolicy("CustomOriginPolicy", policy =>
-//    {
-//        policy
-//        .WithOrigins("http://123.4.5.6:7700") // anger vilka som kan komma åt apiet
-//        .AllowAnyHeader()
-//        .AllowAnyMethod();
-//    });
-//});
-////Använda egna cors
-//app.UseCors("CustomOriginPolicy");
-
-
-
 
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "Silicon Web Api v1"));
-
 
 
 app.UseAuthentication();

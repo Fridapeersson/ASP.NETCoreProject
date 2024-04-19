@@ -11,9 +11,8 @@
             <i class="fa-light fa-chevrons-right arrow"></i>
             <a asp-action="Courses" asp-controller="Courses">Courses </a>
             <i class="fa-light fa-chevrons-right arrow"></i>
-            <a asp-action="CourseDetails" asp-controller="Courses"> @Model.Title @* Fullstack Web Developer Course from Scratch *@</a>
+            <a asp-action="CourseDetails" asp-controller="Courses"> @Model.Title</a>
         </div>
-
 
         <div class="course-showcase-text">
             <div class="best-seller-digital">
@@ -21,7 +20,6 @@
                 {
                     <p class="best-seller">Best Seller</p>
                 }
-
                 <p class="digital">Digital</p>
             </div>
             <h3>@Model.Title</h3>
@@ -95,9 +93,7 @@
                 </div>
                 <a href="#"><button class="btn-theme">Join course</button></a>
             </div>
-
         </div>
-
 
         <div class="program-details">
             <h3>Program Details</h3>
@@ -151,7 +147,6 @@
                         <p>Quis risus quisque diam diam. Volutpat neque eget eu faucibus sed urna fermentum risus. Est, mauris morbi nibh massa.</p>
                     </div>
                 </div>
-
             </div>
 
             <div class="author">
@@ -165,8 +160,6 @@
                         <p class="author-description">@Model.Author.AuthorDescription</p>
 
                         <div class="buttons">
-
-
                             <a href="#"><button class="youtube-btn"><i class="fa-brands fa-youtube"></i> @($"{Model.Author.YoutubeSubs / 1000:0}k subscribers")</button></a>
 
                             <a href="#"><button class="facebook-btn"><i class="fa-brands fa-square-facebook"></i> @($"{Model.Author.FacebookSubs / 1000:0}k followers")</button></a>

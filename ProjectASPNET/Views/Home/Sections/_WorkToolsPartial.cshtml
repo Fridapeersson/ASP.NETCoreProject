@@ -2,63 +2,20 @@
 <section id="work-tools" class="work-tools">
     <div class="container">
         <div class="work-tools-header">
-            <h2>@Model.Title </h2> @* Integrate Top Work Tools *@
+            <h2>@Model.Title </h2> 
             <p>@Model.Description</p>
-            @* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus. *@
         </div>
-
-
         <div class="tools">
 
             @foreach(var box in Model.WorkToolBox)
             {
-                    <a href="#">
-                        <div class="box">
-                            <img src="@box.FeaturesImg.ImageUrl" alt="@box.FeaturesImg.AltText" />
-                            <p>@box.FeaturesDescription</p>
-                        </div>
-                    </a>
+                <a href="#">
+                    <div class="box">
+                        <img src="@box.FeaturesImg.ImageUrl" alt="@box.FeaturesImg.AltText" />
+                        <p>@box.FeaturesDescription</p>
+                    </div>
+                </a>
             }
-
-            @* <div class="box">
-                <img src="./images/sections/work-tools/google.svg" />
-                <p>Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis.</p>
-            </div>
-
-            <div class="box">
-                <img src="./images/sections/work-tools/zoom.svg" />
-                <p>In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor.</p>
-            </div>
-
-            <div class="box">
-                <img src="./images/sections/work-tools/slack.svg" />
-                <p>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
-            </div>
-
-            <div class="box">
-                <img src="./images/sections/work-tools/gmail.svg" />
-                <p>Rutrum interdum tortor, sed at nulla. A cursus bibendum elit purus cras praesent.</p>
-            </div>
-
-            <div class="box">
-                <img src="./images/sections/work-tools/trello.svg" />
-                <p>Congue pellentesque amet, viverra curabitur quam diam scelerisque fermentum urna.</p>
-            </div>
-
-            <div class="box">
-                <img src="./images/sections/work-tools/MailChimp.svg" />
-                <p>A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris.</p>
-            </div>
-
-            <div class="box">
-                <img src="./images/sections/work-tools/dropbox.svg" />
-                <p>Ut in turpis consequat odio diam lectus elementum. Est faucibus blandit platea.</p>
-            </div>
-
-            <div class="box">
-                <img src="./images/sections/work-tools/evernote.svg" />
-                <p>Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu.</p>
-            </div> *@
         </div>
     </div>
 </section>

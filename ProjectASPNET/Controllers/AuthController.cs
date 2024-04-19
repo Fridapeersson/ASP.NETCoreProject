@@ -17,7 +17,7 @@ namespace ProjectASPNET.Controllers
 
         private readonly UserManager<UserEntity> _userManager;
         private readonly SignInManager<UserEntity> _signInManager;
-        private readonly HttpClient _http; //använda den för att kommunicera med apiet, behöver registreras i program
+        private readonly HttpClient _http;
         private readonly IConfiguration _config;
 
         public AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, IConfiguration configuration, HttpClient http, IConfiguration config)
@@ -29,7 +29,6 @@ namespace ProjectASPNET.Controllers
             _config = config;
         }
 
-        //individual account
         #region Sign Up
         [HttpGet]
         [Route("/signup")]
@@ -67,7 +66,7 @@ namespace ProjectASPNET.Controllers
                     FirstName = viewModel.Form.FirstName,
                     LastName = viewModel.Form.LastName,
                     Email = viewModel.Form.Email,
-                    UserName = viewModel.Form.Email //username är viktig att ha med
+                    UserName = viewModel.Form.Email 
                 };
 
                 var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);
@@ -95,7 +94,7 @@ namespace ProjectASPNET.Controllers
                 return RedirectToAction("Details", "Account");
             }
 
-            ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/"); //om vi inte ha ngn return url, gå till home sidan
+            ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/"); 
             return View();
         }
 
@@ -169,10 +168,9 @@ namespace ProjectASPNET.Controllers
                 var info = await _signInManager.GetExternalLoginInfoAsync();
                 if (info != null)
                 {
-                    //sparar infon från inloggningsbiten (info)
                     var userEntity = new UserEntity
                     {
-                        FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!, //GivenName är i detta fallet förnamnet
+                        FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!, 
                         LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
                         Email = info.Principal.FindFirstValue(ClaimTypes.Email!),
                         UserName = info.Principal.FindFirstValue(ClaimTypes.Email!),
@@ -182,11 +180,10 @@ namespace ProjectASPNET.Controllers
                     var user = await _userManager.FindByEmailAsync(userEntity.Email!);
                     if (user == null)
                     {
-                        //skapas utan lsn eftersom autenticeringen sker på facebook, detta är information som jag vill lagra för att kunna hämta ut vettig information i  mitt system, användaren kommer ej kunna logga in via lokal inloggning
                         var result = await _userManager.CreateAsync(userEntity);
                         if (result.Succeeded)
                         {
-                            user = await _userManager.FindByEmailAsync(userEntity!.Email);
+                            user = await _userManager.FindByEmailAsync(userEntity.Email!);
                         }
                     }
 
@@ -241,10 +238,9 @@ namespace ProjectASPNET.Controllers
                 var info = await _signInManager.GetExternalLoginInfoAsync();
                 if (info != null)
                 {
-                    //sparar infon från inloggningsbiten (info)
                     var userEntity = new UserEntity
                     {
-                        FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!, //GivenName är i detta fallet förnamnet
+                        FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!, 
                         LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
                         Email = info.Principal.FindFirstValue(ClaimTypes.Email!),
                         UserName = info.Principal.FindFirstValue(ClaimTypes.Email!),
@@ -254,11 +250,10 @@ namespace ProjectASPNET.Controllers
                     var user = await _userManager.FindByEmailAsync(userEntity.Email!);
                     if (user == null)
                     {
-                        //skapas utan lsn eftersom autenticeringen sker på facebook, detta är information som jag vill lagra för att kunna hämta ut vettig information i  mitt system, användaren kommer ej kunna logga in via lokal inloggning
                         var result = await _userManager.CreateAsync(userEntity);
                         if (result.Succeeded)
                         {
-                            user = await _userManager.FindByEmailAsync(userEntity.Email);
+                            user = await _userManager.FindByEmailAsync(userEntity.Email!);
                         }
                     }
 

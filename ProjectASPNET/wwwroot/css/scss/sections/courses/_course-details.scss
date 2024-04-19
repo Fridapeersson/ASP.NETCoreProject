@@ -233,7 +233,6 @@
                 p {
                     @include lg {
                         @include text-xs;
-                        /*color: var(--color-white);*/
                         margin: 0;
                     }
                 }
@@ -327,7 +326,6 @@
                 h5 {
                     @include lg {
                         @include h4;
-                        /*color: var(--color-danger-dark);*/
                     }
                 }
 
@@ -379,7 +377,6 @@
                 display: flex;
                 flex-direction: column;
                 position: relative;
-                // border: solid red 1px;
                 @include lg {
                     width: 80%;
                     margin-top: 3rem;
@@ -412,7 +409,6 @@
                     display: flex;
                     flex-direction: column;
                     display: relative;
-                    /*border: none;*/
                     margin-bottom: 1rem;
 
                     @include md {
@@ -527,8 +523,6 @@
                         @include xl {
                             padding: 4.7rem;
                         }
-
-
 
                         p, h2 {
                             @include md {

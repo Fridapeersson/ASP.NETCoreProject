@@ -22,11 +22,6 @@ public class HomeController : Controller
     [Route("/")]
     public IActionResult Index()
     {
-        //if(HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
-        //{
-
-        //}
-
         var viewModel = new HomeIndexViewModel
         {
             Showcase = new ShowcaseViewModel
@@ -115,11 +110,6 @@ public class HomeController : Controller
             {
                 Id = "manage-work",
                 Title = "Manage Your Work",
-                //Image = new ImageViewModel
-                //{
-                //    ImageUrl = "./images/home/manage-work/manage-your-work-img.svg",
-                //    AltText = "Manage your work",
-                //}
             },
 
             DownloadOurApp = new DownloadOurAppViewModel
@@ -223,7 +213,6 @@ public class HomeController : Controller
 
         return RedirectToAction("Index", "Home");
     }
-
 
     [Route("/error")]
     public IActionResult Error404(int statusCode) => View();

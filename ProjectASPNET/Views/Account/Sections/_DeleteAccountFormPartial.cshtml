@@ -1,6 +1,5 @@
 ﻿@model SecurityViewModel
-@{
-}
+
 @if (!string.IsNullOrEmpty(ViewData["Error"]?.ToString()))
 {
     <div class="alerts alert-danger">
@@ -9,7 +8,6 @@
 }
 
 <form class="delete-account-form" asp-controller="Account" asp-action="DeleteAccount" method="POST" novalidate>
-
     <div class="checkbox terms-and-conditions" id="checkbox" type="checkbox">
         <input asp-for="@Model.DeleteAccount!.ConfirmDeleteAccount" class="form-input" type="checkbox" />
         <label asp-for="@Model.DeleteAccount!.ConfirmDeleteAccount">Yes, I want to delete my account.</label>

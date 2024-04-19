@@ -17,7 +17,6 @@
     }
 
     <form id="contact-form" asp-controller="Contact" asp-action="Index" novalidate>
-
         <div class="form-name">
             <label asp-for="@Model.Contact.Name"></label>
             <input asp-for="@Model.Contact.Name" />
@@ -31,7 +30,6 @@
 
         </div>
 
-
         <div class="drop-down">
             <label asp-for="@Model.Contact.SelectedService">Services <p class="optional">(optional)</p></label>
             <div class="select-wrapper">
@@ -44,18 +42,15 @@
                 </select>
                 <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
             </div>
-            @* <span asp-validation-for="@Model.Contact.SelectedService" class="error"></span> *@
         </div>
 
         <div class="form-message-us">
             <label asp-for="@Model.Contact.Message"></label>
             <textarea asp-for="@Model.Contact.Message" rows="8"></textarea>
             <span asp-validation-for="@Model.Contact.Message" class="error"></span>
-
         </div>
 
         <button type="submit" class="btn-theme" >Send Contact Request</button>
     </form>
 </div>
-
 @await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

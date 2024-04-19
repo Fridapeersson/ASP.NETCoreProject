@@ -1,26 +1,4 @@
 ﻿@charset "UTF-8";
-/*$transparent: transparent;
-$white:     #FFFFFF;
-$gray-100:  #F3F6FF;
-$gray-200:  #EFF2FC;
-$gray-300:  #E2E5F1;
-$gray-400:  #D4D7E5;
-$gray-500:  #B4B7C9;
-$gray-600:  #9397AD;
-$gray-700:  #565973;
-$gray-800:  #33354D;
-$gray-900:  #0B0F19;
-$black:     #000000;
-$danger:    #EF4444;
-$success:   #22C55E;
-$warning:   #FFBA08;
-$info:      #4C82F7;
-
-$theme:     #6366F1;
-$theme-secondary: #8B5CF6;
-$theme-opacity: #6365f114;
-$theme-gradient: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #D946EF 100%);
-$theme-gradient-background: linear-gradient(-1deg, rgba(99, 101, 241, 0.10) 0%, rgba(216, 70, 239, 0.05) 45%, rgba(241, 244, 253, 0.07) 75%);*/
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 html, body {
   line-height: 160%;
@@ -564,11 +542,6 @@ header .container {
     display: flex;
   }
 }
-header .container #menu .nav {
-  /*                a {
-                      color: var(--color-gray-900);
-                  }*/
-}
 @media (min-width: 992px) {
   header .container #menu .nav {
     gap: 1rem;
@@ -578,9 +551,6 @@ header .container #menu .nav {
   header .container .btn-switch {
     display: block;
   }
-}
-header .container .btn-switch span {
-  /*color: var(--color-gray-900);*/
 }
 header .container #account-buttons {
   margin: 0 auto;
@@ -618,12 +588,6 @@ header .container .btn-mobile i {
 }
 
 .toggle-mobile-menu {
-  /*    position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;*/
-  /*background-color: #fff;*/
-  /*z-index: 1;*/
   grid-template-columns: auto auto;
   grid-template-areas: "logo btn-mobile" "btn-switch btn-switch" "nav nav" "account account";
   gap: 3rem;
@@ -645,12 +609,6 @@ header .container .btn-mobile i {
   gap: 1.5rem;
   justify-content: center;
   text-align: center;
-}
-.toggle-mobile-menu .account-buttons {
-  grid-area: account;
-}
-.toggle-mobile-menu .account-buttons .btn-gray, .toggle-mobile-menu .account-buttons btn-theme {
-  color: #fff;
 }
 
 footer {
@@ -793,7 +751,6 @@ footer .container .social-media {
   }
 }
 .showcase .container .content h6 {
-  /*margin-top: 4rem;*/
   margin-bottom: 2rem;
 }
 .showcase .container .content .brands img {
@@ -1042,7 +999,6 @@ footer .container .social-media {
 .manage-work .container .content h3 {
   font-weight: 900;
   margin-bottom: 2rem;
-  /*border: solid red 1px;*/
 }
 @media (min-width: 992px) {
   .manage-work .container .content h3 {
@@ -1221,14 +1177,6 @@ footer .container .social-media {
 .work-tools {
   color: var(--color-gray-900);
 }
-.work-tools .container {
-  /*text-align: center;*/
-}
-@media (min-width: 768px) {
-  .work-tools .container {
-    /*text-align: left;*/
-  }
-}
 @media (min-width: 1400px) {
   .work-tools .container {
     width: 70%;
@@ -1263,10 +1211,6 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   color: var(--color-gray-600);
-  /*@include md {*/
-  /*   @include text-s;
-      color: var(--color-gray-600);*/
-  /*}*/
 }
 @media (min-width: 992px) {
   .work-tools .container .work-tools-header p {
@@ -1449,7 +1393,6 @@ footer .container .social-media {
 @media (min-width: 768px) {
   .news-letter .container .content form .header-checkbox .box-container .box {
     margin-left: 1rem;
-    /*@include text-s;*/
   }
 }
 @media (min-width: 992px) {
@@ -1511,7 +1454,6 @@ footer .container .social-media {
 .news-letter .container .content form .input-container .error {
   position: absolute;
   top: -5%;
-  /*color: red;*/
 }
 @media (min-width: 768px) {
   .news-letter .container .content form .input-container .error {
@@ -1553,6 +1495,10 @@ footer .container .social-media {
   gap: 2rem;
   text-align: center;
   align-items: center;
+  margin-top: 10rem;
+}
+.error-page .container img {
+  width: 90%;
 }
 .error-page .container nav a {
   margin-bottom: 5rem;
@@ -1561,252 +1507,6 @@ footer .container .social-media {
 .courses {
   color: var(--color-gray-900);
   display: flex;
-}
-.courses .container {
-  /*.box-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-
-      @include md {
-          text-align: start;
-      }
-
-      .boxes {
-          display: grid;
-          gap: 1.5rem 1rem;
-
-          @include md {
-              grid-template-columns: 1fr 1fr;
-          }
-
-          @include lg {
-              grid-template-columns: 1fr 1fr 1fr;
-              gap: 1rem .7rem;
-          }
-
-          .box {
-              position: relative;
-              border: solid var(--color-gray-200) 1px; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Shady
-              border-radius: .5rem;
-
-              .best-seller {
-                  position: absolute;
-                  top: .8rem;
-                  left: .5rem;
-                  background-color: var(--color-success);
-                  color: var(--color-white);
-                  padding: .1rem;
-                  border-radius: .5rem;
-                  z-index: 1;
-
-                  @include md {
-                      padding: 0 .5rem;
-                  }
-              }
-
-
-              .bookmark {
-                  position: absolute;
-                  top: .8rem;
-                  right: .5rem;
-                  border: solid white 1px;
-                  background-color: var(--color-white);
-                  border-radius: 50%;
-                  padding: .2rem;
-                  z-index: 1;
-                  color: var(--color-black);*/
-  /*.bookmark.saved {
-                      background-color: var(--theme;*/
-  /*&:hover {
-                          content: '\2BBF';*/
-  /*}
-                  }*/
-  /*&:hover {
-                      background-color: var(--color-theme);
-                      border: solid var(--color-theme) 1px;
-                      color: white;
-                      transition: ease-in-out .2s
-                  }
-
-                  .bookmark .text-add, .bookmark .text-remove {
-                      display: none;
-
-                  }
-
-                  .bookmark:hover .text-add, .bookmark:hover .text-remove {
-                      display: inline;
-
-                  }
-
-
-
-                  @include md {
-                      padding: .4rem;
-                  }
-
-                  @include xl {
-                  }
-
-                  .fa-bookmark {
-                      @include md {
-                          padding: .3rem;
-                      }
-                  }
-              }
-
-              .content {
-                  transition: filter 0.3s ease;
-
-                  &:hover {
-                      filter: brightness(0.7);
-                  }
-
-                  p {
-                      @include md {
-                          margin-left: 1rem;
-                          color: var(--color-gray-900);
-                      }
-                  }
-
-                  .h5 {
-                      color: var(--color-gray-900);
-
-                      @include lg {
-                          @include h6;
-                          color: var(--color-gray-900);
-                      }
-
-                      @include xl {
-                          @include h5;
-                          color: var(--color-gray-900);
-                      }
-
-                      @include xxl {
-                          @include h4;
-                          color: var(--color-gray-900);
-                      }
-                  }
-
-                  img {
-                      position: relative;
-                      width: 100%;
-                      border-top-left-radius: .5rem;
-                      border-top-right-radius: .5rem;
-                  }
-
-                  .extra-price {
-                      display: flex;
-                      justify-content: center;
-                      gap: .2rem;
-
-                      @include md {
-                          justify-content: start;
-                          margin-left: .2rem;
-                      }
-
-                      .new-price {
-                          color: var(--color-danger-dark);
-                          font-weight: bold;
-                      }
-
-                      .old-price {
-                          color: var(--color-gray-600);
-                          text-decoration: line-through;
-                          margin-left: .2rem;
-                      }
-                  }
-
-                  .price {
-                      color: var(--color-theme);
-                      font-weight: bold;
-                  }
-
-                  .line {
-                      border: solid 1px var(--color-gray-300);
-                      width: 90%;
-                      margin: 0 auto;
-                  }
-
-                  .bottom-info {
-                      display: flex;
-                      justify-content: center;
-                      gap: 1rem;
-
-                      @include md {
-                          justify-content: start;
-                          margin-left: 1rem;
-                      }
-
-                      .likes, .hours {
-                          display: grid;
-                          grid-template-columns: auto auto;
-                          margin-top: .8rem;
-                          color: var(--color-gray-800);
-
-                          p {
-                              margin-left: .2rem;
-                              @include text-xs;
-                          }
-                      }
-                  }
-              }
-          }
-      }
-
-      .change-page {
-          display: flex;
-          justify-content: center;
-          text-align: center;
-          margin-top: 2rem;
-
-
-          .change-page-arrow {
-              padding: 1.2rem;
-
-              i {
-                  font-size: .8rem;
-                  padding: .5rem;
-
-                  &:hover {
-                      background-color: var(--color-theme);
-                      border-radius: .2rem;
-                      color: var(--color-white);
-                  }
-              }
-          }
-
-          .numbers {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              text-align: center;
-              gap: .4rem;
-              margin-bottom: 4rem;
-
-
-              a {
-                  padding: 1.2rem;
-                  border-radius: .3rem;
-                  text-decoration: none;
-
-                  &:hover {
-                      background-color: var(--color-theme);
-                      color: var(--color-white);
-                  }
-              }
-
-              .gray {
-                  background-color: var(--color-gray-200);
-              }
-
-              .purple {
-              }
-          }
-      }
-  }*/
 }
 .courses .container .bread-crum {
   display: flex;
@@ -1839,9 +1539,6 @@ footer .container .social-media {
 .courses .container .bread-crum .home a i {
   margin-top: 0.25rem;
   color: var(--color-gray-600);
-}
-.courses .container .bread-crum .courses {
-  /*border: solid red 1px;*/
 }
 .courses .container .bread-crum .courses p {
   color: var(--color-gray-900);
@@ -1938,14 +1635,15 @@ footer .container .social-media {
     justify-content: end;
   }
 }
-.courses .container .heading .tool-and-search-container form .input-search input {
+.courses .container .heading .tool-and-search-container form .input-search .searchQuery {
   border-radius: 0.5rem;
   padding: 0.3rem;
   padding-left: 2rem;
   border: solid 1px var(--color-gray-400);
+  color: var(--color-gray-900);
   background: var(--color-gray-000);
 }
-.courses .container .heading .tool-and-search-container form .input-search input::placeholder {
+.courses .container .heading .tool-and-search-container form .input-search .searchQuery::placeholder {
   color: var(--color-gray-500);
 }
 .courses .container .heading .tool-and-search-container form .input-search .fa-magnifying-glass {
@@ -2215,6 +1913,7 @@ footer .container .social-media {
   display: grid;
   gap: 1.5rem 1rem;
   position: relative;
+  /*@import "_course-card.scss";*/
 }
 @media (min-width: 768px) {
   .box-content .boxes {
@@ -2226,167 +1925,6 @@ footer .container .social-media {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem 0.7rem;
   }
-}
-.box-content .boxes .box {
-  color: var(--color-gray-900);
-  position: relative;
-  border: solid var(--color-gray-200) 1px;
-  border-radius: 0.5rem;
-}
-.box-content .boxes .box .best-seller {
-  position: absolute;
-  top: 0.8rem;
-  left: 0.5rem;
-  background-color: #22C55E;
-  color: var(--color-white);
-  padding: 0.1rem;
-  border-radius: 0.5rem;
-  z-index: 1;
-}
-@media (min-width: 768px) {
-  .box-content .boxes .box .best-seller {
-    padding: 0 0.5rem;
-  }
-}
-.box-content .boxes .box .bookmark {
-  position: absolute;
-  top: 0.8rem;
-  right: 0.5rem;
-  border: solid white 1px;
-  background-color: var(--color-white);
-  border-radius: 50%;
-  padding: 1rem;
-  z-index: 1;
-  color: var(--color-black);
-}
-.box-content .boxes .box .bookmark:hover {
-  background-color: var(--color-white);
-  color: var(--color-theme);
-  transition: ease-in-out 0.2s;
-}
-@media (min-width: 768px) {
-  .box-content .boxes .box .bookmark {
-    padding: 0.4rem;
-  }
-}
-@media (min-width: 768px) {
-  .box-content .boxes .box .bookmark .fa-bookmark {
-    padding: 0.3rem;
-  }
-}
-.box-content .boxes .box .content {
-  transition: filter 0.3s ease;
-}
-.box-content .boxes .box .content:hover {
-  filter: brightness(0.7);
-}
-.box-content .boxes .box .content p {
-  color: var(--color-gray-900);
-}
-@media (min-width: 768px) {
-  .box-content .boxes .box .content p {
-    margin-left: 1rem;
-  }
-}
-.box-content .boxes .box .content .h5 {
-  padding: 0.2rem;
-  color: var(--color-gray-900);
-}
-@media (min-width: 992px) {
-  .box-content .boxes .box .content .h5 {
-    line-height: 160%;
-    font-weight: 400;
-    color: var(--gray-700);
-    font-family: "Manrope", sans-serif;
-    font-weight: 800;
-    color: var(--gray-900);
-    font-size: 16px !important;
-    color: var(--color-gray-900);
-  }
-}
-@media (min-width: 1200px) {
-  .box-content .boxes .box .content .h5 {
-    line-height: 160%;
-    font-weight: 400;
-    color: var(--gray-700);
-    font-family: "Manrope", sans-serif;
-    font-weight: 800;
-    color: var(--gray-900);
-    font-size: 20px !important;
-    color: var(--color-gray-900);
-  }
-}
-@media (min-width: 1400px) {
-  .box-content .boxes .box .content .h5 {
-    line-height: 160%;
-    font-weight: 400;
-    color: var(--gray-700);
-    font-family: "Manrope", sans-serif;
-    font-weight: 800;
-    color: var(--gray-900);
-    font-size: 24px !important;
-    color: var(--color-gray-900);
-  }
-}
-.box-content .boxes .box .content img {
-  position: relative;
-  width: 100%;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
-.box-content .boxes .box .content .extra-price {
-  display: flex;
-  justify-content: center;
-  gap: 0.2rem;
-}
-@media (min-width: 768px) {
-  .box-content .boxes .box .content .extra-price {
-    justify-content: start;
-    margin-left: 0.2rem;
-  }
-}
-.box-content .boxes .box .content .extra-price .new-price {
-  color: var(--color-danger-dark);
-  font-weight: bold;
-}
-.box-content .boxes .box .content .extra-price .old-price {
-  color: var(--color-gray-600);
-  text-decoration: line-through;
-  margin-left: 0.2rem;
-}
-.box-content .boxes .box .content .price {
-  color: var(--color-theme);
-  font-weight: bold;
-}
-.box-content .boxes .box .content .line {
-  border: solid 1px var(--color-gray-300);
-  width: 90%;
-  margin: 0 auto;
-}
-.box-content .boxes .box .content .bottom-info {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-@media (min-width: 768px) {
-  .box-content .boxes .box .content .bottom-info {
-    justify-content: start;
-    margin-left: 1rem;
-  }
-}
-.box-content .boxes .box .content .bottom-info .likes, .box-content .boxes .box .content .bottom-info .hours {
-  display: grid;
-  grid-template-columns: auto auto;
-  margin-top: 0.8rem;
-  color: var(--color-gray-800);
-}
-.box-content .boxes .box .content .bottom-info .likes p, .box-content .boxes .box .content .bottom-info .hours p {
-  margin-left: 0.2rem;
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--gray-700);
-  font-family: "Manrope", sans-serif;
-  font-size: 12px !important;
 }
 
 .course-details {
@@ -2627,7 +2165,6 @@ footer .container .social-media {
     color: var(--gray-700);
     font-family: "Manrope", sans-serif;
     font-size: 12px !important;
-    /*color: var(--color-white);*/
     margin: 0;
   }
 }
@@ -2733,7 +2270,6 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--gray-900);
     font-size: 24px !important;
-    /*color: var(--color-danger-dark);*/
   }
 }
 .course-details .container .content .price span {
@@ -2823,7 +2359,6 @@ footer .container .social-media {
   display: flex;
   flex-direction: column;
   display: relative;
-  /*border: none;*/
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -3019,7 +2554,6 @@ footer .container .social-media {
 }
 .change-page a {
   margin: 0 0.2rem;
-  /*border: solid red 1px;*/
   text-decoration: none;
   color: var(--color-gray-900);
   border-radius: 0.5rem;
@@ -3195,22 +2729,12 @@ footer .container .social-media {
 .contact-us .container .form-container .alert-success {
   background: var(--color-success);
 }
-.contact-us .container .form-container #contact-form {
-  /*
-  .arrow {
-      display: absolute;
-      top: 19.5rem;
-      right: -1.5rem;
-      color: hotpink;
-  }*/
-}
 .contact-us .container .form-container #contact-form .form-name, .contact-us .container .form-container #contact-form .form-email, .contact-us .container .form-container #contact-form .drop-down, .contact-us .container .form-container #contact-form .form-message-us {
   display: flex;
   flex-direction: column;
   padding: 0.7rem;
 }
 .contact-us .container .form-container #contact-form .form-name input, .contact-us .container .form-container #contact-form .form-name textarea, .contact-us .container .form-container #contact-form .form-name select, .contact-us .container .form-container #contact-form .form-name option, .contact-us .container .form-container #contact-form .form-email input, .contact-us .container .form-container #contact-form .form-email textarea, .contact-us .container .form-container #contact-form .form-email select, .contact-us .container .form-container #contact-form .form-email option, .contact-us .container .form-container #contact-form .drop-down input, .contact-us .container .form-container #contact-form .drop-down textarea, .contact-us .container .form-container #contact-form .drop-down select, .contact-us .container .form-container #contact-form .drop-down option, .contact-us .container .form-container #contact-form .form-message-us input, .contact-us .container .form-container #contact-form .form-message-us textarea, .contact-us .container .form-container #contact-form .form-message-us select, .contact-us .container .form-container #contact-form .form-message-us option {
-  /*padding: .3rem;*/
   border-radius: 0.5rem;
   border: solid var(--color-gray-300) 1px;
   padding-left: 1rem;
@@ -3220,7 +2744,6 @@ footer .container .social-media {
 }
 .contact-us .container .form-container #contact-form .form-name input::placeholder, .contact-us .container .form-container #contact-form .form-name textarea::placeholder, .contact-us .container .form-container #contact-form .form-name select::placeholder, .contact-us .container .form-container #contact-form .form-name option::placeholder, .contact-us .container .form-container #contact-form .form-email input::placeholder, .contact-us .container .form-container #contact-form .form-email textarea::placeholder, .contact-us .container .form-container #contact-form .form-email select::placeholder, .contact-us .container .form-container #contact-form .form-email option::placeholder, .contact-us .container .form-container #contact-form .drop-down input::placeholder, .contact-us .container .form-container #contact-form .drop-down textarea::placeholder, .contact-us .container .form-container #contact-form .drop-down select::placeholder, .contact-us .container .form-container #contact-form .drop-down option::placeholder, .contact-us .container .form-container #contact-form .form-message-us input::placeholder, .contact-us .container .form-container #contact-form .form-message-us textarea::placeholder, .contact-us .container .form-container #contact-form .form-message-us select::placeholder, .contact-us .container .form-container #contact-form .form-message-us option::placeholder {
   color: var(--color-gray-300);
-  /*padding-left: 1rem;*/
 }
 .contact-us .container .form-container #contact-form .form-name span, .contact-us .container .form-container #contact-form .form-email span, .contact-us .container .form-container #contact-form .drop-down span, .contact-us .container .form-container #contact-form .form-message-us span {
   color: var(--color-danger-dark);
@@ -3315,7 +2838,6 @@ footer .container .social-media {
   color: var(--color-gray-900);
 }
 #sign-up .container .sign-up-form {
-  /*width: 100%;*/
   display: flex;
   justify-content: center;
   position: relative;
@@ -3389,16 +2911,16 @@ footer .container .social-media {
     gap: 1rem;
   }
 }
-#sign-up .container .sign-up-form form .name-info .first-name {
+#sign-up .container .sign-up-form form .name-info .first-name, #sign-up .container .sign-up-form form .name-info .last-name {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   position: relative;
 }
-#sign-up .container .sign-up-form form .name-info .first-name label {
+#sign-up .container .sign-up-form form .name-info .first-name label, #sign-up .container .sign-up-form form .name-info .last-name label {
   font-weight: bold;
 }
-#sign-up .container .sign-up-form form .name-info .first-name span {
+#sign-up .container .sign-up-form form .name-info .first-name span, #sign-up .container .sign-up-form form .name-info .last-name span {
   position: absolute;
   right: 0;
   line-height: 160%;
@@ -3409,7 +2931,7 @@ footer .container .social-media {
   color: var(--color-danger-dark);
 }
 @media (min-width: 768px) {
-  #sign-up .container .sign-up-form form .name-info .first-name span {
+  #sign-up .container .sign-up-form form .name-info .first-name span, #sign-up .container .sign-up-form form .name-info .last-name span {
     line-height: 160%;
     font-weight: 400;
     color: var(--gray-700);
@@ -3418,16 +2940,16 @@ footer .container .social-media {
     color: var(--color-danger-dark);
   }
 }
-#sign-up .container .sign-up-form form .name-info .last-name {
+#sign-up .container .sign-up-form form .email, #sign-up .container .sign-up-form form .password, #sign-up .container .sign-up-form form .confirm-password {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   position: relative;
 }
-#sign-up .container .sign-up-form form .name-info .last-name label {
+#sign-up .container .sign-up-form form .email label, #sign-up .container .sign-up-form form .password label, #sign-up .container .sign-up-form form .confirm-password label {
   font-weight: bold;
 }
-#sign-up .container .sign-up-form form .name-info .last-name span {
+#sign-up .container .sign-up-form form .email span, #sign-up .container .sign-up-form form .password span, #sign-up .container .sign-up-form form .confirm-password span {
   position: absolute;
   right: 0;
   line-height: 160%;
@@ -3438,94 +2960,7 @@ footer .container .social-media {
   color: var(--color-danger-dark);
 }
 @media (min-width: 768px) {
-  #sign-up .container .sign-up-form form .name-info .last-name span {
-    line-height: 160%;
-    font-weight: 400;
-    color: var(--gray-700);
-    font-family: "Manrope", sans-serif;
-    font-size: 14px !important;
-    color: var(--color-danger-dark);
-  }
-}
-#sign-up .container .sign-up-form form .email {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  position: relative;
-}
-#sign-up .container .sign-up-form form .email label {
-  font-weight: bold;
-}
-#sign-up .container .sign-up-form form .email span {
-  position: absolute;
-  right: 0;
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--gray-700);
-  font-family: "Manrope", sans-serif;
-  font-size: 12px !important;
-  color: var(--color-danger-dark);
-}
-@media (min-width: 768px) {
-  #sign-up .container .sign-up-form form .email span {
-    line-height: 160%;
-    font-weight: 400;
-    color: var(--gray-700);
-    font-family: "Manrope", sans-serif;
-    font-size: 14px !important;
-    color: var(--color-danger-dark);
-  }
-}
-#sign-up .container .sign-up-form form .password {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  position: relative;
-}
-#sign-up .container .sign-up-form form .password label {
-  font-weight: bold;
-}
-#sign-up .container .sign-up-form form .password span {
-  position: absolute;
-  right: 0;
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--gray-700);
-  font-family: "Manrope", sans-serif;
-  font-size: 12px !important;
-  color: var(--color-danger-dark);
-}
-@media (min-width: 768px) {
-  #sign-up .container .sign-up-form form .password span {
-    line-height: 160%;
-    font-weight: 400;
-    color: var(--gray-700);
-    font-family: "Manrope", sans-serif;
-    font-size: 14px !important;
-    color: var(--color-danger-dark);
-  }
-}
-#sign-up .container .sign-up-form form .confirm-password {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  position: relative;
-}
-#sign-up .container .sign-up-form form .confirm-password label {
-  font-weight: bold;
-}
-#sign-up .container .sign-up-form form .confirm-password span {
-  position: absolute;
-  right: 0;
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--gray-700);
-  font-family: "Manrope", sans-serif;
-  font-size: 12px !important;
-  color: var(--color-danger-dark);
-}
-@media (min-width: 768px) {
-  #sign-up .container .sign-up-form form .confirm-password span {
+  #sign-up .container .sign-up-form form .email span, #sign-up .container .sign-up-form form .password span, #sign-up .container .sign-up-form form .confirm-password span {
     line-height: 160%;
     font-weight: 400;
     color: var(--gray-700);
@@ -3588,7 +3023,6 @@ footer .container .social-media {
   right: 10px;
   top: -15px;
   z-index: 1;
-  /*display: block;*/
   content: "⮿";
   font-size: 1.8rem;
 }
@@ -3615,13 +3049,6 @@ footer .container .social-media {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*        .error-message {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: black;
-      background: var(--danger;
-  }*/
 }
 @media (min-width: 768px) {
   #sign-in .container {
@@ -3673,9 +3100,6 @@ footer .container .social-media {
   border-radius: 0.5rem;
   border: solid var(--color-gray-400) 1px;
   padding: 0.5rem 1rem;
-  /*          &::placeholder {
-                color: var(--color-gray-300);
-            }*/
 }
 #sign-in .container .sign-in-form .form-input.input-validation-error {
   position: relative;
@@ -3705,7 +3129,6 @@ footer .container .social-media {
   position: relative;
 }
 #sign-in .container .sign-in-form form .email input, #sign-in .container .sign-in-form form .password input {
-  /*border: solid var(--color-gray-400) 1px;*/
   padding: 0.5rem;
   border-radius: 0.5rem;
   margin: 0;
@@ -3809,104 +3232,9 @@ footer .container .social-media {
     padding: 0.7rem 3rem;
   }
 }
+
 .account-details-section {
   color: var(--color-gray-900);
-}
-.account-details-section .container {
-  /*@import "_account-details-aside.scss";*/
-  /*aside {
-      @include lg {
-      border-right: solid var(--color-gray-300) 1px;
-      padding: 1rem;
-
-      }
-
-
-      .profile-info {
-          display: grid;
-          grid-template-columns: auto;
-          justify-content: center;
-          text-align: center;
-          margin-top: 2rem;
-
-          .img-container {
-              position: relative;
-
-              .profile-img {
-              }
-
-              .no-profile-img {
-                  width: 120px;
-                  height: 120px;
-                  margin: 0;
-                  padding: 0;
-                  border: solid var(--color-gray-500) 1px;
-                  border-radius: 50%;
-              }
-
-              .img-icon {
-                  position: absolute;
-                  top: 5.2rem;
-                  left: 6.9rem;
-
-                  @include xl {
-                      left: 8.8rem;
-                  }
-
-                  @include xxl {
-                      left: 9.5rem;
-                  }
-              }
-          }
-
-          h5 {
-              margin-top: 1rem;
-          }
-
-          p {*/
-  /*@include text-s;*/
-  /*}
-
-          nav {
-              display: flex;
-              flex-direction: column;
-              gap: 1rem;
-              text-align: left;
-
-              .btn-theme-s {
-
-                  @include xl {
-                      padding-right: 6rem;
-                  }
-
-                  @include xxl {
-                      padding-right: 7rem;
-                      padding-left: 2rem;
-                  }
-              }
-
-              .btn-transparent {
-                  color: var(--color-gray-800);
-                  font-weight: 700;
-                  margin-left: 1.3rem;
-
-                  @include xxl {
-                      margin-left: 1.6rem;
-                  }
-
-                  .rotate {
-                      transform: rotateY(180deg);
-                  }
-
-                  i {
-                      color: var(--color-gray-600);
-                      margin: 0 .4rem;
-                  }
-              }
-          }
-      }
-  }*/
-  /*}*/
 }
 @media (min-width: 992px) {
   .account-details-section .container {
@@ -3984,14 +3312,12 @@ footer .container .social-media {
   position: absolute;
   right: 0;
   top: 0;
-  /*padding: 1rem;*/
   line-height: 160%;
   font-weight: 400;
   color: var(--gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
   color: var(--color-danger-dark);
-  /*border: solid red 1px;*/
 }
 @media (min-width: 768px) {
   .account-details-section .container .account-details .basic-info form .content #form-firstname span, .account-details-section .container .account-details .basic-info form .content #form-lastname span, .account-details-section .container .account-details .basic-info form .content #form-email span, .account-details-section .container .account-details .basic-info form .content #form-phone span, .account-details-section .container .account-details .basic-info form .content #form-bio span {
@@ -4002,22 +3328,6 @@ footer .container .social-media {
     font-size: 14px !important;
     color: var(--color-danger-dark);
   }
-}
-.account-details-section .container .account-details .basic-info form .content #form-firstname {
-  /*                            span {
-      position: absolute;
-      right: 0;
-      top: 0;
-      padding: 1rem;
-      @include text-xs;
-      color: var(--danger;
-      border: solid red 1px;
-
-      @include md {
-          @include text-s;
-          color: var(--danger;
-      }
-  }*/
 }
 @media (min-width: 992px) {
   .account-details-section .container .account-details .basic-info form .content #form-firstname {
@@ -4130,14 +3440,12 @@ footer .container .social-media {
   position: absolute;
   right: 0;
   top: 0;
-  /*padding: 1rem;*/
   line-height: 160%;
   font-weight: 400;
   color: var(--gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
   color: var(--color-danger-dark);
-  /*border: solid red 1px;*/
 }
 @media (min-width: 768px) {
   .account-details-section .container .account-details .address-info form .content #form-address-line_1 span, .account-details-section .container .account-details .address-info form .content #form-address-line_2 span, .account-details-section .container .account-details .address-info form .content #form-postal-code span, .account-details-section .container .account-details .address-info form .content #form-city span {

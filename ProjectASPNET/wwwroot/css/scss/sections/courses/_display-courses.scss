@@ -10,8 +10,6 @@
         text-align: start;
     }
 
-
-
     .boxes {
         display: grid;
         gap: 1.5rem 1rem;
@@ -26,6 +24,6 @@
             gap: 1rem .7rem;
         }
 
-        @import "_course-card.scss";
+        /*@import "_course-card.scss";*/
     }
 }

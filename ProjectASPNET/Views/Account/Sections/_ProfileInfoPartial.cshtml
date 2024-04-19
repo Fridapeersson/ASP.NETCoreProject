@@ -1,17 +1,8 @@
 ﻿@model ProfileInfoViewModel
 
-
-@* <section id="account" class="account"> *@
     <aside>
         <div class="profile-info">
             <div class="img-container">
-
-@*             <img src="~/uploads/no-profile-img.png" alt="Default img" )´s profile picture" class="no-profile-img" />
-
-            <form enctype="multipart/form-data" method="POST" asp-action="UploadImage" asp-controller="Account">
-                <input id="uploadFile" type="file" name="file" hidden />
-                <label for="uploadFile" class="btn btn-circle btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
-            </form> *@
 
                 @if (Model.ProfileImgUrl != null)
                 {
@@ -20,7 +11,6 @@
                         <input id="uploadFile" type="file" name="file" hidden />
                         <label for="uploadFile" class="btn-circle"><i class="fa-regular fa-refresh"></i></label>
                     </form>
-
                 }
                 else
                 {
@@ -31,14 +21,12 @@
                         <label for="uploadFile" class="btn btn-circle btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
                     </form>
                 }
-@*                 <img src="~/images/account/img-icon.svg" alt="Img icon" class="img-icon" /> *@
             </div>
 
             <h5>@Model.FirstName @Model.LastName</h5>
             <p>@Model.Email</p>
 
             <nav>
-                @* viewbag sätter tema färg på den aktiva knappen *@
                 <a id="account-details-btn"
                    class="@(ViewBag.ActiveMenu == "Details" ? "btn-theme-s" : "btn-transparent")"
                    asp-controller="Account"
@@ -69,4 +57,3 @@
             </nav>
         </div>
     </aside>
-@* </section> *@

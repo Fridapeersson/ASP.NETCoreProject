@@ -7,7 +7,8 @@
         <div class="content">
             <div id="form-address-line_1">
                 <label asp-for="AddressInfo!.AddressLine_1"></label>
-                @if(Model.IsExternalAccount) {
+                @if(Model.IsExternalAccount) 
+                {
                 <input asp-for="AddressInfo!.AddressLine_1" disabled />
                 }
                 else 
@@ -15,7 +16,6 @@
                     <span asp-validation-for="AddressInfo!.AddressLine_1"></span>
                     <input asp-for="AddressInfo!.AddressLine_1" />
                 }
-
             </div>
 
             <div id="form-address-line_2">
@@ -41,7 +41,6 @@
                     <span asp-validation-for="AddressInfo!.PostalCode"></span>
                     <input asp-for="AddressInfo!.PostalCode" />
                 }
-
             </div>
 
             <div id="form-city">
@@ -68,7 +67,6 @@
                     <button class="btn-gray" type="reset" onclick="location.reload();">Cancel</button>
                     <button class="btn-theme" type="submit">Save Changes</button>
                 }
-
             </div>
         </div>
     </form>

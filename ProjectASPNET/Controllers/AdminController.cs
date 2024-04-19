@@ -12,7 +12,7 @@ public class AdminController : Controller
         return View();
     }
 
-    [Authorize(Policy = "CIO")] //vilka som har tillågng till settings, anges i program-delen
+    [Authorize(Policy = "CIO")] 
     public IActionResult Settings()
     {
         return View();

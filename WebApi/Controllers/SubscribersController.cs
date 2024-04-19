@@ -32,22 +32,11 @@ public class SubscribersController : ControllerBase
             {
                 if (!string.IsNullOrEmpty(model.Email))
                 {
-                    //var subscriberEntity = new SubscribersEntity
-                    //{
-                    //    Email = model.Email,
-                    //    DailyNewsletter = model.DailyNewsletter,
-                    //    EventUpdates = model.EventUpdates,
-                    //    AdvertisingUpdates = model.AdvertisingUpdates,
-                    //    StartupsWeekly = model.StartupsWeekly,
-                    //    WeekInReview = model.WeekInReview,
-                    //    Podcasts = model.Podcasts,
-                    //};
                     var result = await _subscribersService.CreateSubscriberAsync(model);
                     if (result)
                     {
                         return Created();
                     }
-
                 }
                     return Conflict("You are already a subscriber");
             }

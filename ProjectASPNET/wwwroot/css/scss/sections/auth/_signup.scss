@@ -3,7 +3,6 @@
 
     .container {
         .sign-up-form {
-            /*width: 100%;*/
             display: flex;
             justify-content: center;
             position: relative;
@@ -33,8 +32,6 @@
                 p {
                     @include text-s;
                     margin-bottom: 1.5rem;
-
-
 
                     .sign-up-here {
                         text-decoration: underline;
@@ -86,38 +83,13 @@
                     }
 
 
-                    .first-name {
+                    .first-name, .last-name {
                         display: flex;
                         flex-direction: column;
                         margin-bottom: 1rem;
                         position: relative;
 
                         label {
-                            // margin: 0;
-                            font-weight: bold;
-                        }
-
-                        span {
-                            position: absolute;
-                            right: 0;
-                            @include text-xs;
-                            color: var(--color-danger-dark);
-
-                            @include md {
-                                @include text-s;
-                                color: var(--color-danger-dark);
-                            }
-                        }
-                    }
-
-                    .last-name {
-                        display: flex;
-                        flex-direction: column;
-                        margin-bottom: 1rem;
-                        position: relative;
-
-                        label {
-                            // margin: 0;
                             font-weight: bold;
                         }
 
@@ -135,54 +107,7 @@
                     }
                 }
 
-                .email {
-                    display: flex;
-                    flex-direction: column;
-                    margin-bottom: 1rem;
-                    position: relative;
-
-                    label {
-                        // margin: 0;
-                        font-weight: bold;
-                    }
-
-                    span {
-                        position: absolute;
-                        right: 0;
-                        @include text-xs;
-                        color: var(--color-danger-dark);
-
-                        @include md {
-                            @include text-s;
-                            color: var(--color-danger-dark);
-                        }
-                    }
-                }
-
-                .password {
-                    display: flex;
-                    flex-direction: column;
-                    margin-bottom: 1rem;
-                    position: relative;
-
-                    label {
-                        font-weight: bold;
-                    }
-
-                    span {
-                        position: absolute;
-                        right: 0;
-                        @include text-xs;
-                        color: var(--color-danger-dark);
-
-                        @include md {
-                            @include text-s;
-                            color: var(--color-danger-dark);
-                        }
-                    }
-                }
-
-                .confirm-password {
+                .email, .password, .confirm-password {
                     display: flex;
                     flex-direction: column;
                     margin-bottom: 1rem;
@@ -210,8 +135,6 @@
                     gap: .5rem;
                     margin: 1.5rem 0;
                     position: relative;
-
-
 
                     @include lg {
                         margin: 1rem 0;
@@ -256,7 +179,6 @@
                                     right: 10px;
                                     top: -15px;
                                     z-index: 1;
-                                    /*display: block;*/
                                     content: '\2BBF';
                                     font-size: 1.8rem;
 
