@@ -1806,6 +1806,7 @@ footer .container .social-media {
 }
 .box .content .h5 {
   padding: 0.2rem;
+  margin-left: 0.7rem;
   color: var(--color-gray-900);
 }
 @media (min-width: 992px) {
