@@ -120,6 +120,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+//Account
+document.addEventListener("DOMContentLoaded", function () {
+    var changePasswordForm = document.querySelector(".change-password-form-content");
+    console.log(changePasswordForm);
+    if (changePasswordForm) {
+        var _inputs3 = changePasswordForm.querySelectorAll("input[type='password']");
+        _inputs3.forEach(function (input) {
+            if (input.dataset.val === "true") {
+                input.addEventListener("keyup", function (e) {
+                    passwordValidator(e.target);
+                });
+            }
+        });
+    }
+});
+
 var deleteAccount = document.querySelector(".delete-account-form");
 //console.log(deleteAccount);
 if (deleteAccount) {

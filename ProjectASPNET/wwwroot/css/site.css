@@ -561,7 +561,16 @@ header .container #account-buttons {
     gap: 1rem;
   }
 }
-header .container #account-buttons img {
+header .container #account-buttons a {
+  display: flex;
+  margin-left: 4.5rem;
+}
+@media (min-width: 992px) {
+  header .container #account-buttons a {
+    margin-left: 0;
+  }
+}
+header .container #account-buttons a img {
   width: 50px;
   height: 50px;
   margin: 0;
@@ -3104,7 +3113,7 @@ footer .container .social-media {
 #sign-in .container .sign-in-form .form-input.input-validation-error {
   position: relative;
   border: 1px solid var(--color-danger-dark);
-  color: var(--color-danger);
+  color: var(--color-danger-dark);
 }
 #sign-in .container .sign-in-form .form-input.input-validation-error::placeholder {
   opacity: 0.4;
@@ -3392,7 +3401,7 @@ footer .container .social-media {
 }
 .account-details-section .container .account-details .address-info form input {
   border-radius: 0.5rem;
-  padding: 0.2rem;
+  padding: 0.6rem;
   padding-left: 0.5rem;
   border: solid var(--color-gray-400) 1px;
   color: var(--color-gray-700);

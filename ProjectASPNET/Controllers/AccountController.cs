@@ -280,7 +280,9 @@ public class AccountController : Controller
     {
         try
         {
-            if(ModelState.IsValid)
+            ViewBag.ActiveMenu = "Security";
+
+            if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User);
                 if(user != null)
@@ -313,13 +315,13 @@ public class AccountController : Controller
                     {
                         ProfileInfo = profileInfo,
                     };
-                    ViewBag.ActiveMenu = "Security";
+                    ViewData["ErrorMessage"] = "Incorrect values";
                     return View(securityViewModel);
                 }
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex); }
-        ViewBag.ActiveMenu = "Security";
+        //ViewBag.ActiveMenu = "Security";
         return View(viewModel);
     }
     #endregion

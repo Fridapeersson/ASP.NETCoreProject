@@ -1,5 +1,6 @@
 header {
     color: var(--color-gray-900);
+
     .container {
         display: grid;
         padding: 1.5rem;
@@ -37,19 +38,30 @@ header {
 
         #account-buttons {
             margin: 0 auto;
+
+
             @include lg {
                 display: flex;
                 gap: 1rem;
             }
 
-            img {
-                width: 50px;
-                height: 50px;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-                border: solid var(--color-gray-500) 1px;
-                border-radius: 50%;
+            a {
+                display: flex;
+                margin-left: 4.5rem;
+
+                @include lg {
+                    margin-left: 0;
+                }
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    margin: 0;
+                    padding: 0;
+                    text-align: center;
+                    border: solid var(--color-gray-500) 1px;
+                    border-radius: 50%;
+                }
             }
         }
 
@@ -62,7 +74,7 @@ header {
                 display: none;
             }
 
-            i{
+            i {
                 color: var(--color-gray-900);
             }
         }

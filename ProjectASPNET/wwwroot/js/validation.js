@@ -121,6 +121,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+//Account
+document.addEventListener("DOMContentLoaded", function () {
+    const changePasswordForm = document.querySelector(".change-password-form-content");
+    console.log(changePasswordForm);
+    if (changePasswordForm) {
+        const inputs = changePasswordForm.querySelectorAll("input[type='password']");
+        inputs.forEach(input => {
+            if (input.dataset.val === "true") {
+                input.addEventListener("keyup", (e) => {
+                    passwordValidator(e.target);
+                });
+            }
+        })
+    }
+})
+
 const deleteAccount = document.querySelector(".delete-account-form");
 //console.log(deleteAccount);
 if (deleteAccount) {

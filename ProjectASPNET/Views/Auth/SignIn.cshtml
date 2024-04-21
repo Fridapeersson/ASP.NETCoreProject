@@ -21,7 +21,7 @@
                 <div class="email">
                     <label asp-for="Form.Email"></label>
                     <span asp-validation-for="Form.Email"></span>
-                    <input asp-for="Form.Email" class="form-input" type="text" />
+                    <input asp-for="Form.Email" class="form-input" type="email" />
                 </div>
                 <div class="password">
                     <label asp-for="Form.Password">Password</label>
@@ -49,3 +49,4 @@
         </div>
     </div>
 </section>
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")
