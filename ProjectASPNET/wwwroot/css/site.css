@@ -3245,6 +3245,9 @@ footer .container .social-media {
 .account-details-section {
   color: var(--color-gray-900);
 }
+.account-details-section .alert-success {
+  color: var(--color-black);
+}
 @media (min-width: 992px) {
   .account-details-section .container {
     display: flex;

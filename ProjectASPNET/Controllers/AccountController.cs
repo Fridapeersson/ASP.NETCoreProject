@@ -78,7 +78,7 @@ public class AccountController : Controller
                 {
                     await UpdateAddressInfo(viewModel.AddressInfo);
                 }
-
+                ViewData["Message"] = "Your account details have been updated successfully.";
                 await PopulateAccountViewModel();
             }
         }

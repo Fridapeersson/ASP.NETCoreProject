@@ -3,6 +3,20 @@
 
 <section class="basic-info">
     <form method="POST" asp-controller="Account" asp-action="Details" novalidate>
+
+        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+        {
+            <div class="alerts alert-danger">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(ViewData["Message"]?.ToString()))
+        {
+            <div class="alerts alert-success">
+                @ViewData["Message"]
+            </div>
+        }
+
         <h2>Account Details</h2>
         <h5 class="theme">Basic info</h5>
 

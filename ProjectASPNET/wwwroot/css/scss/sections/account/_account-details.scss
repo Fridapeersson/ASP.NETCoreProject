@@ -1,6 +1,8 @@
 .account-details-section {
     color: var(--color-gray-900);
-
+    .alert-success {
+        color: var(--color-black);
+    }
     .container {
         @include lg {
             display: flex;
